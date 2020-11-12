@@ -9,6 +9,7 @@ public class User {
         this.userID = userID;
         this.username = username;
         this.isStaff = isStaff;    
+	int a = 1;
     }
 
 }
