@@ -3,8 +3,8 @@ import java.util.*;
 public class Admin extends User{
     MySTARS mainApp;
 
-    public Admin(String name, String userID, String username){
-        super(name, userID, username, isStaff);
+    public Admin(String name, String username){
+        super(name, username);
     }
     
     public void editPeriod(Calendar start, Calendar end){
@@ -12,8 +12,15 @@ public class Admin extends User{
         period.setPeriod(start, end);
     }
 
-    public void addStudent(String name, String username, String password, String isStaff, ArrayList<Index>, int maxAU, String gender, String nationality){
-        
+    public void addStudent(String name, String username, String password, int maxAU, String gender, String nationality){
+        if(PasswordManager.addAccount(username, password)){
+            Student newStudent = new Student(name, username, maxAU, gender, nationality);
+            mainApp.addStudent(newStudent);
+            System.out.println("Student added!");
+        }
+        else{
+            System.out.println("Username exists!");
+        }
     }
 
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){

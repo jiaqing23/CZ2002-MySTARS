@@ -18,8 +18,9 @@ public class Period {
     }
 
     public boolean validatePeriod(Date currentPeriod) {
-        if(currentPeriod.compareTo(startPeriod) == -1 || currentPeriod.compareTo(endPeriod) == 1)
+        if(currentPeriod.compareTo(startPeriod) < 0 || currentPeriod.compareTo(endPeriod) > 0)
             return false;
+        
 
         return true;
     }
