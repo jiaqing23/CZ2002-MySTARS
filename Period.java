@@ -7,7 +7,6 @@ public class Period {
     private Date endPeriod;
 
     public Period(){
-
         // Default startPeriod: 25th October 2020, 12PM
         c.set(2020, 9, 25, 12, 00, 00);
         this.startPeriod = calendar.getTime();
