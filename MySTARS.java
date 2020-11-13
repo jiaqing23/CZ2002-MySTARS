@@ -94,10 +94,7 @@ public class MySTARS implements Serializable{
         }
 
         System.out.println(mainApp.login());
-        if(mainApp.login()){
-            //TBD
-        }
-        else{
+        if(!mainApp.login()){
             System.out.println("Invalid Credential!");
             return;
         }
