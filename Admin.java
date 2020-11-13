@@ -24,11 +24,12 @@ public class Admin extends User{
     }
 
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
-        //TBD
+        Course course = new Course(school, courseCode, courseName, numOfAU);
+        mainApp.courses.add(course);
     }
 
     public void updateCourse(String courseCode){
-        //TBD
+        
     }
 
     public void checkVacancy(Index index){
