@@ -10,6 +10,10 @@ import java.util.Scanner;
 
 public class MySTARS implements Serializable{
     private static String fileName = "mySTARS.txt";
+    private int isStaff;
+    private String username;
+    private String password;
+
     // private Period period = new Period();
     // private ArrayList<Admin> admins = new ArrayList<Admin>();
     // private ArrayList<Student> students = new ArrayList<Student>();
@@ -75,24 +79,29 @@ public class MySTARS implements Serializable{
         Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
         System.out.print("Mode: ");
-        int choice = sc.nextInt(); 
+        this.choice = sc.nextInt(); 
         System.out.print("Username: ");
-        String username = sc.next();
+        this.username = sc.next();
         System.out.print("Password: ");
-        String password = new String(System.console().readPassword());
-        System.out.printf("%d %s %s", choice, username, password);
-        return true;
+        this.password = new String(System.console().readPassword());
+        return PasswordManager.validateAccount(username, password, choice==1);
     }
 
     public static void main(String[] args){
-        //TBD: Ask for username, admin/student, password; validate
         MySTARS mainApp = loadData();
         if(mainApp == null){
             mainApp = new MySTARS();
         }
 
-        mainApp.login();
-        
+        System.out.println(mainApp.login());
+        if(mainApp.login()){
+            //TBD
+        }
+        else{
+            System.out.println("Invalid Credential!");
+            return;
+        }
+
 
     }
 }
