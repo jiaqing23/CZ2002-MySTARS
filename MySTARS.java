@@ -10,9 +10,8 @@ import java.util.Scanner;
 
 public class MySTARS implements Serializable{
     private static String fileName = "mySTARS.txt";
-    private int isStaff;
+    private int mode;
     private String username;
-    private String password;
 
     // private Period period = new Period();
     // private ArrayList<Admin> admins = new ArrayList<Admin>();
@@ -79,12 +78,12 @@ public class MySTARS implements Serializable{
         Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
         System.out.print("Mode: ");
-        this.choice = sc.nextInt(); 
+        this.mode = sc.nextInt(); 
         System.out.print("Username: ");
         this.username = sc.next();
         System.out.print("Password: ");
-        this.password = new String(System.console().readPassword());
-        return PasswordManager.validateAccount(username, password, choice==1);
+        String password = new String(System.console().readPassword());
+        return PasswordManager.validateAccount(username, password, mode==1);
     }
 
     public static void main(String[] args){
