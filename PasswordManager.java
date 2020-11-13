@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class PasswordManager {
-    private static String filename = "account.txt";
+    private static String fileName = "account.txt";
 
     public static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
@@ -35,7 +35,7 @@ public class PasswordManager {
 
     public static boolean addAccount(String username, String password) {
         try {
-            Scanner scanner = new Scanner(new File(filename));
+            Scanner scanner = new Scanner(new File(fileName));
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
                 String[] pieces = data.split("\\s+");
@@ -44,7 +44,7 @@ public class PasswordManager {
                     return false;
             }
 
-            FileWriter fw = new FileWriter(filename, true);
+            FileWriter fw = new FileWriter(fileName, true);
             fw.write(username + " " + getHash(password) + " 0\n");
             fw.close();
             return true;
@@ -60,7 +60,7 @@ public class PasswordManager {
 
     public static boolean validateAccount(String username, String password, boolean isStaff) {
         try {
-            Scanner scanner = new Scanner(new File(filename));
+            Scanner scanner = new Scanner(new File(fileName));
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
                 String[] pieces = data.split("\\s+");

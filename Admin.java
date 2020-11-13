@@ -19,7 +19,7 @@ public class Admin extends User{
             System.out.println("Student added!");
         }
         else{
-            System.out.println("Username exists!");
+            System.out.println("Username already exists!");
         }
     }
 
