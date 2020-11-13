@@ -5,9 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class MySTARS {
+public class MySTARS implements Serializable{
     private static String fileName = "mySTARS.txt";
     // private Period period = new Period();
     // private ArrayList<Admin> admins = new ArrayList<Admin>();
