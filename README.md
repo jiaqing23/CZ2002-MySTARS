@@ -3,9 +3,9 @@
 ![Alt Text](https://data.whicdn.com/images/238451357/original.gif)
 
 ## To do 🚌
-- student.addindex() should be void
-- 
-- 
+- student.addindex().etc should be void
+- should create student pwd be invisible?🤔
+- get index number // get course name?
 
 ## Debug 🎅 
 ```java

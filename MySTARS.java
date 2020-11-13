@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Date; 
 import java.util.Scanner;
 
 public class MySTARS implements Serializable{
@@ -77,7 +81,7 @@ public class MySTARS implements Serializable{
         Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
         System.out.print("Mode: ");
-        this.mode = sc.nextInt();
+        mode = sc.nextInt();
         System.out.print("Username: ");
         this.username = sc.next();
         System.out.print("Password: ");
@@ -99,8 +103,6 @@ public class MySTARS implements Serializable{
             return;
         }
 
-        // Find user in arraylist
-        // Check date!!!!!!!!!!!!!!!
         User temp;
         
         if(mode == 1){
@@ -119,7 +121,7 @@ public class MySTARS implements Serializable{
         }}
 
         if(mode == 2 && mainApp.period.validatePeriod()){
-            while(choice != 8){
+            while(choice != 7){
                 System.out.println("*************Welcome to MySTARS!*************");
                 System.out.println("(1) Add Course ");
                 System.out.println("(2) Drop Course");
@@ -162,73 +164,158 @@ public class MySTARS implements Serializable{
             }
         }
         if(mode == 2 && !mainApp.period.validatePeriod()){
+            while(choice != 3){
+                System.out.println("*************Welcome to MySTARS!*************");
+                System.out.println("(1) Print Course Registered");
+                System.out.println("(2) Check Course Vacancy");
+                System.out.println("(3) Quit");
+                choice = sc.nextInt();
+                
+                Student student = (Student)temp;
 
+                switch(choice){
+                    case 1:
+                        student.printIndex();
+                        break;
+                    case 2:
+                        student.checkVacancy();
+                        break;
+                    case 3:
+                        System.out.println("Program terminating...");
+                        break;
+                    default:
+                        System.out.println("Wrong Input!!");
+                        break;
+                }
+                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+            }
         };
-        if(mode == 1) cases = 3;
+        if(mode == 1) {
+            while(choice != 8){
+                System.out.println("*************Welcome to MySTARS!*************");
+                System.out.println("(1) Edit registeration period ");
+                System.out.println("(2) Add student");
+                System.out.println("(3) Add Course");
+                System.out.println("(4) Update Course");
+                System.out.println("(5) Check available slot for an index number");
+                System.out.println("(6) Print student list by index number");
+                System.out.println("(7) Print student list by course");
+                System.out.println("(8) Quit");
+                choice = sc.nextInt();
+                
+                Admin admin = (Admin)temp;
 
-        // if (mode == 2) {
-        //     for (Student s : mainApp.students) {
-        //         tem = s;
-        //         if(s.username = mainApp.username){
-        //             if
-        //             while(choice != 8){
-        //                 System.out.println("*************Welcome to MySTARS!*************");
-        //                 System.out.println("(1) Add Course ");
-        //                 System.out.println("(2) Drop Course");
-        //                 System.out.println("(3) Print Course Registered");
-        //                 System.out.println("(4) Check Course Vacancy");
-        //                 System.out.println("(5) Change Index Number of Course Registered");
-        //                 System.out.println("(6) Swap Index with Another Student");
-        //                 System.out.println("(7) Save Changes");
-        //                 System.out.println("(8) Quit");
-        //                 choice = sc.nextInt();
-                        
-
-        //                 switch(choice){
-        //                     case 1:
-        //                         if(mainApp.period.validatePeriod()){
-        //                             boolean output = s.addIndex();
+                switch(choice){
+                    case 1:
+                        SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MM-yyyy");
+                        System.out.println("Please enter the start date (dd-mm-yyyy):");
+                        String startDate=sc.next();
+                        System.out.println("Please enter the end date (dd-mm-yyyy):");
+                        String endDate=sc.next();
+                        try{
+                            admin.editPeriod(dateFormat.parse(startDate),dateFormat.parse(endDate));
+                        }catch(DateTimeParseException e){
+                            System.out.println("Please use the correct format (dd-mm-yyyy) !");
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Please enter student's name:");
+                        String name = sc.nextLine();
+                        System.out.println("Please enter student's username:");
+                        String username = sc.nextLine();
+                        System.out.println("Please enter student's password:");
+                        String password = sc.nextLine();
+                        System.out.println("Please enter student's maximum AU:");
+                        int maxAU = sc.nextInt();
+                        String dummy = sc.nextLine();
+                        System.out.println("Please enter student's gender:");
+                        String gender = sc.nextLine();
+                        System.out.println("Please enter student's nationality:");
+                        String nationality = sc.nextLine();
+                        admin.addStudent(name,username,password,maxAU,gender,nationality);
+                        break;
+                    case 3:
+                        System.out.println("Please enter school of the course:");
+                        String school = sc.nextLine();
+                        System.out.println("Please enter the course code:");
+                        String courseCode = sc.nextLine();
+                        System.out.println("Please enter the course name:");
+                        String courseName = sc.nextLine();
+                        System.out.println("Please enter the number of AU:");
+                        int numAU = sc.nextInt();
+                        dummy = sc.nextLine();
+                        admin.addCourse(school,courseCode,courseName,numAU);
+                        break;
+                    case 4:
+                        System.out.println("Please enter the course code:");
+                        courseCode = sc.nextLine();
+                        admin.updateCourse(courseCode);
+                        break;
+                    case 5:
+                        System.out.println("Please enter the index:");
+                        int index = sc.nextInt();
+                        boolean exist = false;
+                        dummy = sc.nextLine();
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    admin.checkVacancy(i);
+                                    exist = true;
+                                    break;
+                                }
                                     
-        //                         }
-        //                         else {
-        //                             System.out.println("You are not allowed to register course for now!");
-        //                             mainApp.period.printPeriod();
-        //                     }
-        //                     //TBD
-        //                     break;
-        //                     case 2:
-        //                     //TBD
-        //                     break;
-        //                     case 3:
-        //                     //TBD
-        //                     break;
-        //                     case 4:
-        //                     //TBD
-        //                     break;
-        //                     case 5:
-        //                     //TBD
-        //                     break;
-        //                     case 6:
-        //                     //TBD
-        //                     break;
-        //                     case 7:
-        //                     if(saveData())
-        //                         System.out.println("Successfully Saved.");
-        //                     else System.out.println("Saving Failed.");
-        //                     break;
-        //                     case 8:
-                            
-        //                 }
-        //             }
-                   
-
-        //         }
-                    
-        //     }
-        // }
-//save data before logout
-        
-
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 6:
+                        System.out.println("Please enter the course name:");
+                        courseName = sc.nextLine();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(courseName == c.getCourseName()){
+                                    admin.printByCourse(c);
+                                    exist = true;
+                                    break;
+                                    
+                            }
+                        }
+                        if(!exist){
+                            System.out.println("The course name does not exist!");
+                        }
+                        break;
+                    case 7:
+                        System.out.println("Please enter the index number:");
+                        index = sc.nextLine();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    admin.printByIndex(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 8:
+                        System.out.println("Program terminating...");
+                        break;
+                    default:
+                        System.out.println("Wrong Input!!");
+                        break;
+                }
+                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+            }
+        }
 
 
     }
