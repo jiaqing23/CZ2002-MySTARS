@@ -74,12 +74,13 @@ public class Admin extends User{
                 course.dropIndex();
                 break;
             default:
+                System.out.println("Invalid option!");
                 break;
         }
     }
 
     public void checkVacancy(Index index){
-        System.out.printf("%s have $d slots left.\n", index.getIndexNo(), index.getVacancy());
+        System.out.printf("Index %s have $d slots left.\n", index.getIndexNo(), index.getVacancy());
     }
 
     public void printByCourse(Course course){

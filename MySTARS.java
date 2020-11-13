@@ -13,18 +13,18 @@ public class MySTARS implements Serializable{
     private int mode;
     private String username;
 
-    // private Period period = new Period();
-    // private ArrayList<Admin> admins = new ArrayList<Admin>();
-    // private ArrayList<Student> students = new ArrayList<Student>();
-    // private ArrayList<Course> courses = new ArrayList<Course>();
+    private Period period = new Period();
+    private ArrayList<Admin> admins = new ArrayList<Admin>();
+    private ArrayList<Student> students = new ArrayList<Student>();
+    private ArrayList<Course> courses = new ArrayList<Course>();
 
-    // public void addStudent(Student student){
-    //     students.add(student);
-    // }
+    public void addStudent(Student student){
+        students.add(student);
+    }
 
-    // public void addCourse(Course course){
-    //     courses.add(course);
-    // }
+    public void addCourse(Course course){
+        courses.add(course);
+    }
 
     public boolean saveData(){
         try{
