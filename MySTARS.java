@@ -102,7 +102,7 @@ public class MySTARS implements Serializable{
         // Check date!!!!!!!!!!!!!!!
         if (mode == 2) {
             for (Student s : students) {
-                if(s.username = username){
+                if(s.username == username){
                     while(choice != 8){
                         System.out.println("*************Welcome to MySTARS!*************");
                         System.out.println("(1) Add Course ");
