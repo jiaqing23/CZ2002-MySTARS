@@ -7,7 +7,7 @@ public class Admin extends User{
         super(name, username);
     }
     
-    public void editPeriod(Calendar start, Calendar end){
+    public void editPeriod(Date start, Date end){
         Period period = mainApp.getPeriod();
         period.setPeriod(start, end);
     }
