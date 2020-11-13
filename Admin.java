@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Scanner;
 
 public class Admin extends User{
     MySTARS mainApp;
@@ -7,7 +9,7 @@ public class Admin extends User{
         super(name, username);
     }
     
-    public void editPeriod(Calendar start, Calendar end){
+    public void editPeriod(Date start, Date end){
         Period period = mainApp.getPeriod();
         period.setPeriod(start, end);
     }
@@ -29,11 +31,56 @@ public class Admin extends User{
     }
 
     public void updateCourse(String courseCode){
-        
+        Course course;
+        for(Course c: mainApp.courses){
+            if(c.courseCode == courseCode){
+                course = c;
+                break;
+            }
+        }
+
+        System.out.println("Updating course " + courseCode);
+        System.out.println("(1) Update Course Code");
+        System.out.println("(2) Update Course Name");
+        System.out.println("(3) Update School");
+        System.out.println("(4) Add Index");
+        System.out.println("(5) Update Index");
+        System.out.println("(6) Remove Index");
+        System.out.println("Select Option: ");
+        Scanner sc = new Scanner(System.in);
+        int option = sc.nextInt();
+        sc.next(); 
+        String tem;   
+        switch(option){
+            case 1:
+                tem = sc.nextLine();
+                course.setCode(tem);
+                break;
+            case 2:
+                tem = sc.nextLine();
+                course.setName(tem);
+                break;
+            case 3:
+                tem = sc.nextLine();
+                course.setSchool(tem);
+                break;
+            case 4:
+                course.addIndex();
+                break;
+            case 5:
+                course.updateIndex();
+                break;
+            case 6:
+                course.dropIndex();
+                break;
+            default:
+                System.out.println("Invalid option!");
+                break;
+        }
     }
 
     public void checkVacancy(Index index){
-        System.out.printf("%s have $d slots left.\n", index.getIndexNo(), index.getVacancy());
+        System.out.printf("Index %s have $d slots left.\n", index.getIndexNo(), index.getVacancy());
     }
 
     public void printByCourse(Course course){

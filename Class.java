@@ -14,4 +14,24 @@ public class Class {
         this.venue = venue;
         this.week = week;
     }
+
+    public String getType(){
+        return type;
+    }
+
+    public Calendar getStartTime(){
+        return startTime;
+    }
+
+    public Calendar getEndTime(){
+        return endTime;
+    }
+
+    public String getVenue(){
+        return venue;
+    }
+
+    public String week(){
+        return week;
+    }
 }
