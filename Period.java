@@ -16,11 +16,17 @@ public class Period {
         this.endPeriod = calendar.getTime();
     }
 
-    public boolean validatePeriod(Date currentPeriod) {
-        if(currentPeriod.compareTo(startPeriod) < 0 || currentPeriod.compareTo(endPeriod) > 0)
+    public boolean validatePeriod() {
+        java.util.Date currentDatetime=new java.util.Date();
+        if(currentDatetime.compareTo(startPeriod) < 0 || currentDatetime.compareTo(endPeriod) > 0)
             return false;
         
         return true;
+    }
+
+    public void printPeriod(){
+        System.out.println("Start period: " + startPeriod);
+        System.out.println("End period: " + endPeriod);
     }
 
     public void setPeriod(Date startPeriod, Date endPeriod) {
