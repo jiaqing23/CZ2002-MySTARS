@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Admin extends User{
     MySTARS mainApp;
@@ -53,25 +53,35 @@ public class Admin extends User{
         String tem;   
         switch(option){
             case 1:
+                System.out.print("New Course Code: ");
                 tem = sc.nextLine();
                 course.setCode(tem);
                 break;
             case 2:
+                System.out.print("New Course Name: ");
                 tem = sc.nextLine();
                 course.setName(tem);
                 break;
             case 3:
+                System.out.print("New School: ");
                 tem = sc.nextLine();
                 course.setSchool(tem);
                 break;
             case 4:
-                course.addIndex();
+                System.out.print("IndexNo to be added: ");
+                //Need read more attributes(indexno, classsize, XXXX)
+                tem = sc.nextLine();
+                course.addIndex(tem); 
                 break;
             case 5:
-                course.updateIndex();
+                System.out.print("IndexNo to be updated: ");
+                tem = sc.nextLine();
+                course.updateIndex(tem);
                 break;
             case 6:
-                course.dropIndex();
+                System.out.print("IndexNo to be dropped: ");
+                tem = sc.nextLine();
+                course.dropIndex(tem);
                 break;
             default:
                 System.out.println("Invalid option!");
