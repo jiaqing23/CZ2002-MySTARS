@@ -13,12 +13,7 @@ public class Course {
 	}
 	
 	public void dropIndex(Index index) {
-		for (int i=0; i<indexes.size();i++) {
-			if (indexes.get(i)==index) {
-				indexes.remove(i);
-				return;
-			}
-		}
+		indexes.remove(index);
 	}
 	
 	public void listIndex() {

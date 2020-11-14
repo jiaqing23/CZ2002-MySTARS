@@ -17,7 +17,7 @@ public class Period {
     }
 
     public boolean validatePeriod() {
-        java.util.Date currentDatetime=new java.util.Date();
+        Date currentDatetime = new Date();
         if(currentDatetime.compareTo(startPeriod) < 0 || currentDatetime.compareTo(endPeriod) > 0)
             return false;
         

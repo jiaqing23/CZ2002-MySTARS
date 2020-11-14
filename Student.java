@@ -9,12 +9,10 @@ public class Student extends User{
 	private ArrayList<Index> registered;
 	private ArrayList<Index> waitlist;
 	
-	
 	//Use to check whether a student have registered for a specific index or not
 	public boolean checkRegIndex(Index index) {
 		return registered.contains(index);
 	}
-	
 	
 	
 	public boolean addIndex(Index index) {

@@ -1,13 +1,14 @@
 import java.util.*;
 
 public class Class {
+
     private String type;
-    private Calendar startTime;
-    private Calendar endTime;
+    private Date startTime;
+    private Date endTime;
     private String venue;
     private String week;
 
-    public Class(String type, Calendar startTime, Calendar endTime, String venue, String week) {
+    public Class(String type, Date startTime, Date endTime, String venue, String week) {
         this.type = type;
         this.startTime = startTime;
         this.endTime = endTime;
