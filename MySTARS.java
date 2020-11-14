@@ -22,6 +22,10 @@ public class MySTARS implements Serializable{
     private ArrayList<Student> students = new ArrayList<Student>();
     private ArrayList<Course> courses = new ArrayList<Course>();
 
+    public MySTARS() {
+        // TBD
+    }
+
     public void addStudent(Student student) {
         students.add(student);
     }
@@ -73,10 +77,6 @@ public class MySTARS implements Serializable{
         return null;
     }
 
-    public MySTARS() {
-        // TBD
-    }
-
     public boolean login() {
         Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
@@ -111,14 +111,16 @@ public class MySTARS implements Serializable{
                     temp = s;
                     break;
                 }
-        }}
+            }
+        }
         else {
             for (Admin a : mainApp.admins) {
                 if(a.getUsername() == mainApp.username){
                     temp = a;
                     break;
                 }
-        }}
+            }
+        }
 
         if(mode == 2 && mainApp.period.validatePeriod()){
             while(choice != 7){
@@ -163,6 +165,7 @@ public class MySTARS implements Serializable{
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
+
         if(mode == 2 && !mainApp.period.validatePeriod()){
             while(choice != 3){
                 System.out.println("*************Welcome to MySTARS!*************");
@@ -189,7 +192,8 @@ public class MySTARS implements Serializable{
                 }
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
-        };
+        }
+
         if(mode == 1) {
             while(choice != 8){
                 System.out.println("*************Welcome to MySTARS!*************");

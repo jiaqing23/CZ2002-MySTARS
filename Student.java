@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Student {
+
 	private int noOfAU=0;
 	private int maxAU;
 	private String gender;
@@ -8,7 +9,6 @@ public class Student {
 	private String matriculationNumber;
 	private ArrayList<Index> registered;
 	private ArrayList<Index> waitlist;
-	
 	
 	//Use to check whether a student have registered for a specific index or not
 	public boolean checkIndex(Index index) {
@@ -18,7 +18,6 @@ public class Student {
 		}
 		return false;
 	}
-	
 	
 	
 	public boolean addIndex(Index index) {
