@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Student {
+public class Student extends User{
 	private int noOfAU=0;
 	private int maxAU;
 	private String gender;
@@ -11,19 +11,15 @@ public class Student {
 	
 	
 	//Use to check whether a student have registered for a specific index or not
-	public boolean checkIndex(Index index) {
-		for(int i=0; i<registered.size();i++) {
-			if (registered.get(i)==index)
-				return true;
-		}
-		return false;
+	public boolean checkRegIndex(Index index) {
+		return registered.contains(index);
 	}
 	
 	
 	
 	public boolean addIndex(Index index) {
 		
-		if (this.checkIndex(index)) {
+		if (this.checkRegIndex(index)) {
 			System.out.println("The index has already been registered before! ");
 			return false;
 		}
@@ -38,7 +34,7 @@ public class Student {
 	
 	public boolean dropIndex(Index index) {
 		
-		if (this.checkIndex(index)) {
+		if (this.checkRegIndex(index)) {
 			//how to call
 			return processDrop(index);
 		}
@@ -101,8 +97,8 @@ public class Student {
 	
 	public boolean swapIndex(Index sourceInd, Index desInd, Student sourceID, Student desID) {
 		
-		boolean checkSource = sourceID.checkIndex(sourceInd);
-		boolean checkDes = desID.checkIndex(desInd);
+		boolean checkSource = sourceID.checkRegIndex(sourceInd);
+		boolean checkDes = desID.checkRegIndex(desInd);
 		
 		if(checkSource && checkDes) {
 			System.out.println("Student "+ sourceID+ " has not registered for "+sourceInd+" and student "+ desID+" has not registered for "+desInd+"!");
@@ -133,7 +129,7 @@ public class Student {
 	
 	public boolean updateReg(Index index) {
 		
-		if (!this.checkIndex(index)) {
+		if (!this.checkRegIndex(index)) {
 			registered.add(index);
 			return true;
 		}

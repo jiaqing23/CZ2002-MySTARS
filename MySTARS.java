@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date; 
 import java.util.Scanner;
+
 
 public class MySTARS implements Serializable{
     private static String fileName = "mySTARS.txt";
@@ -136,23 +136,143 @@ public class MySTARS implements Serializable{
 
                 switch(choice){
                     case 1:
-                        student.addIndex();
+                        System.out.println("Please enter the index number:");
+                        int index = sc.nextInt();
+                        boolean exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    student.addIndex(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
                         break;
                     case 2:
-                        student.dropIndex();
+                        System.out.println("Please enter the index number:");
+                        index = sc.nextInt();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    student.dropIndex(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
                         break;
                     case 3:
                         student.printIndex();
                         break;
                     case 4:
-                        student.checkVacancy();
+                        System.out.println("Please enter the index number:");
+                        index = sc.nextInt();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    student.checkVacancy(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
                         break;
                     case 5:
-                        student.changeIndex();
+                        Index currIndex;
+                        System.out.println("Please enter the current index number:");
+                        index = sc.nextInt();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    currIndex = i;
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.printf("The index number %d does not exist!\n",index);
+                            break;
+                        }
+                        System.out.println("Please enter the new index number:");
+                        index = sc.nextInt();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    student.changeIndex(currIndex,i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.printf("The index number %d does not exist!\n",index);
+                            break;
+                        }
                         break;
                     case 6:
-                        student.swapIndex();
+                    Student peer;
+                    System.out.println("Please enter peer's username:");
+                    String me = sc.nextLine();
+                    exist = false;
+                    for (Student s: mainApp.students){
+                            if(me == s.getUsername()){
+                                peer = s;
+                                exist = true;
+                                break;
+                            }
+                                
+                        
+                    }
+                    if(!exist){
+                        System.out.printf("The index number %d does not exist!\n",index);
                         break;
+                    }
+                    System.out.println("Please enter the current index number:");
+                    index = sc.nextInt();
+                    for (Course c: mainApp.courses){
+                            for(Index i : c.getIndexes()){
+                            if(index == i.getIndexNumber()){
+                                currIndex = i;
+                                break;
+                            }    
+                        }
+                    }
+                    System.out.println("Please enter the new index number:");
+                    index = sc.nextInt();
+                    for (Course c: mainApp.courses){
+                        for(Index i : c.getIndexes()){
+                        if(index == i.getIndexNumber()){
+                            student.swapIndex(currIndex,i,student,peer);
+                            break;
+                        }    
+                    }
+                }
+                    break;
                     case 7:
                         System.out.println("Program terminating...");
                         break;
@@ -178,7 +298,23 @@ public class MySTARS implements Serializable{
                         student.printIndex();
                         break;
                     case 2:
-                        student.checkVacancy();
+                        System.out.println("Please enter the index number:");
+                        index = sc.nextInt();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNumber()){
+                                    student.checkVacancy(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
                         break;
                     case 3:
                         System.out.println("Program terminating...");
@@ -289,7 +425,7 @@ public class MySTARS implements Serializable{
                         break;
                     case 7:
                         System.out.println("Please enter the index number:");
-                        index = sc.nextLine();
+                        index = sc.nextInt();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){

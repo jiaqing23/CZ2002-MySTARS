@@ -5,7 +5,7 @@
 ## To do 🚌
 - student.addindex().etc should be void
 - should create student pwd be invisible?🤔
-- get index number // get course name?
+- get index number!!!!! // get course name?
 
 ## Debug 🎅 
 ```java
