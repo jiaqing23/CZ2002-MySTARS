@@ -14,7 +14,6 @@ public class Index implements Serializable{
     private ArrayList<Class> classes = new ArrayList<Class>();
 
     public Index(String courseCode, String indexNo, int classSize, int vacancy) {
-
         this.courseCode = courseCode;
         this.indexNo = indexNo;
         this.classSize = classSize;
@@ -25,24 +24,42 @@ public class Index implements Serializable{
         this.classSize = classSize;
     }
 
+    public ArrayList<Class> getClasses(){
+        return classes;
+    }
+
     public int getVacancy() {
         return vacancy;
     }
 
-    public void addReg(Student student) {
-        registeredStud.add(student);
+    public String getIndexNo(){
+        return indexNo;
     }
 
-    public void dropReg(Student student) {
+    public ArrayList<Student> getReg() {
+        return registeredStud;
+    }
+
+    public void addReg(Student student) {
+        registeredStud.add(student);
+        vacancy--;
+    }
+
+    public Student removeReg(Student student) {
         registeredStud.remove(student);
+        vacancy++;
+        if(!waitlist.isEmpty()){
+            return waitlist.remove();
+        }
+        return null;
     }
 
     public void addWaitlist(Student student) {
         waitlist.add(student);
     }
 
-    public Student removeWaitlist(Student student) {
-        return waitlist.remove(student);
+    public void removeWaitlist(Student student) {
+        waitlist.remove(student);
     }
 
     public void listClass() {

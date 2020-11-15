@@ -34,6 +34,14 @@ public class MySTARS implements Serializable{
         courses.add(course);
     }
 
+    public Period getPeriod(){
+        return period;
+    }
+
+    public ArrayList<Course> getCourses(){
+        return courses;
+    }
+
     public boolean saveData() {
         try {
             FileOutputStream f = new FileOutputStream(new File(fileName));
@@ -144,7 +152,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     student.addIndex(i);
                                     exist = true;
                                     break;
@@ -163,7 +171,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     student.dropIndex(i);
                                     exist = true;
                                     break;
@@ -185,7 +193,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     student.checkVacancy(i);
                                     exist = true;
                                     break;
@@ -205,7 +213,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     currIndex = i;
                                     exist = true;
                                     break;
@@ -223,7 +231,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     student.changeIndex(currIndex,i);
                                     exist = true;
                                     break;
@@ -258,7 +266,7 @@ public class MySTARS implements Serializable{
                     index = sc.nextInt();
                     for (Course c: mainApp.courses){
                             for(Index i : c.getIndexes()){
-                            if(index == i.getIndexNumber()){
+                            if(index == i.getIndexNo()){
                                 currIndex = i;
                                 break;
                             }    
@@ -268,7 +276,7 @@ public class MySTARS implements Serializable{
                     index = sc.nextInt();
                     for (Course c: mainApp.courses){
                         for(Index i : c.getIndexes()){
-                        if(index == i.getIndexNumber()){
+                        if(index == i.getIndexNo()){
                             student.swapIndex(currIndex,i,student,peer);
                             break;
                         }    
@@ -307,7 +315,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     student.checkVacancy(i);
                                     exist = true;
                                     break;
@@ -399,7 +407,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     admin.checkVacancy(i);
                                     exist = true;
                                     break;
@@ -434,7 +442,7 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     admin.printByIndex(i);
                                     exist = true;
                                     break;

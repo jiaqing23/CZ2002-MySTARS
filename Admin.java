@@ -28,12 +28,12 @@ public class Admin extends User implements Serializable{
 
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
         Course course = new Course(school, courseCode, courseName, numOfAU);
-        mainApp.courses.add(course);
+        mainApp.addCourse(course);
     }
 
     public void updateCourse(String courseCode){
         Course course;
-        for(Course c: mainApp.courses){
+        for(Course c: mainApp.getCourses()){
             if(c.courseCode == courseCode){
                 course = c;
                 break;
@@ -97,7 +97,7 @@ public class Admin extends User implements Serializable{
     public void printByCourse(Course course){
         ArrayList<Index> indexes = course.getIndexes();
         for(Index index: indexes){
-            ArrayList<Student> students = index.getRegisteredStud();
+            ArrayList<Student> students = index.getReg();
             for(Student student: students){
                 System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
             }
@@ -105,7 +105,7 @@ public class Admin extends User implements Serializable{
     }
 
     public void printByIndex(Index index){
-        ArrayList<Student> students = index.getRegisteredStud();
+        ArrayList<Student> students = index.getReg();
             for(Student student: students){
                 System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
         }
