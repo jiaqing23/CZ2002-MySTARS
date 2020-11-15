@@ -1,5 +1,9 @@
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class Index {
+public class Index implements Serializable{
 
     private String courseCode;
     private String indexNo;

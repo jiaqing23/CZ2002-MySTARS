@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Student extends User{
+public class Student extends User implements Serializable{
 	private int noOfAU=0;
 	private int maxAU;
 	private String gender;

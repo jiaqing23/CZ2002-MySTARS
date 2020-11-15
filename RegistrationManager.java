@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class RegistrationManager {
+public class RegistrationManager implements Serializable{
 
     public static boolean isClash(Student student, Index index){
 

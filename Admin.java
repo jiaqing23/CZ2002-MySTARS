@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Date;
+import java.util.Scanner;
 
-public class Admin extends User{
+public class Admin extends User implements Serializable{
     MySTARS mainApp;
 
     public Admin(String name, String username){
