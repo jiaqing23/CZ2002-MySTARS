@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Date;
 
 public class Class {
 
@@ -22,11 +22,11 @@ public class Class {
         return type;
     }
 
-    public Calendar getStartTime(){
+    public Date getStartTime(){
         return startTime;
     }
 
-    public Calendar getEndTime(){
+    public Date getEndTime(){
         return endTime;
     }
 
@@ -42,4 +42,10 @@ public class Class {
         return week;
     }
 
+    public boolean clash(Class anotherClass){
+        if(startTime.compareTo(anotherClass.getEndTime()) > 0 || 
+            anotherClass.getStartTime().compareTo(endTime) > 0)
+            return true;
+        return false;
+    }
 }

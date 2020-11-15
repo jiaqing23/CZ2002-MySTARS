@@ -123,37 +123,13 @@ public class Student extends User{
 		
 	}
 	
-	
-	
-	public boolean updateReg(Index index) {
-		
-		if (!this.checkRegIndex(index)) {
-			registered.add(index);
-			return true;
-		}
-		else {
-			System.out.println("Index has been registered before!");
-			return false;
-		}
+	public void addReg(Index index) {
+		registered.add(index);
 	}
 	
-	
-	
-	public boolean updateWaitlist(Index index) {
-		
-		for(int i=0; i<waitlist.size();i++) {
-			if (waitlist.get(i)==index) {
-				System.out.println("This index is already in the waitlist!");
-				return false;
-			}
-		}
-		
+	public void addWaitlist(Index index) {
 		waitlist.add(index);
-		return true;
-		
 	}
-	
-	
 	
 	//Get and Set
 	public ArrayList<Index> getRegistered(){
