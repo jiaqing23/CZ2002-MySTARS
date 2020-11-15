@@ -61,6 +61,10 @@ public class Course implements Serializable{
 	public void dropIndex(Index index) {
 		indexes.remove(index);
 	}
+
+	public void updateIndex(Index index) {
+		
+	}
 	
 	public void listIndex() {
 		System.out.println("Indexes available: ");

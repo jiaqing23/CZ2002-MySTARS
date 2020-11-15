@@ -10,11 +10,11 @@ public class Period implements Serializable{
     // CONSTRUCTOR
     public Period(){
         // Default startPeriod: 25th October 2020, 12PM
-        c.set(2020, 9, 25, 12, 00, 00);
+        calendar.set(2020, 9, 25, 12, 00, 00);
         this.startPeriod = calendar.getTime();
 
         // Default startPeriod: 25th November 2020, 12PM
-        c.set(2020, 10, 25, 15, 00, 00);
+        calendar.set(2020, 10, 25, 15, 00, 00);
         this.endPeriod = calendar.getTime();
     }
 

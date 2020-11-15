@@ -31,16 +31,8 @@ public class Admin extends User implements Serializable{
         mainApp.addCourse(course);
     }
 
-    public void updateCourse(String courseCode){
-        Course course;
-        for(Course c: mainApp.getCourses()){
-            if(c.getCourseCode() == courseCode){
-                course = c;
-                break;
-            }
-        }
-
-        System.out.println("Updating course " + courseCode);
+    public void updateCourse(Course course){
+        System.out.println("Updating course " + course.getCourseCode());
         System.out.println("(1) Update Course Code");
         System.out.println("(2) Update Course Name");
         System.out.println("(3) Update School");
@@ -70,19 +62,30 @@ public class Admin extends User implements Serializable{
                 break;
             case 4:
                 System.out.print("IndexNo to be added: ");
-                //Need read more attributes(indexno, classsize, XXXX)
                 tem = sc.nextLine();
-                course.addIndex(tem); 
+                System.out.print("IndexNo to be classSize: ");
+                int classSize = sc.nextInt();
+                course.addIndex(new Index(course, tem, classSize)); 
                 break;
             case 5:
                 System.out.print("IndexNo to be updated: ");
                 tem = sc.nextLine();
-                course.updateIndex(tem);
+                for(Index i: course.getIndexes()){
+                    if(i.getIndexNo() == tem){
+                        course.updateIndex(i);
+                        break;
+                    }
+                }
                 break;
             case 6:
                 System.out.print("IndexNo to be dropped: ");
                 tem = sc.nextLine();
-                course.dropIndex(tem);
+                for(Index i: course.getIndexes()){
+                    if(i.getIndexNo() == tem){
+                        course.dropIndex(i);
+                        break;
+                    }
+                }
                 break;
             default:
                 System.out.println("Invalid option!");
