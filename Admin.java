@@ -34,7 +34,7 @@ public class Admin extends User implements Serializable{
     public void updateCourse(String courseCode){
         Course course;
         for(Course c: mainApp.getCourses()){
-            if(c.courseCode == courseCode){
+            if(c.getCourseCode() == courseCode){
                 course = c;
                 break;
             }
@@ -56,12 +56,12 @@ public class Admin extends User implements Serializable{
             case 1:
                 System.out.print("New Course Code: ");
                 tem = sc.nextLine();
-                course.setCode(tem);
+                course.setCourseCode(tem);
                 break;
             case 2:
                 System.out.print("New Course Name: ");
                 tem = sc.nextLine();
-                course.setName(tem);
+                course.setCourseName(tem);
                 break;
             case 3:
                 System.out.print("New School: ");
