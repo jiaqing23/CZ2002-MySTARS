@@ -9,6 +9,7 @@ public class Class {
     private String groupNo;
     private String week;
 
+    // CONSTRUCTOR
     public Class(String type, Date startTime, Date endTime, String venue, String groupNo, String week) {
         this.type = type;
         this.startTime = startTime;
@@ -18,6 +19,7 @@ public class Class {
         this.week = week;
     }
 
+    // SET AND GET METHODS
     public String getType(){
         return type;
     }
@@ -42,10 +44,12 @@ public class Class {
         return week;
     }
 
+    // CLASS METHODS
     public boolean clash(Class anotherClass){
         if(startTime.compareTo(anotherClass.getEndTime()) > 0 || 
             anotherClass.getStartTime().compareTo(endTime) > 0)
             return true;
         return false;
     }
+
 }

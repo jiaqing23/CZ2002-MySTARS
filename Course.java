@@ -1,13 +1,59 @@
 import java.util.ArrayList;
 
 public class Course {
+
 	private String school;
 	private String courseCode;
 	private String courseName;
 	private int numOfAU;
-	private ArrayList<Index> indexes;
+	private ArrayList<Index> indexes = new ArrayList<Index>();
 	
+	// CONSTRUCTORS
+	public Course(String school, String courseCode, String courseName, int numOfAU) {
+		this.school = school;
+		this.courseCode = courseCode;
+		this.courseName = courseName;
+		this.numOfAU = numOfAU;
+	}
+
+	// SET AND GET METHODS
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
+	}
 	
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName=courseName;
+	}
+	
+	public String getCourseName() {
+		return courseName;
+	}
+	
+	public void setNumOfAU(int numOfAU) {
+		this.numOfAU = numOfAU;
+	}
+	
+	public int getNumOfAU() {
+		return numOfAU;
+	}
+	
+	public ArrayList<Index> getIndexes() {
+		return indexes;
+	}
+
+	// CLASS METHODS
 	public void addIndex(Index index) {
 		indexes.add(index);
 	}
@@ -23,38 +69,4 @@ public class Course {
 		}
 	}
 	
-	
-	//Get and Set
-	public void setNumOfAU(int numOfAU) {
-		this.numOfAU = numOfAU;
-	}
-	
-	public int getNumOfAU() {
-		return numOfAU;
-	}
-	
-	public void setCourseName(String courseName) {
-		this.courseName=courseName;
-	}
-	
-	public String getCourseName() {
-		return courseName;
-	}
-	
-	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
-	}
-	
-	public String getCourseCode() {
-		return courseCode;
-	}
-	
-	public void setSchool(String school) {
-		this.school = school;
-	}
-	
-	public String getSchool() {
-		return school;
-	}
-
 }

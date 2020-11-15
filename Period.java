@@ -1,11 +1,12 @@
 import java.util.*;
 
 public class Period {
+
     Calendar calendar = Calendar.getInstance();
-    
     private Date startPeriod;
     private Date endPeriod;
 
+    // CONSTRUCTOR
     public Period(){
         // Default startPeriod: 25th October 2020, 12PM
         c.set(2020, 9, 25, 12, 00, 00);
@@ -16,6 +17,21 @@ public class Period {
         this.endPeriod = calendar.getTime();
     }
 
+    // SET AND GET METHODS
+    public Date getStartPeriod() {
+        return startPeriod;
+    }
+
+    public Date getEndPeriod() {
+        return endPeriod;
+    }
+
+    public void setPeriod(Date startPeriod, Date endPeriod) {
+        this.startPeriod = startPeriod;
+        this.endPeriod = endPeriod;
+    }
+
+    // CLASS METHODS
     public boolean validatePeriod() {
         Date currentDatetime = new Date();
         if(currentDatetime.compareTo(startPeriod) < 0 || currentDatetime.compareTo(endPeriod) > 0)
@@ -29,8 +45,4 @@ public class Period {
         System.out.println("End period: " + endPeriod);
     }
 
-    public void setPeriod(Date startPeriod, Date endPeriod) {
-        this.startPeriod = startPeriod;
-        this.endPeriod = endPeriod;
-    }
 }
