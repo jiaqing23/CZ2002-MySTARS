@@ -92,6 +92,8 @@ public class MySTARS implements Serializable{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice;
+        String index;
+        boolean exist;
 
         MySTARS mainApp = loadData();
         if (mainApp == null) {
@@ -139,8 +141,8 @@ public class MySTARS implements Serializable{
                 switch(choice){
                     case 1:
                         System.out.println("Please enter the index number:");
-                        int index = sc.nextInt();
-                        boolean exist = false;
+                        index = sc.next();
+                        exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
@@ -158,7 +160,7 @@ public class MySTARS implements Serializable{
                         break;
                     case 2:
                         System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
+                        index = sc.next();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
@@ -180,7 +182,7 @@ public class MySTARS implements Serializable{
                         break;
                     case 4:
                         System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
+                        index = sc.next();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
@@ -200,7 +202,7 @@ public class MySTARS implements Serializable{
                     case 5:
                         Index currIndex;
                         System.out.println("Please enter the current index number:");
-                        index = sc.nextInt();
+                        index = sc.next();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
@@ -218,7 +220,7 @@ public class MySTARS implements Serializable{
                             break;
                         }
                         System.out.println("Please enter the new index number:");
-                        index = sc.nextInt();
+                        index = sc.next();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
@@ -255,7 +257,7 @@ public class MySTARS implements Serializable{
                         break;
                     }
                     System.out.println("Please enter the current index number:");
-                    index = sc.nextInt();
+                    index = sc.next();
                     for (Course c: mainApp.courses){
                             for(Index i : c.getIndexes()){
                             if(index == i.getIndexNumber()){
@@ -265,7 +267,7 @@ public class MySTARS implements Serializable{
                         }
                     }
                     System.out.println("Please enter the new index number:");
-                    index = sc.nextInt();
+                    index = sc.next();
                     for (Course c: mainApp.courses){
                         for(Index i : c.getIndexes()){
                         if(index == i.getIndexNumber()){
@@ -302,7 +304,7 @@ public class MySTARS implements Serializable{
                         break;
                     case 2:
                         System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
+                        index = sc.next();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
@@ -393,8 +395,8 @@ public class MySTARS implements Serializable{
                         break;
                     case 5:
                         System.out.println("Please enter the index:");
-                        int index = sc.nextInt();
-                        boolean exist = false;
+                        index = sc.next();
+                        exist = false;
                         dummy = sc.nextLine();
                         for (Course c: mainApp.courses){
                             if(!exist){
@@ -429,7 +431,7 @@ public class MySTARS implements Serializable{
                         break;
                     case 7:
                         System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
+                        index = sc.next();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
@@ -459,4 +461,13 @@ public class MySTARS implements Serializable{
 
 
     }
+
+    public Period getPeriod(){
+        return this.period;
+    }
+
+    public ArrayList<Course> getCourses(){
+        return this.courses;
+    }
 }
+
