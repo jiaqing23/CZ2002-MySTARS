@@ -6,13 +6,15 @@ public class Class {
     private Date startTime;
     private Date endTime;
     private String venue;
+    private String groupNo;
     private String week;
 
-    public Class(String type, Date startTime, Date endTime, String venue, String week) {
+    public Class(String type, Date startTime, Date endTime, String venue, String groupNo, String week) {
         this.type = type;
         this.startTime = startTime;
         this.endTime = endTime;
         this.venue = venue;
+        this.groupNo = groupNo;
         this.week = week;
     }
 
@@ -32,7 +34,12 @@ public class Class {
         return venue;
     }
 
-    public String week(){
+    public String getGroup(){
+        return groupNo;
+    }
+    
+    public String getWeek(){
         return week;
     }
+
 }
