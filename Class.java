@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Date;
 
-public class Class {
+public class Class implements Serializable{
 
     private String type;
     private Date startTime;

@@ -2,12 +2,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
-public class PasswordManager {
+public class PasswordManager implements Serializable{
     private static String fileName = "account.txt";
 
     public static String bytesToHex(byte[] hash) {

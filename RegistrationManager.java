@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class RegistrationManager {
+public class RegistrationManager implements Serializable{
 
     public static boolean isClash(Student student, Index index){
 
@@ -9,8 +9,8 @@ public class RegistrationManager {
         indexes.addAll(student.getWaitlist());
 
         for(Index anotherIndex: indexes){
-            for(Class class1: index.getClassess()){
-                for(Class class2: anotherIndex.getClassess()){
+            for(Class class1: index.getClasses()){
+                for(Class class2: anotherIndex.getClasses()){
                     if(class1.clash(class2)) return true;
                 }
             }
@@ -19,19 +19,11 @@ public class RegistrationManager {
     }
 
     public static boolean isInWaitlist(Student student, Index index){
-        for(Index anotherIndex: student.getWaitlist()){
-            if(index.equals(anotherIndex)) return true;
-        }
-
-        return false;
+        return student.getWaitlist().contains(index);
     }
     
     public static boolean isRegistered(Student student, Index index){
-        for(Index anotherIndex: student.getRegistered()){
-            if(index.equals(anotherIndex)) return true;
-        }
-
-        return false;
+        return student.getRegistered().contains(index);
     }
 
     public static void processAdd(Student student, Index index){
@@ -50,7 +42,7 @@ public class RegistrationManager {
             return;
         }
 
-        if(index.getVacancy()){
+        if(index.getVacancy() > 0){
             index.addReg(student);
             student.addReg(index);
         }
@@ -66,7 +58,11 @@ public class RegistrationManager {
         }
 
         if(isRegistered(student, index)){
-            index.removeReg(student);
+            Student newAdd = index.removeReg(student);
+            if(newAdd != null){
+                newAdd.dropIndex(index);
+                newAdd.addReg(index);
+            }
         }
     }
 }

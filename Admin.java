@@ -1,9 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Date;
+import java.util.Scanner;
 
-public class Admin extends User{
-    
+public class Admin extends User implements Serializable{
     MySTARS mainApp;
 
     public Admin(String name, String username){
@@ -28,13 +28,13 @@ public class Admin extends User{
 
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
         Course course = new Course(school, courseCode, courseName, numOfAU);
-        mainApp.courses.add(course);
+        mainApp.addCourse(course);
     }
 
     public void updateCourse(String courseCode){
         Course course;
-        for(Course c: mainApp.courses){
-            if(c.courseCode == courseCode){
+        for(Course c: mainApp.getCourses()){
+            if(c.getCourseCode() == courseCode){
                 course = c;
                 break;
             }
@@ -56,12 +56,12 @@ public class Admin extends User{
             case 1:
                 System.out.print("New Course Code: ");
                 tem = sc.nextLine();
-                course.setCode(tem);
+                course.setCourseCode(tem);
                 break;
             case 2:
                 System.out.print("New Course Name: ");
                 tem = sc.nextLine();
-                course.setName(tem);
+                course.setCourseName(tem);
                 break;
             case 3:
                 System.out.print("New School: ");
@@ -97,7 +97,7 @@ public class Admin extends User{
     public void printByCourse(Course course){
         ArrayList<Index> indexes = course.getIndexes();
         for(Index index: indexes){
-            ArrayList<Student> students = index.getRegisteredStud();
+            ArrayList<Student> students = index.getReg();
             for(Student student: students){
                 System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
             }
@@ -105,7 +105,7 @@ public class Admin extends User{
     }
 
     public void printByIndex(Index index){
-        ArrayList<Student> students = index.getRegisteredStud();
+        ArrayList<Student> students = index.getReg();
             for(Student student: students){
                 System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
         }

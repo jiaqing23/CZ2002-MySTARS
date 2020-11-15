@@ -1,7 +1,8 @@
-import java.util.*;
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
-public class Period {
-
+public class Period implements Serializable{
     Calendar calendar = Calendar.getInstance();
     private Date startPeriod;
     private Date endPeriod;
