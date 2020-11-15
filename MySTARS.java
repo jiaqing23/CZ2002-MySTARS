@@ -98,8 +98,9 @@ public class MySTARS implements Serializable{
     }
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        int choice;
+        int choice=0;
         String index;
         boolean exist;
 
@@ -261,9 +262,17 @@ public class MySTARS implements Serializable{
                         
                     }
                     if(!exist){
-                        System.out.printf("The index number %d does not exist!\n",index);
+                        System.out.printf("The username does not exist!");
                         break;
                     }
+
+                    System.out.print("Please enter peer's Password: ");
+                    String password = new String(System.console().readPassword());
+                    if(!PasswordManager.validateAccount(me, password, mode == 1)){
+                        System.out.println("Wrong password/username!");
+                        break;
+                    }
+
                     System.out.println("Please enter the current index number:");
                     index = sc.next();
                     for (Course c: mainApp.courses){
@@ -382,7 +391,9 @@ public class MySTARS implements Serializable{
                         String gender = sc.nextLine();
                         System.out.println("Please enter student's nationality:");
                         String nationality = sc.nextLine();
-                        admin.addStudent(name,username,password,maxAU,gender,nationality);
+                        System.out.println("Please enter student's Matriculation Number:");
+                        String matricNumber = sc.nextLine();
+                        admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber);
                         break;
                     case 3:
                         System.out.println("Please enter school of the course:");
@@ -398,7 +409,19 @@ public class MySTARS implements Serializable{
                         break;
                     case 4:
                         System.out.println("Please enter the course code:");
-                        courseCode = sc.nextLine();
+                        courseCode = sc.next();
+                        for (Course c: mainApp.courses){
+                            if(courseCode == c.getCourseCode()){
+                                    admin.updateCourse(c);
+                                    exist = true;
+                                    break;
+                                    
+                            }
+                        }
+                        if(!exist){
+                            System.out.println("The course name does not exist!");
+                        }
+                        break;
                         admin.updateCourse(courseCode);
                         break;
                     case 5:
@@ -468,14 +491,6 @@ public class MySTARS implements Serializable{
         }
 
 
-    }
-
-    public Period getPeriod(){
-        return this.period;
-    }
-
-    public ArrayList<Course> getCourses(){
-        return this.courses;
     }
 }
 
