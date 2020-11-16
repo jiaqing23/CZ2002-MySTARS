@@ -6,8 +6,9 @@ import java.util.Scanner;
 public class Admin extends User implements Serializable{
     MySTARS mainApp;
 
-    public Admin(String name, String username){
+    public Admin(String name, String username, MySTARS mainApp){
         super(name, username);
+        this.mainApp = mainApp;
     }
     
     public void editPeriod(Date start, Date end){

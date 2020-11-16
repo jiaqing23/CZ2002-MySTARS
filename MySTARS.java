@@ -16,6 +16,7 @@ public class MySTARS implements Serializable{
     private static String fileName = "mySTARS.txt";
     private int mode;
     private String username;
+    private static final Scanner sc = new Scanner(System.in);
 
     private Period period = new Period();
     private ArrayList<Admin> admins = new ArrayList<Admin>();
@@ -109,15 +110,12 @@ public class MySTARS implements Serializable{
         System.out.print("Username: ");
         this.username = sc.next();
         System.out.print("Password: ");
-        //String password = new String(System.console().readPassword());
-        String password = sc.next();
-        sc.close();
+        String password = new String(System.console().readPassword());
+        //String password = sc.next();
         return PasswordManager.validateAccount(username, password, this.mode == 1);
     }
 
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
         int choice=0;
         String index;
         boolean exist=false;
@@ -125,6 +123,7 @@ public class MySTARS implements Serializable{
         MySTARS mainApp = loadData();
         if (mainApp == null) {
             mainApp = new MySTARS();
+            mainApp.admins.add(new Admin("admin111", "admin", mainApp));
         }
         
         if (!mainApp.login()) {
@@ -137,7 +136,7 @@ public class MySTARS implements Serializable{
 
         if(mainApp.mode == 2){
             for (Student s : mainApp.students) {
-                if(s.getUsername() == mainApp.username){
+                if(s.getUsername().equals(mainApp.username)){
                     temp = s;
                     break;
                 }
@@ -145,7 +144,7 @@ public class MySTARS implements Serializable{
         }
         else {
             for (Admin a : mainApp.admins) {
-                if(a.getUsername() == mainApp.username){
+                if(a.getUsername().equals(mainApp.username)){
                     temp = a;
                     break;
                 }
@@ -166,17 +165,18 @@ public class MySTARS implements Serializable{
                 System.out.println("(6) Print student list by index number");
                 System.out.println("(7) Print student list by course");
                 System.out.println("(8) Quit");
-                choice = sc.nextInt();
-                
+                System.out.print("Your choice: ");
+
+                choice = Integer.parseInt(sc.nextLine());
                 Admin admin = (Admin)temp;
 
                 switch(choice){
                     case 1:
                         SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MM-yyyy");
                         System.out.println("Please enter the start date (dd-mm-yyyy):");
-                        String startDate=sc.next();
+                        String startDate=sc.nextLine();
                         System.out.println("Please enter the end date (dd-mm-yyyy):");
-                        String endDate=sc.next();
+                        String endDate=sc.nextLine();
                         try{
                             admin.editPeriod(dateFormat.parse(startDate),dateFormat.parse(endDate));
                         }catch(ParseException e){
