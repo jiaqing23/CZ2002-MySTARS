@@ -43,7 +43,8 @@ public class Admin extends User implements Serializable{
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
         sc.next(); 
-        String tem;   
+        String tem;
+         
         switch(option){
             case 1:
                 System.out.print("New Course Code: ");

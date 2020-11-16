@@ -45,69 +45,105 @@ public class Course implements Serializable{
 	public void setNumOfAU(int numOfAU) {
 		this.numOfAU = numOfAU;
 	}
-	
+
 	public int getNumOfAU() {
 		return numOfAU;
 	}
+	
 	
 	public ArrayList<Index> getIndexes() {
 		return indexes;
 	}
 
 	// CLASS METHODS
-	//Used to add a new index
 	public void addIndex(Index index) {
 		indexes.add(index);
 	}
 	
-	//Used to drop an existing index 
 	public void dropIndex(Index index) {
 		indexes.remove(index);
 	}
 
-	//Used to update the index number or vacancy of an index
 	public void updateIndex(Index index) {
 
 		System.out.println("(1) Update IndexNo");
 		System.out.println("(2) Update vacancy");
+		System.out.println("(3) Add class");
+		System.out.println("(4) Remove class");
 		System.out.println("Select Option: ");
         Scanner sc = new Scanner(System.in);
         int option = sc.nextInt();
 		sc.next();
 		
 		String tem;
-
 		do{
-			if(option == 1){
-				System.out.print("New IndexNo: ");
-				tem = sc.nextLine();
-				index.setIndexNo(tem);
-			}
-			else if(option == 2){
-				System.out.print("New class size: ");
-				tem = sc.nextLine();
-				int newSize = Integer.parseInt(tem);
+			switch(option){
+				case 1:
+					System.out.print("New IndexNo: ");
+					tem = sc.nextLine();
+					index.setIndexNo(tem);
+					break;
+		
+				case 2:
+					System.out.print("New class size: ");
+					tem = sc.nextLine();
+					int newSize = Integer.parseInt(tem);
+	
+					// We can't update the newSize lesser than the original number of vacancy
+					if((index.getClassSize() - newSize) > index.getVacancy()){
+						System.out.println("New class size is too small for registered students!");
+					}
+					else{
+						index.setClassSize(newSize);
+					}
+					break;
 
-				// We can't update the newSize lesser than the original number of vacancy
-				if((index.getClassSize() - newSize) > index.getVacancy()){
-					System.out.println("New class size is too small for registered students!");
-				}
-				else{
-					index.setClassSize(newSize);
-				}
-			}
+				case 3:
+					System.out.println("Class ID: ");
+					String classID = sc.nextLine();
+					System.out.println("Type of class: ");
+					String type = sc.nextLine();
+					System.out.println("Start time: ");
+					int startTime = sc.nextInt(); sc.nextLine();
+					System.out.println("End time: ");
+					int endTime = sc.nextInt(); sc.nextLine();
+					System.out.println("Venue: ");
+					String venue = sc.nextLine();
+					System.out.println("Group number: ");
+					String groupNo = sc.nextLine();
+					System.out.println("Week(ODD, EVEN, BOTH): ");
+					String week = sc.nextLine();
+					System.out.println("Day of week: ");
+					String dayOfWeek = sc.nextLine();
+	
+					Class temClass = new Class(classID, type, startTime, endTime, venue, groupNo, week, dayOfWeek);
+					index.addClass(temClass);
+					break;
 
-			System.out.println("Invalid option!");
-		} while(option!= 1 && option != 2);
+				case 4:
+					System.out.println("Class ID to be dropped: ");
+					tem = sc.nextLine();
+	
+					for(Class c : index.getClasses()){
+						if(c.getClassID() == tem){
+							index.removeClass(c);
+							break;
+						}
+					}
+					break;
+					
+				default:
+					System.out.println("Invalid option!");
+					break;
+			}
+		} while(option < 1 || option > 4);
 	}
 	
-	//Used to list out the available indexes for a course
 	public void listIndex() {
 		System.out.println("Indexes available: ");
 		for(int i=0; i<indexes.size();i++) {
 			System.out.println(indexes.get(i));
 		}
 	}
-
 	
 }

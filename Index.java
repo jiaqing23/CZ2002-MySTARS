@@ -50,6 +50,14 @@ public class Index implements Serializable{
         return vacancy;
     }
 
+    public void addClass(Class temClass) {
+        classes.add(temClass);
+    }
+
+    public void removeClass(Class temClass) {
+        classes.remove(temClass);
+    }
+
     public ArrayList<Class> getClasses(){
         return classes;
     }
@@ -58,8 +66,6 @@ public class Index implements Serializable{
         return registeredStud;
     }
 
-	//CLASS METHOD
-	//Add a new student into the index
     public void addReg(Student student) {
         registeredStud.add(student);
         vacancy--;

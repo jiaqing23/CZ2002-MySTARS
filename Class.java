@@ -1,23 +1,33 @@
 import java.io.Serializable;
 import java.util.Date;
+import java.time.*;
 
 public class Class implements Serializable{
 
+    private String classID;
     private String type;
-    private Date startTime;
-    private Date endTime;
+    private int startTime;
+    private int endTime;
     private String venue;
     private String groupNo;
     private String week;
+    private String dayOfWeek;
 
     // CONSTRUCTOR
-    public Class(String type, Date startTime, Date endTime, String venue, String groupNo, String week) {
+    public Class(String classID, String type, int startTime, int endTime, String venue, String groupNo, String week, String dayOfWeek) {
+        this.classID = classID;
         this.type = type;
         this.startTime = startTime;
         this.endTime = endTime;
         this.venue = venue;
         this.groupNo = groupNo;
         this.week = week;
+        this.dayOfWeek = dayOfWeek;
+    }
+
+    // SET AND GET METHODS
+    public String getClassID() {
+        return classID;
     }
 
     // SET AND GET METHODS
@@ -46,7 +56,6 @@ public class Class implements Serializable{
     }
 
     // CLASS METHODS
-    //Used by a class to check whether a class clashed with another class
     public boolean clash(Class anotherClass){
         if(startTime.compareTo(anotherClass.getEndTime()) > 0 || 
             anotherClass.getStartTime().compareTo(endTime) > 0)
