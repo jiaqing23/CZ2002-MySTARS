@@ -82,30 +82,22 @@ public class Admin extends User{
             case 5:
                 System.out.print("IndexNo to be updated: ");
                 tem = sc.nextLine();
-<<<<<<< HEAD
                 for(Index i: course.getIndexes()){
                     if(i.getIndexNo().equals(tem)){
                         course.updateIndex(i);
                         break;
                     }
                 }
-=======
-                course.updateIndex(tem);
->>>>>>> 33b8b7c188c274571979bb5db773bbd2f3640087
                 break;
             case 6:
                 System.out.print("IndexNo to be dropped: ");
                 tem = sc.nextLine();
-<<<<<<< HEAD
                 for(Index i: course.getIndexes()){
                     if(i.getIndexNo().equals(tem)){
                         course.dropIndex(i);
                         break;
                     }
                 }
-=======
-                course.dropIndex(tem);
->>>>>>> 33b8b7c188c274571979bb5db773bbd2f3640087
                 break;
             default:
                 System.out.println("Invalid option!");
