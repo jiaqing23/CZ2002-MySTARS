@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class RegistrationManager implements Serializable{
 
     public static boolean isClash(Student student, Index index){
-
+        /*
         ArrayList<Index> indexes = new ArrayList<Index>();
         indexes.addAll(student.getRegistered());
         indexes.addAll(student.getWaitlist());
@@ -15,6 +15,7 @@ public class RegistrationManager implements Serializable{
                 }
             }
         }
+        */
         return false;
     }
 
@@ -64,5 +65,22 @@ public class RegistrationManager implements Serializable{
                 newAdd.addReg(index);
             }
         }
+    }
+
+    public static void processSwap(Index sourceInd, Index desInd, Student sourceStudent, Student desStudent){
+        if(!isRegistered(sourceStudent, sourceInd)){
+            System.out.println("You have not registered for this index or it is still in your waitlist!");
+            return;
+        }
+        
+        if(!isRegistered(desStudent, desInd)){
+            System.out.println("Your friend don't have this index.");
+            return;
+        }
+        
+        sourceStudent.removeReg(sourceInd);
+        sourceStudent.addReg(desInd);
+        desStudent.removeReg(desInd);
+        desStudent.addReg(sourceInd);
     }
 }

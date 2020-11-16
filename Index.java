@@ -20,6 +20,7 @@ public class Index implements Serializable{
         this.vacancy = classSize;
     }
 
+
     public void setIndexNo(String index) {
         this.indexNo = index;
     }
@@ -75,16 +76,15 @@ public class Index implements Serializable{
     }
 
     public void listClass() {
-        System.out.println("Course code: " + courseCode);
-        System.out.println("Index no.: " + indexNo);
-
-        for(Class c : classes){
-            System.out.println("Class type: " + c.getType());
-            System.out.println("Group no.: " + c.getGroup());
-            System.out.println("Venue: " + c.getVenue());
-            System.out.println("Time: " + c.getStartTime() + " - " + c.getEndTime());
-            System.out.println("Week: " + c.getWeek());
+		if (classes.isEmpty())
+			 System.out.println("This index does not have any classes yet.");
+		else{
+            System.out.println("The classes of this index are: ");
+            System.out.println("Type\tGroup\tVenue\tTime");
+            for(Class c : classes){
+                System.out.println(c.getType() + "\t" + c.getGroup() + "\t" + c.getVenue() + "\t" + c.getStartTime() + "-" + c.getEndTime() + " " +
+                                    c.getWeek());
+            }
         }
     }
-    
 }
