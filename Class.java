@@ -25,12 +25,10 @@ public class Class implements Serializable{
         this.dayOfWeek = dayOfWeek;
     }
 
-    // SET AND GET METHODS
     public String getClassID() {
         return classID;
     }
 
-    // SET AND GET METHODS
     public String getType(){
         return type;
     }
@@ -53,6 +51,10 @@ public class Class implements Serializable{
     
     public String getWeek(){
         return week;
+    }
+
+    public String getDayOfWeek(){
+        return dayOfWeek;
     }
 
     // CLASS METHODS

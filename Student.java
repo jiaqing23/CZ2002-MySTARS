@@ -75,10 +75,12 @@ public class Student extends User implements Serializable{
 	
 	public void addReg(Index index) {
 		registered.add(index);
+		noOfAU += index.getCourse().getNumOfAU();
 	}
 	
 	public void removeReg(Index index) {
 		registered.remove(index);
+		noOfAU -= index.getCourse().getNumOfAU();
 	}
 
 	public void addWaitlist(Index index) {

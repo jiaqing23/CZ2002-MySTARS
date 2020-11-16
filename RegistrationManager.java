@@ -57,12 +57,14 @@ public class RegistrationManager implements Serializable{
 
     public static void processDrop(Student student, Index index){
         if(isInWaitlist(student, index)){
+            student.removeWaitlist(index);
             index.removeWaitlist(student);
         }
 
         if(isRegistered(student, index)){
             Student newAdd;
             index.removeReg(student);
+            student.removeReg(index);
             newAdd = index.popWaitlist();
             if(newAdd != null){
                 newAdd.dropIndex(index);
