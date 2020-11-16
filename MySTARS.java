@@ -369,6 +369,7 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter the current index number:");
                         index = sc.next();
                         exist = false;
+                        inWait = false;
                         for (Index i: student.getRegistered()){
                             if(index == i.getIndexNo()){
                                 currIndex = i;
@@ -380,6 +381,7 @@ public class MySTARS implements Serializable{
                             if(index == i.getIndexNo()){
                                 currIndex = i;
                                 exist = true;
+                                inWait = true;
                                 break;
                             }   
                         }
@@ -390,16 +392,16 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter the new index number:");
                         index = sc.next();
                         exist = false;
-                        for (Index i: student.getRegistered()){
+                        for (Index i: currIndex.getCourse().getIndexes()){
                             if(index == i.getIndexNo()){
-                                student.changeIndex(currIndex,i);
+                                student.changeIndex(currIndex,i,inWait);
                                 exist = true;
                                 break;
                             }   
                         }
-                        for (Index i: student.getWaitlist()){
+                        for (Index i: currIndex.getCourse().getIndexes()){
                             if(index == i.getIndexNo()){
-                                student.changeIndex(currIndex,i);
+                                student.changeIndex(currIndex,i,inWait);
                                 exist = true;
                                 break;
                             }   

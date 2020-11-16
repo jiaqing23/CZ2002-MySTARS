@@ -97,8 +97,8 @@ public class Student extends User implements Serializable{
 		RegistrationManager.processDrop(this, index);
 	}
 
-	public void changeIndex(Index sourceInd, Index desInd) {
-		RegistrationManager.processChangeIndex(this, sourceInd, desInd);		
+	public void changeIndex(Index sourceInd, Index desInd, boolean inWait) {
+		RegistrationManager.processChangeIndex(this, sourceInd, desInd, inWait);		
 	}
 	
 	public void swapIndex(Index sourceInd, Index desInd, Student desID) {
