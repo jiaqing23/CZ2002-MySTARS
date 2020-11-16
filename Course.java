@@ -63,7 +63,38 @@ public class Course implements Serializable{
 	}
 
 	public void updateIndex(Index index) {
+
+		System.out.println("(1) Update IndexNo");
+		System.out.println("(2) Update vacancy");
+		System.out.println("Select Option: ");
+        Scanner sc = new Scanner(System.in);
+        int option = sc.nextInt();
+		sc.next();
 		
+		String tem;
+
+		do{
+			if(option == 1){
+				System.out.print("New IndexNo: ");
+				tem = sc.nextLine();
+				index.setIndexNo(tem);
+			}
+			else if(option == 2){
+				System.out.print("New class size: ");
+				tem = sc.nextLine();
+				int newSize = Integer.parseInt(tem);
+
+				// We can't update the newSize lesser than the original number of vacancy
+				if((index.getClassSize() - newSize) > index.getVacancy()){
+					System.out.println("New class size is too small for registered students!");
+				}
+				else{
+					index.setClassSize(newSize);
+				}
+			}
+
+			System.out.println("Invalid option!");
+		} while(option!= 1 && option != 2);
 	}
 	
 	public void listIndex() {

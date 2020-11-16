@@ -20,20 +20,32 @@ public class Index implements Serializable{
         this.vacancy = classSize;
     }
 
+    public void setIndexNo(String index) {
+        this.indexNo = index;
+    }
+    
+    public String getIndexNo(){
+        return indexNo;
+    }
+
     public void setClassSize(int classSize) {
         this.classSize = classSize;
     }
 
-    public ArrayList<Class> getClasses(){
-        return classes;
+    public int getClassSize() {
+        return classSize;
+    }
+
+    public void setVacancy(int vacancy) {
+        this.vacancy = vacancy;
     }
 
     public int getVacancy() {
         return vacancy;
     }
 
-    public String getIndexNo(){
-        return indexNo;
+    public ArrayList<Class> getClasses(){
+        return classes;
     }
 
     public ArrayList<Student> getReg() {
@@ -74,5 +86,5 @@ public class Index implements Serializable{
             System.out.println("Week: " + c.getWeek());
         }
     }
-     
+    
 }
