@@ -11,7 +11,8 @@ public class Student extends User implements Serializable{
 	private ArrayList<Index> waitlist = new ArrayList<Index>();
 
 	// CONSTRUCTOR
-	public Student(int maxAU, String gender, String nationality, String matricNumber) {
+	public Student(String name, String username, int maxAU, String gender, String nationality, String matricNumber) {
+		super(name, username);
 		this.maxAU = maxAU;
 		this.gender = gender;
 		this.nationality = nationality;
