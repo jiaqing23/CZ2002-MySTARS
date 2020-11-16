@@ -61,12 +61,12 @@ public class Admin extends User{
             case 1:
                 System.out.print("New Course Code: ");
                 tem = sc.nextLine();
-                course.setCode(tem);
+                course.setCourseCode(tem);
                 break;
             case 2:
                 System.out.print("New Course Name: ");
                 tem = sc.nextLine();
-                course.setName(tem);
+                course.setCourseName(tem);
                 break;
             case 3:
                 System.out.print("New School: ");
