@@ -25,6 +25,7 @@ public class Class implements Serializable{
         this.dayOfWeek = dayOfWeek;
     }
 
+    // SET AND GET METHODS
     public String getClassID() {
         return classID;
     }

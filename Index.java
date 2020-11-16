@@ -21,7 +21,7 @@ public class Index implements Serializable{
         this.vacancy = classSize;
     }
 	
-	//Set and Get
+	// SET AND GET METHODS
     public void setIndexNo(String index) {
         this.indexNo = index;
     }
@@ -72,6 +72,7 @@ public class Index implements Serializable{
         return registeredStud;
     }
 
+    // CLASS METHODS
     public void addReg(Student student) {
         registeredStud.add(student);
         vacancy--;
