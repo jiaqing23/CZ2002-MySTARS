@@ -1,5 +1,3 @@
-package stars_proj;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Queue;
@@ -23,17 +21,11 @@ public class Index {
 		vacancy++;
 		return true;
 	}
-	public boolean updateWaitlist(Student student, int choice) {//add to OR remove from the waitlist of this index
-		if (choice==1) {
-			waitlist.add(student);
-			return true;
-		}
-		else if(choice==0) {
-			waitlist.poll();
-			return true;
-		}
-		else
-			return false;
+	public void addWaitlist(Student student) {
+		waitlist.add(student);
+	}
+	public Student dropWaitlist(Student student) {
+		return(waitlist.poll());
 	}
 	public void listClass() {
 		Iterator<Class> iter= classes.iterator(); 
