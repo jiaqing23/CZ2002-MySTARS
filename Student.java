@@ -2,8 +2,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Student extends User implements Serializable{
-	private int noOfAU=0;
-	private int maxAU;
+	private int noOfAU = 0;
+	private int maxAU = 21;
 	private String gender;
 	private String nationality;
 	private String matricNumber;
