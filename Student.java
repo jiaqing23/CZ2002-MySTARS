@@ -68,13 +68,13 @@ public class Student extends User implements Serializable{
 	}
 	
 	// CLASS METHODS
-	public boolean checkIndex(Index index) {
+	public boolean isAdded(Index index) {
 		return (registered.contains(index) || waitlist.contains(index));
 	}
 	
 	public boolean addIndex(Index index) {
 		
-		if (checkIndex(index)) {
+		if (isAdded(index)) {
 			System.out.println("The index has already been registered before! ");
 			return false;
 		}
@@ -86,7 +86,7 @@ public class Student extends User implements Serializable{
 	
 	public boolean dropIndex(Index index) {
 		
-		if (checkIndex(index)) {
+		if (isAdded(index)) {
 			if(registered.contains(index))
 				removeReg(index);
 			else if(waitlist.contains(index))
@@ -131,7 +131,7 @@ public class Student extends User implements Serializable{
 
 	public boolean changeIndex(Index sourceInd, Index desInd) {
 		
-		if(!checkIndex(sourceInd)) {
+		if(!isAdded(sourceInd)) {
 			System.out.println("Index " + sourceInd + " is not registered before!");
 			return false;
 		}
@@ -145,8 +145,8 @@ public class Student extends User implements Serializable{
 	
 	public boolean swapIndex(Index sourceInd, Index desInd, Student sourceID, Student desID) {
 		
-		boolean checkSource = sourceID.checkIndex(sourceInd);
-		boolean checkDes = desID.checkIndex(desInd);
+		boolean checkSource = sourceID.isAdded(sourceInd);
+		boolean checkDes = desID.isAdded(desInd);
 		
 		if(!checkSource){
 			System.out.println("Student "+ sourceID+ " has not registered for "+sourceInd+"!");

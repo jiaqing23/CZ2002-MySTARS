@@ -76,8 +76,3 @@ public class Index implements Serializable{
     }
      
 }
-.println("Week: " + c.getWeek());
-        }
-    }
-     
-}

@@ -33,7 +33,7 @@ public class RegistrationManager implements Serializable{
         }
 
         if(isRegistered(student, index)){
-            System.out.println("You have already registered waitlist!");
+            System.out.println("You have already registered or add !");
             return;
         }
 
