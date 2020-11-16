@@ -27,20 +27,20 @@ public class RegistrationManager implements Serializable{
         return student.getRegistered().contains(index);
     }
 
-    public static void processAdd(Student student, Index index){
+    public static boolean processAdd(Student student, Index index){
         if(isClash(student, index)){
             System.out.println("This index clash with other indexes you registered or added into waitlist!");
-            return;
+            return false;
         }
 
         if(isRegistered(student, index)){
             System.out.println("You have already registered or add!");
-            return;
+            return false;
         }
 
         if(isInWaitlist(student, index)){
             System.out.println("This index is in your waitlist!");
-            return;
+            return false;
         }
 
         if(index.getVacancy() > 0){
@@ -51,16 +51,20 @@ public class RegistrationManager implements Serializable{
             index.addWaitlist(student);
             student.addWaitlist(index);
         }
+
+        return true;
     }
 
     public static void processDrop(Student student, Index index){
         if(isInWaitlist(student, index)){
+            student.removeWaitlist(index);
             index.removeWaitlist(student);
         }
 
         if(isRegistered(student, index)){
             Student newAdd;
             index.removeReg(student);
+            student.removeReg(index);
             newAdd = index.popWaitlist();
             if(newAdd != null){
                 newAdd.dropIndex(index);
@@ -101,7 +105,29 @@ public class RegistrationManager implements Serializable{
     }
 
     public static void processChangeIndex(Student student, Index sourceInd, Index desInd){
-        processDrop();
-        processAdd();
+
+        if(isInWaitlist(student, sourceInd)){
+            student.removeWaitlist(sourceInd);
+        }
+        else{
+            student.removeReg(sourceInd);
+        }
+
+        boolean valid = processAdd(student, desInd);
+
+        if(isInWaitlist(student, sourceInd)){
+            student.addWaitlist(sourceInd);
+        }
+        else{
+            student.addReg(sourceInd);
+        }
+
+        if(valid){
+            processDrop(student, sourceInd);
+            System.out.println("Changed successfully!");
+        }
     }
+
+    //Todo: check AU, check date, check course
+    //Move to tail max list that already max, prevent inf loop
 }

@@ -25,6 +25,10 @@ public class Index implements Serializable{
     public void setIndexNo(String index) {
         this.indexNo = index;
     }
+
+    public Course getCourse(){
+        return course;
+    }
     
     public String getIndexNo(){
         return indexNo;
@@ -100,4 +104,5 @@ public class Index implements Serializable{
             }
         }
     }
+
 }
