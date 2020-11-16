@@ -93,6 +93,7 @@ public class MySTARS implements Serializable{
         System.out.print("Username: ");
         this.username = sc.next();
         System.out.print("Password: ");
+        sc.close();
         String password = new String(System.console().readPassword());
         return PasswordManager.validateAccount(username, password, mode == 1);
     }
@@ -111,11 +112,29 @@ public class MySTARS implements Serializable{
         
         if (!mainApp.login()) {
             System.out.println("Invalid Credential!");
+            sc.close();
             return;
         }
 
         User temp;
 
+        if(mode == 2){
+            for (Student s : mainApp.students) {
+                if(s.getUsername() == mainApp.username){
+                    temp = s;
+                    break;
+                }
+            }
+        }
+        else {
+            for (Admin a : mainApp.admins) {
+                if(a.getUsername() == mainApp.username){
+                    temp = a;
+                    break;
+                }
+            }
+        }
+        
         if(mode == 1) {
             while(choice != 8){
                 System.out.println("*************Welcome to MySTARS!*************");
@@ -255,23 +274,7 @@ public class MySTARS implements Serializable{
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
-        
-        if(mode == 2){
-            for (Student s : mainApp.students) {
-                if(s.getUsername() == mainApp.username){
-                    temp = s;
-                    break;
-                }
-            }
-        }
-        else {
-            for (Admin a : mainApp.admins) {
-                if(a.getUsername() == mainApp.username){
-                    temp = a;
-                    break;
-                }
-            }
-        }
+    
 
         if(mode == 2 && mainApp.period.validatePeriod()){
             while(choice != 7){
@@ -488,6 +491,7 @@ public class MySTARS implements Serializable{
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
+        sc.close();
     }
 }
 
