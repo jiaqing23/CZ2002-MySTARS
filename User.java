@@ -1,3 +1,4 @@
+//Base Class for Student and Admin
 public class User {
     private String name;
     // private String userID;
