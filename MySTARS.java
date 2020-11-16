@@ -353,37 +353,43 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter the current index number:");
                         index = sc.next();
                         exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
-                                    currIndex = i;
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
+                        for (Index i: student.getRegistered()){
+                            if(index == i.getIndexNo()){
+                                currIndex = i;
+                                exist = true;
+                                break;
+                            }   
+                        }
+                        for (Index i: student.getWaitlist()){
+                            if(index == i.getIndexNo()){
+                                currIndex = i;
+                                exist = true;
+                                break;
+                            }   
                         }
                         if(!exist){
-                            System.out.printf("The index number %d does not exist!\n",index);
+                            System.out.printf("You don't have the index number %s!\n",index);
                             break;
                         }
                         System.out.println("Please enter the new index number:");
                         index = sc.next();
                         exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
-                                    student.changeIndex(currIndex,i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
+                        for (Index i: student.getRegistered()){
+                            if(index == i.getIndexNo()){
+                                student.changeIndex(currIndex,i);
+                                exist = true;
+                                break;
+                            }   
+                        }
+                        for (Index i: student.getWaitlist()){
+                            if(index == i.getIndexNo()){
+                                student.changeIndex(currIndex,i);
+                                exist = true;
+                                break;
+                            }   
                         }
                         if(!exist){
-                            System.out.printf("The index number %d does not exist!\n",index);
+                            System.out.printf("The index number %s does not exist in the same course!\n", index);
                             break;
                         }
                         break;
@@ -428,7 +434,7 @@ public class MySTARS implements Serializable{
                     for (Course c: mainApp.courses){
                         for(Index i : c.getIndexes()){
                         if(index == i.getIndexNo()){
-                            student.swapIndex(currIndex,i,student,peer);
+                            student.swapIndex(currIndex,i,peer);
                             break;
                         }    
                     }

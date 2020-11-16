@@ -77,7 +77,7 @@ public class Student extends User implements Serializable{
 		registered.add(index);
 	}
 	
-	public void removeReg(Inde index) {
+	public void removeReg(Index index) {
 		registered.remove(index);
 	}
 
@@ -98,11 +98,11 @@ public class Student extends User implements Serializable{
 	}
 
 	public void changeIndex(Index sourceInd, Index desInd) {
-		RegistrationManager.processSwap(this, sourceInd, desInd);		
+		RegistrationManager.processChangeIndex(this, sourceInd, desInd);		
 	}
 	
-	public void swapIndex(Index sourceInd, Index desInd, Student sourceID, Student desID) {
-		RegistrationManager.processSwap(this, sourceInd, desInd, sourceID, desID);
+	public void swapIndex(Index sourceInd, Index desInd, Student desID) {
+		RegistrationManager.processSwap(sourceInd, desInd, this, desID);
 	}
 
 	public void printIndex() {

@@ -34,7 +34,7 @@ public class RegistrationManager implements Serializable{
         }
 
         if(isRegistered(student, index)){
-            System.out.println("You have already registered or add !");
+            System.out.println("You have already registered or add!");
             return;
         }
 
@@ -59,7 +59,9 @@ public class RegistrationManager implements Serializable{
         }
 
         if(isRegistered(student, index)){
-            Student newAdd = index.removeReg(student);
+            Student newAdd;
+            index.removeReg(student);
+            newAdd = index.popWaitlist();
             if(newAdd != null){
                 newAdd.dropIndex(index);
                 newAdd.addReg(index);
@@ -77,10 +79,29 @@ public class RegistrationManager implements Serializable{
             System.out.println("Your friend don't have this index.");
             return;
         }
+
+        if(isClash(sourceStudent, sourceInd)){
+            System.out.println("This index clash with other indexes you registered!");
+            return;
+        }
+
+        if(isClash(desStudent, desInd)){
+            System.out.println("This index clash with other indexes your friend registered!");
+            return;
+        }
         
         sourceStudent.removeReg(sourceInd);
         sourceStudent.addReg(desInd);
         desStudent.removeReg(desInd);
         desStudent.addReg(sourceInd);
+        sourceInd.removeReg(sourceStudent);
+        sourceInd.addReg(desStudent);
+        desInd.removeReg(desStudent);
+        desInd.addReg(sourceStudent);
+    }
+
+    public static void processChangeIndex(Student student, Index sourceInd, Index desInd){
+        processDrop();
+        processAdd();
     }
 }

@@ -58,13 +58,9 @@ public class Index implements Serializable{
         vacancy--;
     }
 
-    public Student removeReg(Student student) {
+    public void removeReg(Student student) {
         registeredStud.remove(student);
         vacancy++;
-        if(!waitlist.isEmpty()){
-            return waitlist.remove();
-        }
-        return null;
     }
 
     public void addWaitlist(Student student) {
@@ -73,6 +69,12 @@ public class Index implements Serializable{
 
     public void removeWaitlist(Student student) {
         waitlist.remove(student);
+    }
+
+    public Student popWaitlist() {
+        if(!waitlist.isEmpty())
+            return waitlist.remove();
+        return null;
     }
 
     public void listClass() {

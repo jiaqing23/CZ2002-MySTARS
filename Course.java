@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Course implements Serializable{
 	private String school;
@@ -103,5 +104,6 @@ public class Course implements Serializable{
 			System.out.println(indexes.get(i));
 		}
 	}
+
 	
 }
