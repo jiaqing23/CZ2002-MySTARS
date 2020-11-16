@@ -99,8 +99,8 @@ public class Student extends User implements Serializable{
 		RegistrationManager.processDrop(this, index);
 	}
 
-	public void changeIndex(Index sourceInd, Index desInd, boolean inWait) {
-		RegistrationManager.processChangeIndex(this, sourceInd, desInd, inWait);		
+	public void changeIndex(Index sourceInd, Index desInd) {
+		RegistrationManager.processChangeIndex(this, sourceInd, desInd);		
 	}
 	
 	public void swapIndex(Index sourceInd, Index desInd, Student desID) {
@@ -108,7 +108,6 @@ public class Student extends User implements Serializable{
 	}
 
 	public void printIndex() {
-
 		System.out.println("Registered indexes: ");
 		for(Index i : registered){
 			System.out.println(i.getIndexNo());

@@ -104,9 +104,9 @@ public class RegistrationManager implements Serializable{
         desInd.addReg(sourceStudent);
     }
 
-    public static void processChangeIndex(Student student, Index sourceInd, Index desInd, boolean inWait){
+    public static void processChangeIndex(Student student, Index sourceInd, Index desInd){
 
-        if(inWait){
+        if(isInWaitlist(student, sourceInd)){
             student.removeWaitlist(sourceInd);
         }
         else{
@@ -115,7 +115,7 @@ public class RegistrationManager implements Serializable{
 
         boolean valid = processAdd(student, desInd);
 
-        if(inWait){
+        if(isInWaitlist(student, sourceInd)){
             student.addWaitlist(sourceInd);
         }
         else{
@@ -128,5 +128,6 @@ public class RegistrationManager implements Serializable{
         }
     }
 
-    //Todo: check AU, check date
+    //Todo: check AU, check date, check course
+    //Move to tail max list that already max, prevent inf loop
 }

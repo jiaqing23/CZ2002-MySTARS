@@ -327,19 +327,22 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter the index number:");
                         index = sc.next();
                         exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
-                                    student.dropIndex(i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
+                        for (Index i: student.getRegistered()){
+                            if(index == i.getIndexNo()){
+                                student.dropIndex(i);
+                                exist = true;
+                                break;
+                            }
+                        }
+                        for (Index i: student.getWaitlist()){
+                            if(index == i.getIndexNo()){
+                                student.dropIndex(i);
+                                exist = true;
+                                break;
+                            }
                         }
                         if(!exist){
-                            System.out.println("The index number does not exist!");
+                            System.out.println("You haven't registered for this index!");
                         }
                         break;
                     case 3:
@@ -369,7 +372,6 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter the current index number:");
                         index = sc.next();
                         exist = false;
-                        inWait = false;
                         for (Index i: student.getRegistered()){
                             if(index == i.getIndexNo()){
                                 currIndex = i;
@@ -381,7 +383,6 @@ public class MySTARS implements Serializable{
                             if(index == i.getIndexNo()){
                                 currIndex = i;
                                 exist = true;
-                                inWait = true;
                                 break;
                             }   
                         }
@@ -394,7 +395,7 @@ public class MySTARS implements Serializable{
                         exist = false;
                         for (Index i: currIndex.getCourse().getIndexes()){
                             if(index == i.getIndexNo()){
-                                student.changeIndex(currIndex,i,inWait);
+                                student.changeIndex(currIndex,i);
                                 exist = true;
                                 break;
                             }   
