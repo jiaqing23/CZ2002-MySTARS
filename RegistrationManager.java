@@ -1,21 +1,23 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RegistrationManager implements Serializable{
 
     public static boolean isClash(Student student, Index index){
-        /*
+        
         ArrayList<Index> indexes = new ArrayList<Index>();
         indexes.addAll(student.getRegistered());
         indexes.addAll(student.getWaitlist());
 
         for(Index anotherIndex: indexes){
+            if(index.getCourse() == anotherIndex.getCourse()) return true;
             for(Class class1: index.getClasses()){
                 for(Class class2: anotherIndex.getClasses()){
                     if(class1.clash(class2)) return true;
                 }
             }
         }
-        */
+        
         return false;
     }
 
@@ -34,7 +36,7 @@ public class RegistrationManager implements Serializable{
         }
 
         if(isRegistered(student, index)){
-            System.out.println("You have already registered or add!");
+            System.out.println("You have already registered this index!");
             return false;
         }
 
@@ -43,7 +45,7 @@ public class RegistrationManager implements Serializable{
             return false;
         }
 
-        if(index.getVacancy() > 0){
+        if(index.getVacancy() > 0 && student.getMaxAU() >= student.getNoOfAU() + index.getCourse().getNumOfAU()){
             index.addReg(student);
             student.addReg(index);
         }
@@ -65,10 +67,21 @@ public class RegistrationManager implements Serializable{
             Student newAdd;
             index.removeReg(student);
             student.removeReg(index);
-            newAdd = index.popWaitlist();
-            if(newAdd != null){
-                newAdd.dropIndex(index);
-                newAdd.addReg(index);
+
+            int len = index.getWaitlistLength();
+            while(len > 0){
+                len--;
+
+                newAdd = index.popWaitlist();
+                if(newAdd.getNoOfAU() + index.getCourse().getNumOfAU() <= newAdd.getMaxAU()){
+                    newAdd.removeWaitlist(index);
+                    newAdd.addReg(index);
+                    break;
+                }
+                else{
+                    index.addWaitlist(newAdd);
+                }
+
             }
         }
     }
@@ -91,6 +104,11 @@ public class RegistrationManager implements Serializable{
 
         if(isClash(desStudent, desInd)){
             System.out.println("This index clash with other indexes your friend registered!");
+            return;
+        }
+
+        if(desInd.getCourse() != sourceInd.getCourse()){
+            System.out.println("Two index are not same course");
             return;
         }
         
@@ -127,7 +145,4 @@ public class RegistrationManager implements Serializable{
             System.out.println("Changed successfully!");
         }
     }
-
-    //Todo: check AU, check date, check course
-    //Move to tail max list that already max, prevent inf loop
 }

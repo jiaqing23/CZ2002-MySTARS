@@ -51,6 +51,12 @@ public class Index implements Serializable{
     }
 
     public void addClass(Class temClass) {
+        for(Class c: classes){
+            if(c.clash(temClass)){
+                System.out.println("This class clash with another class of this index!");
+                return;
+            }
+        }
         classes.add(temClass);
     }
 
@@ -90,6 +96,10 @@ public class Index implements Serializable{
         if(!waitlist.isEmpty())
             return waitlist.remove();
         return null;
+    }
+
+    public int getWaitlistLength(){
+        return waitlist.size();
     }
 
     public void listClass() {

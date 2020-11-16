@@ -65,7 +65,6 @@ public class Course implements Serializable{
 	}
 
 	public void updateIndex(Index index) {
-
 		System.out.println("(1) Update IndexNo");
 		System.out.println("(2) Update vacancy");
 		System.out.println("(3) Add class");
@@ -99,6 +98,10 @@ public class Course implements Serializable{
 					break;
 
 				case 3:
+					if(index.getVacancy() != index.getClassSize()){
+						System.out.println("This index already registered by someone, cannot add class.");
+						break;
+					}
 					System.out.println("Class ID: ");
 					String classID = sc.nextLine();
 					System.out.println("Type of class: ");
@@ -121,6 +124,10 @@ public class Course implements Serializable{
 					break;
 
 				case 4:
+					if(index.getVacancy() != index.getClassSize()){
+						System.out.println("This index already registered by someone, cannot remove class.");
+						break;
+					}
 					System.out.println("Class ID to be dropped: ");
 					tem = sc.nextLine();
 	

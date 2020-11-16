@@ -14,16 +14,25 @@ import java.util.Scanner;
 
 public class MySTARS implements Serializable{
     private static String fileName = "mySTARS.txt";
-    private static int mode;
+    private int mode;
     private String username;
 
     private Period period = new Period();
     private ArrayList<Admin> admins = new ArrayList<Admin>();
     private ArrayList<Student> students = new ArrayList<Student>();
     private ArrayList<Course> courses = new ArrayList<Course>();
+    private static Student peer = null;
 
     public MySTARS() {
         // TBD
+    }
+
+    public int getMode(){
+        return mode;
+    }
+
+    public void setMode(int mode){
+        this.mode = mode;
     }
 
     //Add a new student into the system
@@ -96,13 +105,14 @@ public class MySTARS implements Serializable{
         Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
         System.out.print("Mode: ");
-        mode = sc.nextInt();
+        this.setMode(sc.nextInt());
         System.out.print("Username: ");
         this.username = sc.next();
         System.out.print("Password: ");
+        //String password = new String(System.console().readPassword());
+        String password = sc.next();
         sc.close();
-        String password = new String(System.console().readPassword());
-        return PasswordManager.validateAccount(username, password, mode == 1);
+        return PasswordManager.validateAccount(username, password, this.mode == 1);
     }
 
     public static void main(String[] args) {
@@ -123,9 +133,9 @@ public class MySTARS implements Serializable{
             return;
         }
 
-        User temp;
+        User temp = null;
 
-        if(mode == 2){
+        if(mainApp.mode == 2){
             for (Student s : mainApp.students) {
                 if(s.getUsername() == mainApp.username){
                     temp = s;
@@ -142,9 +152,9 @@ public class MySTARS implements Serializable{
             }
         }
         
-        //mode=1 mean admin mode
+        //mainApp.mode=1 mean admin mainApp.mode
         //Admin can login in any period
-        if(mode == 1) {
+        if(mainApp.mode == 1) {
             while(choice != 8){
                 //Operations that an admin can performs
                 System.out.println("*************Welcome to MySTARS!*************");
@@ -286,9 +296,9 @@ public class MySTARS implements Serializable{
         }
     
 
-        //mode=2 mean student mode
+        //mainApp.mode=2 mean student mainApp.mode
         //Need to make sure that the login period is around the period opened for add/drop
-        if(mode == 2 && mainApp.period.validatePeriod()){
+        if(mainApp.mode == 2 && mainApp.period.validatePeriod()){
             while(choice != 7){
                 //Operations that a student can perform
                 System.out.println("*************Welcome to MySTARS!*************");
@@ -302,7 +312,7 @@ public class MySTARS implements Serializable{
                 choice = sc.nextInt();
                 
                 Student student = (Student)temp;
-
+                Index currIndex = null;
                 switch(choice){
                     case 1:
                         System.out.println("Please enter the index number:");
@@ -368,7 +378,6 @@ public class MySTARS implements Serializable{
                         }
                         break;
                     case 5:
-                        Index currIndex;
                         System.out.println("Please enter the current index number:");
                         index = sc.next();
                         exist = false;
@@ -402,7 +411,7 @@ public class MySTARS implements Serializable{
                         }
                         for (Index i: currIndex.getCourse().getIndexes()){
                             if(index == i.getIndexNo()){
-                                student.changeIndex(currIndex,i,inWait);
+                                student.changeIndex(currIndex,i);
                                 exist = true;
                                 break;
                             }   
@@ -413,52 +422,49 @@ public class MySTARS implements Serializable{
                         }
                         break;
                     case 6:
-                    Student peer;
-                    System.out.println("Please enter peer's username:");
-                    String me = sc.nextLine();
-                    exist = false;
-                    for (Student s: mainApp.students){
+                        System.out.println("Please enter peer's username:");
+                        String me = sc.nextLine();
+                        exist = false;
+                        for (Student s: mainApp.students){
                             if(me == s.getUsername()){
                                 peer = s;
                                 exist = true;
                                 break;
                             }
-                                
-                        
-                    }
-                    if(!exist){
-                        System.out.printf("The username does not exist!");
-                        break;
-                    }
-
-                    System.out.print("Please enter peer's Password: ");
-                    String password = new String(System.console().readPassword());
-                    if(!PasswordManager.validateAccount(me, password, mode == 1)){
-                        System.out.println("Wrong password/username!");
-                        break;
-                    }
-
-                    System.out.println("Please enter the current index number:");
-                    index = sc.next();
-                    for (Course c: mainApp.courses){
-                            for(Index i : c.getIndexes()){
-                            if(index == i.getIndexNo()){
-                                currIndex = i;
-                                break;
-                            }    
                         }
-                    }
-                    System.out.println("Please enter the new index number:");
-                    index = sc.next();
-                    for (Course c: mainApp.courses){
-                        for(Index i : c.getIndexes()){
-                        if(index == i.getIndexNo()){
-                            student.swapIndex(currIndex,i,peer);
+                        if(!exist){
+                            System.out.printf("The username does not exist!");
                             break;
-                        }    
-                    }
-                }
-                    break;
+                        }
+
+                        System.out.print("Please enter peer's Password: ");
+                        String password = new String(System.console().readPassword());
+                        if(!PasswordManager.validateAccount(me, password, mainApp.mode == 1)){
+                            System.out.println("Wrong password/username!");
+                            break;
+                        }
+
+                        System.out.println("Please enter the current index number:");
+                        index = sc.next();
+                        for (Course c: mainApp.courses){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    currIndex = i;
+                                    break;
+                                }    
+                            }
+                        }
+                        System.out.println("Please enter the new index number:");
+                        index = sc.next();
+                        for (Course c: mainApp.courses){
+                            for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    student.swapIndex(currIndex, i, peer);
+                                    break;
+                                }    
+                            }
+                        }
+                        break;
                     case 7:
                         System.out.println("Program terminating...");
                         break;
@@ -472,7 +478,7 @@ public class MySTARS implements Serializable{
    
         //If the period is not opened for add/drop
         //The student can only check the courses registered and vacancy of a course
-        if(mode == 2 && !mainApp.period.validatePeriod()){
+        if(mainApp.mode == 2 && !mainApp.period.validatePeriod()){
             while(choice != 3){
                 System.out.println("*************Welcome to MySTARS!*************");
                 System.out.println("(1) Print Course Registered");

@@ -21,7 +21,7 @@ public class Class implements Serializable{
         this.endTime = endTime;
         this.venue = venue;
         this.groupNo = groupNo;
-        this.week = week;
+        this.week = week; //"ODD, EVEN, BOTH"
         this.dayOfWeek = dayOfWeek;
     }
 
@@ -33,11 +33,11 @@ public class Class implements Serializable{
         return type;
     }
 
-    public Date getStartTime(){
+    public int getStartTime(){
         return startTime;
     }
 
-    public Date getEndTime(){
+    public int getEndTime(){
         return endTime;
     }
 
@@ -59,8 +59,10 @@ public class Class implements Serializable{
 
     // CLASS METHODS
     public boolean clash(Class anotherClass){
-        if(startTime.compareTo(anotherClass.getEndTime()) > 0 || 
-            anotherClass.getStartTime().compareTo(endTime) > 0)
+
+        if(dayOfWeek.equals(anotherClass.getDayOfWeek()) || 
+            (week.equals("ODD") && anotherClass.getWeek().equals("EVEN")) || (week.equals("EVEN") && anotherClass.getWeek().equals("ODD")) ||
+            startTime > anotherClass.getEndTime() || anotherClass.getStartTime() > endTime)
             return true;
         return false;
     }
