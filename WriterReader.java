@@ -5,8 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class WriterReader {
+public class WriterReader implements Serializable{
 
     public static void main(String[] args) {
 

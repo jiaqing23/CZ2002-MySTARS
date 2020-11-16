@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Course implements Serializable{
 	private String school;
@@ -44,10 +45,11 @@ public class Course implements Serializable{
 	public void setNumOfAU(int numOfAU) {
 		this.numOfAU = numOfAU;
 	}
-	
+
 	public int getNumOfAU() {
 		return numOfAU;
 	}
+	
 	
 	public ArrayList<Index> getIndexes() {
 		return indexes;

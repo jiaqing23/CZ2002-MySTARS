@@ -1,14 +1,16 @@
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String name;
-    // private String userID;
     private String username;
 
+    //Class Constructor
     public User(String name, String username){
         this.name = name;
-        //this.userID = userID;
         this.username = username;
     }
 
+    //Get method
     public String getUsername(){
         return username;
     }

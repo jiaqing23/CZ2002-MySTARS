@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,14 +26,27 @@ public class MySTARS implements Serializable{
         // TBD
     }
 
+    //Add a new student into the system
     public void addStudent(Student student) {
         students.add(student);
     }
 
+    //Add a new course into the system
     public void addCourse(Course course) {
         courses.add(course);
     }
 
+    //Get the Add/Drop period
+    public Period getPeriod(){
+        return period;
+    }
+
+    //Get the list of all courses
+    public ArrayList<Course> getCourses(){
+        return courses;
+    }
+
+    //Save data into file
     public boolean saveData() {
         try {
             FileOutputStream f = new FileOutputStream(new File(fileName));
@@ -53,6 +66,7 @@ public class MySTARS implements Serializable{
         return false;
     }
 
+    //Load data from file
     public static MySTARS loadData() {
         try {
             FileInputStream f = new FileInputStream(new File(fileName));
@@ -77,6 +91,7 @@ public class MySTARS implements Serializable{
         return null;
     }
 
+    //Login method
     public boolean login() {
         Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
@@ -85,13 +100,17 @@ public class MySTARS implements Serializable{
         System.out.print("Username: ");
         this.username = sc.next();
         System.out.print("Password: ");
+        sc.close();
         String password = new String(System.console().readPassword());
         return PasswordManager.validateAccount(username, password, mode == 1);
     }
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        int choice;
+        int choice=0;
+        String index;
+        boolean exist=false;
 
         MySTARS mainApp = loadData();
         if (mainApp == null) {
@@ -100,11 +119,12 @@ public class MySTARS implements Serializable{
         
         if (!mainApp.login()) {
             System.out.println("Invalid Credential!");
+            sc.close();
             return;
         }
 
         User temp;
-        
+
         if(mode == 2){
             for (Student s : mainApp.students) {
                 if(s.getUsername() == mainApp.username){
@@ -121,217 +141,12 @@ public class MySTARS implements Serializable{
                 }
             }
         }
-
-        if(mode == 2 && mainApp.period.validatePeriod()){
-            while(choice != 7){
-                System.out.println("*************Welcome to MySTARS!*************");
-                System.out.println("(1) Add Course ");
-                System.out.println("(2) Drop Course");
-                System.out.println("(3) Print Course Registered");
-                System.out.println("(4) Check Course Vacancy");
-                System.out.println("(5) Change Index Number of Course Registered");
-                System.out.println("(6) Swap Index with Another Student");
-                System.out.println("(7) Quit");
-                choice = sc.nextInt();
-                
-                Student student = (Student)temp;
-
-                switch(choice){
-                    case 1:
-                        System.out.println("Please enter the index number:");
-                        int index = sc.nextInt();
-                        boolean exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
-                                    student.addIndex(i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.println("The index number does not exist!");
-                        }
-                        break;
-                    case 2:
-                        System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
-                        exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
-                                    student.dropIndex(i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.println("The index number does not exist!");
-                        }
-                        break;
-                    case 3:
-                        student.printIndex();
-                        break;
-                    case 4:
-                        System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
-                        exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
-                                    student.checkVacancy(i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.println("The index number does not exist!");
-                        }
-                        break;
-                    case 5:
-                        Index currIndex;
-                        System.out.println("Please enter the current index number:");
-                        index = sc.nextInt();
-                        exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
-                                    currIndex = i;
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.printf("The index number %d does not exist!\n",index);
-                            break;
-                        }
-                        System.out.println("Please enter the new index number:");
-                        index = sc.nextInt();
-                        exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
-                                    student.changeIndex(currIndex,i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.printf("The index number %d does not exist!\n",index);
-                            break;
-                        }
-                        break;
-                    case 6:
-                    Student peer;
-                    System.out.println("Please enter peer's username:");
-                    String me = sc.nextLine();
-                    exist = false;
-                    for (Student s: mainApp.students){
-                            if(me == s.getUsername()){
-                                peer = s;
-                                exist = true;
-                                break;
-                            }
-                                
-                        
-                    }
-                    if(!exist){
-                        System.out.printf("The index number %d does not exist!\n",index);
-                        break;
-                    }
-                    System.out.println("Please enter the current index number:");
-                    index = sc.nextInt();
-                    for (Course c: mainApp.courses){
-                            for(Index i : c.getIndexes()){
-                            if(index == i.getIndexNumber()){
-                                currIndex = i;
-                                break;
-                            }    
-                        }
-                    }
-                    System.out.println("Please enter the new index number:");
-                    index = sc.nextInt();
-                    for (Course c: mainApp.courses){
-                        for(Index i : c.getIndexes()){
-                        if(index == i.getIndexNumber()){
-                            student.swapIndex(currIndex,i,student,peer);
-                            break;
-                        }    
-                    }
-                }
-                    break;
-                    case 7:
-                        System.out.println("Program terminating...");
-                        break;
-                    default:
-                        System.out.println("Wrong Input!!");
-                        break;
-                }
-                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
-            }
-        }
-
-        if(mode == 2 && !mainApp.period.validatePeriod()){
-            while(choice != 3){
-                System.out.println("*************Welcome to MySTARS!*************");
-                System.out.println("(1) Print Course Registered");
-                System.out.println("(2) Check Course Vacancy");
-                System.out.println("(3) Quit");
-                choice = sc.nextInt();
-                
-                Student student = (Student)temp;
-
-                switch(choice){
-                    case 1:
-                        student.printIndex();
-                        break;
-                    case 2:
-                        System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
-                        exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
-                                    student.checkVacancy(i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.println("The index number does not exist!");
-                        }
-                        break;
-                    case 3:
-                        System.out.println("Program terminating...");
-                        break;
-                    default:
-                        System.out.println("Wrong Input!!");
-                        break;
-                }
-                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
-            }
-        }
-
+        
+        //mode=1 mean admin mode
+        //Admin can login in any period
         if(mode == 1) {
             while(choice != 8){
+                //Operations that an admin can performs
                 System.out.println("*************Welcome to MySTARS!*************");
                 System.out.println("(1) Edit registeration period ");
                 System.out.println("(2) Add student");
@@ -354,7 +169,7 @@ public class MySTARS implements Serializable{
                         String endDate=sc.next();
                         try{
                             admin.editPeriod(dateFormat.parse(startDate),dateFormat.parse(endDate));
-                        }catch(DateTimeParseException e){
+                        }catch(ParseException e){
                             System.out.println("Please use the correct format (dd-mm-yyyy) !");
                         }
                         break;
@@ -372,7 +187,9 @@ public class MySTARS implements Serializable{
                         String gender = sc.nextLine();
                         System.out.println("Please enter student's nationality:");
                         String nationality = sc.nextLine();
-                        admin.addStudent(name,username,password,maxAU,gender,nationality);
+                        System.out.println("Please enter student's Matriculation Number:");
+                        String matricNumber = sc.nextLine();
+                        admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber);
                         break;
                     case 3:
                         System.out.println("Please enter school of the course:");
@@ -388,18 +205,29 @@ public class MySTARS implements Serializable{
                         break;
                     case 4:
                         System.out.println("Please enter the course code:");
-                        courseCode = sc.nextLine();
-                        admin.updateCourse(courseCode);
+                        courseCode = sc.next();
+                        for (Course c: mainApp.courses){
+                            if(courseCode == c.getCourseCode()){
+                                    admin.updateCourse(c);
+                                    exist = true;
+                                    break;
+                                    
+                            }
+                        }
+                        if(!exist){
+                            System.out.println("The course name does not exist!");
+                        }
                         break;
+
                     case 5:
                         System.out.println("Please enter the index:");
-                        int index = sc.nextInt();
-                        boolean exist = false;
+                        index = sc.next();
+                        exist = false;
                         dummy = sc.nextLine();
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     admin.checkVacancy(i);
                                     exist = true;
                                     break;
@@ -429,12 +257,12 @@ public class MySTARS implements Serializable{
                         break;
                     case 7:
                         System.out.println("Please enter the index number:");
-                        index = sc.nextInt();
+                        index = sc.next();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNumber()){
+                                if(index == i.getIndexNo()){
                                     admin.printByIndex(i);
                                     exist = true;
                                     break;
@@ -456,7 +284,235 @@ public class MySTARS implements Serializable{
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
+    
 
+        //mode=2 mean student mode
+        //Need to make sure that the login period is around the period opened for add/drop
+        if(mode == 2 && mainApp.period.validatePeriod()){
+            while(choice != 7){
+                //Operations that a student can perform
+                System.out.println("*************Welcome to MySTARS!*************");
+                System.out.println("(1) Add Course ");
+                System.out.println("(2) Drop Course");
+                System.out.println("(3) Print Course Registered");
+                System.out.println("(4) Check Course Vacancy");
+                System.out.println("(5) Change Index Number of Course Registered");
+                System.out.println("(6) Swap Index with Another Student");
+                System.out.println("(7) Quit");
+                choice = sc.nextInt();
+                
+                Student student = (Student)temp;
 
+                switch(choice){
+                    case 1:
+                        System.out.println("Please enter the index number:");
+                        index = sc.next();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    student.addIndex(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Please enter the index number:");
+                        index = sc.next();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    student.dropIndex(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 3:
+                        student.printIndex();
+                        break;
+                    case 4:
+                        System.out.println("Please enter the index number:");
+                        index = sc.next();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    student.checkVacancy(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 5:
+                        Index currIndex;
+                        System.out.println("Please enter the current index number:");
+                        index = sc.next();
+                        exist = false;
+                        for (Index i: student.getRegistered()){
+                            if(index == i.getIndexNo()){
+                                currIndex = i;
+                                exist = true;
+                                break;
+                            }   
+                        }
+                        for (Index i: student.getWaitlist()){
+                            if(index == i.getIndexNo()){
+                                currIndex = i;
+                                exist = true;
+                                break;
+                            }   
+                        }
+                        if(!exist){
+                            System.out.printf("You don't have the index number %s!\n",index);
+                            break;
+                        }
+                        System.out.println("Please enter the new index number:");
+                        index = sc.next();
+                        exist = false;
+                        for (Index i: student.getRegistered()){
+                            if(index == i.getIndexNo()){
+                                student.changeIndex(currIndex,i);
+                                exist = true;
+                                break;
+                            }   
+                        }
+                        for (Index i: student.getWaitlist()){
+                            if(index == i.getIndexNo()){
+                                student.changeIndex(currIndex,i);
+                                exist = true;
+                                break;
+                            }   
+                        }
+                        if(!exist){
+                            System.out.printf("The index number %s does not exist in the same course!\n", index);
+                            break;
+                        }
+                        break;
+                    case 6:
+                    Student peer;
+                    System.out.println("Please enter peer's username:");
+                    String me = sc.nextLine();
+                    exist = false;
+                    for (Student s: mainApp.students){
+                            if(me == s.getUsername()){
+                                peer = s;
+                                exist = true;
+                                break;
+                            }
+                                
+                        
+                    }
+                    if(!exist){
+                        System.out.printf("The username does not exist!");
+                        break;
+                    }
+
+                    System.out.print("Please enter peer's Password: ");
+                    String password = new String(System.console().readPassword());
+                    if(!PasswordManager.validateAccount(me, password, mode == 1)){
+                        System.out.println("Wrong password/username!");
+                        break;
+                    }
+
+                    System.out.println("Please enter the current index number:");
+                    index = sc.next();
+                    for (Course c: mainApp.courses){
+                            for(Index i : c.getIndexes()){
+                            if(index == i.getIndexNo()){
+                                currIndex = i;
+                                break;
+                            }    
+                        }
+                    }
+                    System.out.println("Please enter the new index number:");
+                    index = sc.next();
+                    for (Course c: mainApp.courses){
+                        for(Index i : c.getIndexes()){
+                        if(index == i.getIndexNo()){
+                            student.swapIndex(currIndex,i,peer);
+                            break;
+                        }    
+                    }
+                }
+                    break;
+                    case 7:
+                        System.out.println("Program terminating...");
+                        break;
+                    default:
+                        System.out.println("Wrong Input!!");
+                        break;
+                }
+                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+            }
+        }
+   
+        //If the period is not opened for add/drop
+        //The student can only check the courses registered and vacancy of a course
+        if(mode == 2 && !mainApp.period.validatePeriod()){
+            while(choice != 3){
+                System.out.println("*************Welcome to MySTARS!*************");
+                System.out.println("(1) Print Course Registered");
+                System.out.println("(2) Check Course Vacancy");
+                System.out.println("(3) Quit");
+                choice = sc.nextInt();
+                
+                Student student = (Student)temp;
+
+                switch(choice){
+                    case 1:
+                        student.printIndex();
+                        break;
+                    case 2:
+                        System.out.println("Please enter the index number:");
+                        index = sc.next();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    student.checkVacancy(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 3:
+                        System.out.println("Program terminating...");
+                        break;
+                    default:
+                        System.out.println("Wrong Input!!");
+                        break;
+                }
+                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+            }
+        }
+        sc.close();
     }
 }
+

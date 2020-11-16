@@ -17,7 +17,7 @@ public class Admin extends User implements Serializable{
 
     public void addStudent(String name, String username, String password, int maxAU, String gender, String nationality, String matricNumber){
         if(PasswordManager.addAccount(username, password)){
-            Student newStudent = new Student(maxAU, gender, nationality, matricNumber);
+            Student newStudent = new Student(name, username, maxAU, gender, nationality, matricNumber);
             mainApp.addStudent(newStudent);
             System.out.println("Student added!");
         }
@@ -72,7 +72,7 @@ public class Admin extends User implements Serializable{
                 System.out.print("IndexNo to be updated: ");
                 tem = sc.nextLine();
                 for(Index i: course.getIndexes()){
-                    if(i.getIndexNo() == tem){
+                    if(i.getIndexNo().equals(tem)){
                         course.updateIndex(i);
                         break;
                     }
@@ -82,7 +82,7 @@ public class Admin extends User implements Serializable{
                 System.out.print("IndexNo to be dropped: ");
                 tem = sc.nextLine();
                 for(Index i: course.getIndexes()){
-                    if(i.getIndexNo() == tem){
+                    if(i.getIndexNo().equals(tem)){
                         course.dropIndex(i);
                         break;
                     }

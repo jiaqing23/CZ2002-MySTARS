@@ -1,185 +1,25 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Student extends User{
+public class Student extends User implements Serializable{
 	private int noOfAU=0;
 	private int maxAU;
 	private String gender;
 	private String nationality;
-	private String matriculationNumber;
-	private ArrayList<Index> registered;
-	private ArrayList<Index> waitlist;
-	
-	//Use to check whether a student have registered for a specific index or not
-	public boolean checkRegIndex(Index index) {
-		return registered.contains(index);
-	}
-	
-	
-	public boolean addIndex(Index index) {
-		
-		if (this.checkRegIndex(index)) {
-			System.out.println("The index has already been registered before! ");
-			return false;
-		}
-		
-		waitlist.add(index);
-		System.out.println("The index has been added into waitlist! ");
-		return true;
-		
-	}
-	
-	
-	
-	public boolean dropIndex(Index index) {
-		
-		if (this.checkRegIndex(index)) {
-			//how to call
-			return processDrop(index);
-		}
-		else {
-			System.out.println("Unable to drop an unregistered index!");
-			return false;
-		}
+	private String matricNumber;
+	private ArrayList<Index> registered = new ArrayList<Index>();
+	private ArrayList<Index> waitlist = new ArrayList<Index>();
+
+	// CONSTRUCTOR
+	public Student(String name, String username, int maxAU, String gender, String nationality, String matricNumber) {
+		super(name, username);
+		this.maxAU = maxAU;
+		this.gender = gender;
+		this.nationality = nationality;
+		this.matricNumber = matricNumber;
 	}
 
-	
-	
-	public void printIndex() {
-		System.out.println("Registered indexes: ");
-		for (int i = 0; i < registered.size(); i++) {
-			System.out.println(registered.get(i));
-		}
-	}
-	
-	
-	
-	public int checkVacancy(Index index) {
-		return index.getVacancy();
-	}
-	
-	
-	
-	public boolean changeIndex(Index sourceInd, Index desInd) {
-		
-		int i;
-		boolean found=false;
-		
-		for (i = 0; i<registered.size(); i++) {
-			if (registered.get(i) == sourceInd) {
-				found=true;
-				break;
-			}
-		}
-		
-		if(!found) {
-			System.out.println("Index "+sourceInd+" is not registered before!");
-			return false;
-		}
-		
-		//Assume changing of index can be done directly if the desired index has vacancy
-		if (desInd.getVacancy()>0) {
-			registered.set(i, desInd);
-			desInd.addReg(this);
-			sourceInd.dropReg(this);
-			System.out.println("Successfully changed! ");
-			return true;
-		}
-		else {
-			System.out.println("No vacancy left! ");
-			return false;
-		}
-		
-	}
-	
-	
-	
-	public boolean swapIndex(Index sourceInd, Index desInd, Student sourceID, Student desID) {
-		
-		boolean checkSource = sourceID.checkRegIndex(sourceInd);
-		boolean checkDes = desID.checkRegIndex(desInd);
-		
-		if(checkSource && checkDes) {
-			System.out.println("Student "+ sourceID+ " has not registered for "+sourceInd+" and student "+ desID+" has not registered for "+desInd+"!");
-			return false;
-		}
-		
-		if (checkSource) {
-			System.out.println("Student "+ sourceID+ " has not registered for "+sourceInd+"!");
-			return false;
-		}
-		
-		if(checkSource && checkDes) {
-			System.out.println("Student "+ desID+" has not registered for "+desInd+"!");
-			return false;
-		}
-		
-		sourceID.dropIndex(sourceInd);
-		desID.dropIndex(desInd);
-		sourceID.addIndex(desInd);
-		desID.addIndex(sourceInd);
-		
-		System.out.println("Successfully swapped!");
-		return true;
-		
-	}
-	
-	
-	
-	public boolean updateReg(Index index) {
-		
-		if (!this.checkRegIndex(index)) {
-			registered.add(index);
-			return true;
-		}
-		else {
-			System.out.println("Index has been registered before!");
-			return false;
-		}
-	}
-	
-	
-	
-	public boolean updateWaitlist(Index index) {
-		
-		for(int i=0; i<waitlist.size();i++) {
-			if (waitlist.get(i)==index) {
-				System.out.println("This index is already in the waitlist!");
-				return false;
-			}
-		}
-		
-		waitlist.add(index);
-		return true;
-		
-	}
-	
-	
-	
-	//Get and Set
-	public ArrayList<Index> getRegistered(){
-		return registered;
-	}
-	
-	public void setRegistered(ArrayList<Index> registered) {
-		this.registered=registered;
-	}
-	
-	public ArrayList<Index> getWaitlist(){
-		return waitlist;
-	}
-	
-	public void setWaitlist(ArrayList<Index> waitlist) {
-		this.waitlist = waitlist;
-	}
-	
-	public void setMatriculationNumber(String matricNumber) {
-		matriculationNumber = matricNumber;
-	}
-	
-	public String getMatriculationNumber() {
-		return matriculationNumber;
-	}
-	
+	// SET AND GET METHODS
 	public void setNoOfAU(int AU) {
 		noOfAU += AU;
 	}
@@ -187,7 +27,7 @@ public class Student extends User{
 	public int getNoOfAU() {
 		return noOfAU;
 	}
-	
+
 	public void setMaxAU(int AU) {
 		maxAU = AU;
 	}
@@ -195,7 +35,7 @@ public class Student extends User{
 	public int getMaxAU() {
 		return maxAU;
 	}
-	
+
 	public void setGender(String gender) {
 		this.gender=gender;
 	}
@@ -203,13 +43,75 @@ public class Student extends User{
 	public String getGender() {
 		return gender;
 	}
-	
+
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
 	
 	public String getNationality() {
 		return nationality;
+	}
+
+	public void setMatriculationNumber(String matricNumber) {
+		this.matricNumber = matricNumber;
+	}
+	
+	public String getMatriculationNumber() {
+		return matricNumber;
+	}
+
+	public ArrayList<Index> getRegistered(){
+		return registered;
+	}
+	
+	public ArrayList<Index> getWaitlist(){
+		return waitlist;
+	}
+	
+	// CLASS METHODS
+	public int checkVacancy(Index index) {
+		return index.getVacancy();
+	}
+	
+	public void addReg(Index index) {
+		registered.add(index);
+	}
+	
+	public void removeReg(Index index) {
+		registered.remove(index);
+	}
+
+	public void addWaitlist(Index index) {
+		waitlist.add(index);
+	}
+
+	public void removeWaitlist(Index index) {
+		waitlist.remove(index);
+	}
+	
+	public void addIndex(Index index) {
+		RegistrationManager.processAdd(this, index);
+	}
+	
+	public void dropIndex(Index index) {
+		RegistrationManager.processDrop(this, index);
+	}
+
+	public void changeIndex(Index sourceInd, Index desInd) {
+		RegistrationManager.processChangeIndex(this, sourceInd, desInd);		
+	}
+	
+	public void swapIndex(Index sourceInd, Index desInd, Student desID) {
+		RegistrationManager.processSwap(sourceInd, desInd, this, desID);
+	}
+
+	public void printIndex() {
+
+		System.out.println("Registered indexes: ");
+		for(Index i : registered){
+			System.out.println(i.getIndexNo());
+		}
+
 	}
 	
 }
