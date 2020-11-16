@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -102,7 +102,7 @@ public class MySTARS implements Serializable{
         Scanner sc = new Scanner(System.in);
         int choice=0;
         String index;
-        boolean exist;
+        boolean exist=false;
 
         MySTARS mainApp = loadData();
         if (mainApp == null) {
@@ -115,6 +115,146 @@ public class MySTARS implements Serializable{
         }
 
         User temp;
+
+        if(mode == 1) {
+            while(choice != 8){
+                System.out.println("*************Welcome to MySTARS!*************");
+                System.out.println("(1) Edit registeration period ");
+                System.out.println("(2) Add student");
+                System.out.println("(3) Add Course");
+                System.out.println("(4) Update Course");
+                System.out.println("(5) Check available slot for an index number");
+                System.out.println("(6) Print student list by index number");
+                System.out.println("(7) Print student list by course");
+                System.out.println("(8) Quit");
+                choice = sc.nextInt();
+                
+                Admin admin = (Admin)temp;
+
+                switch(choice){
+                    case 1:
+                        SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MM-yyyy");
+                        System.out.println("Please enter the start date (dd-mm-yyyy):");
+                        String startDate=sc.next();
+                        System.out.println("Please enter the end date (dd-mm-yyyy):");
+                        String endDate=sc.next();
+                        try{
+                            admin.editPeriod(dateFormat.parse(startDate),dateFormat.parse(endDate));
+                        }catch(ParseException e){
+                            System.out.println("Please use the correct format (dd-mm-yyyy) !");
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Please enter student's name:");
+                        String name = sc.nextLine();
+                        System.out.println("Please enter student's username:");
+                        String username = sc.nextLine();
+                        System.out.println("Please enter student's password:");
+                        String password = sc.nextLine();
+                        System.out.println("Please enter student's maximum AU:");
+                        int maxAU = sc.nextInt();
+                        String dummy = sc.nextLine();
+                        System.out.println("Please enter student's gender:");
+                        String gender = sc.nextLine();
+                        System.out.println("Please enter student's nationality:");
+                        String nationality = sc.nextLine();
+                        System.out.println("Please enter student's Matriculation Number:");
+                        String matricNumber = sc.nextLine();
+                        admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber);
+                        break;
+                    case 3:
+                        System.out.println("Please enter school of the course:");
+                        String school = sc.nextLine();
+                        System.out.println("Please enter the course code:");
+                        String courseCode = sc.nextLine();
+                        System.out.println("Please enter the course name:");
+                        String courseName = sc.nextLine();
+                        System.out.println("Please enter the number of AU:");
+                        int numAU = sc.nextInt();
+                        dummy = sc.nextLine();
+                        admin.addCourse(school,courseCode,courseName,numAU);
+                        break;
+                    case 4:
+                        System.out.println("Please enter the course code:");
+                        courseCode = sc.next();
+                        for (Course c: mainApp.courses){
+                            if(courseCode == c.getCourseCode()){
+                                    admin.updateCourse(c);
+                                    exist = true;
+                                    break;
+                                    
+                            }
+                        }
+                        if(!exist){
+                            System.out.println("The course name does not exist!");
+                        }
+                        break;
+
+                    case 5:
+                        System.out.println("Please enter the index:");
+                        index = sc.next();
+                        exist = false;
+                        dummy = sc.nextLine();
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    admin.checkVacancy(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 6:
+                        System.out.println("Please enter the course name:");
+                        courseName = sc.nextLine();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(courseName == c.getCourseName()){
+                                    admin.printByCourse(c);
+                                    exist = true;
+                                    break;
+                                    
+                            }
+                        }
+                        if(!exist){
+                            System.out.println("The course name does not exist!");
+                        }
+                        break;
+                    case 7:
+                        System.out.println("Please enter the index number:");
+                        index = sc.next();
+                        exist = false;
+                        for (Course c: mainApp.courses){
+                            if(!exist){
+                                for(Index i : c.getIndexes()){
+                                if(index == i.getIndexNo()){
+                                    admin.printByIndex(i);
+                                    exist = true;
+                                    break;
+                                }
+                                    
+                            }}
+                        }
+                        if(!exist){
+                            System.out.println("The index number does not exist!");
+                        }
+                        break;
+                    case 8:
+                        System.out.println("Program terminating...");
+                        break;
+                    default:
+                        System.out.println("Wrong Input!!");
+                        break;
+                }
+                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+            }
+        }
         
         if(mode == 2){
             for (Student s : mainApp.students) {
@@ -348,149 +488,6 @@ public class MySTARS implements Serializable{
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
-
-        if(mode == 1) {
-            while(choice != 8){
-                System.out.println("*************Welcome to MySTARS!*************");
-                System.out.println("(1) Edit registeration period ");
-                System.out.println("(2) Add student");
-                System.out.println("(3) Add Course");
-                System.out.println("(4) Update Course");
-                System.out.println("(5) Check available slot for an index number");
-                System.out.println("(6) Print student list by index number");
-                System.out.println("(7) Print student list by course");
-                System.out.println("(8) Quit");
-                choice = sc.nextInt();
-                
-                Admin admin = (Admin)temp;
-
-                switch(choice){
-                    case 1:
-                        SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MM-yyyy");
-                        System.out.println("Please enter the start date (dd-mm-yyyy):");
-                        String startDate=sc.next();
-                        System.out.println("Please enter the end date (dd-mm-yyyy):");
-                        String endDate=sc.next();
-                        try{
-                            admin.editPeriod(dateFormat.parse(startDate),dateFormat.parse(endDate));
-                        }catch(DateTimeParseException e){
-                            System.out.println("Please use the correct format (dd-mm-yyyy) !");
-                        }
-                        break;
-                    case 2:
-                        System.out.println("Please enter student's name:");
-                        String name = sc.nextLine();
-                        System.out.println("Please enter student's username:");
-                        String username = sc.nextLine();
-                        System.out.println("Please enter student's password:");
-                        String password = sc.nextLine();
-                        System.out.println("Please enter student's maximum AU:");
-                        int maxAU = sc.nextInt();
-                        String dummy = sc.nextLine();
-                        System.out.println("Please enter student's gender:");
-                        String gender = sc.nextLine();
-                        System.out.println("Please enter student's nationality:");
-                        String nationality = sc.nextLine();
-                        System.out.println("Please enter student's Matriculation Number:");
-                        String matricNumber = sc.nextLine();
-                        admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber);
-                        break;
-                    case 3:
-                        System.out.println("Please enter school of the course:");
-                        String school = sc.nextLine();
-                        System.out.println("Please enter the course code:");
-                        String courseCode = sc.nextLine();
-                        System.out.println("Please enter the course name:");
-                        String courseName = sc.nextLine();
-                        System.out.println("Please enter the number of AU:");
-                        int numAU = sc.nextInt();
-                        dummy = sc.nextLine();
-                        admin.addCourse(school,courseCode,courseName,numAU);
-                        break;
-                    case 4:
-                        System.out.println("Please enter the course code:");
-                        courseCode = sc.next();
-                        for (Course c: mainApp.courses){
-                            if(courseCode == c.getCourseCode()){
-                                    admin.updateCourse(c);
-                                    exist = true;
-                                    break;
-                                    
-                            }
-                        }
-                        if(!exist){
-                            System.out.println("The course name does not exist!");
-                        }
-                        break;
-                        admin.updateCourse(courseCode);
-                        break;
-                    case 5:
-                        System.out.println("Please enter the index:");
-                        index = sc.next();
-                        exist = false;
-                        dummy = sc.nextLine();
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
-                                    admin.checkVacancy(i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.println("The index number does not exist!");
-                        }
-                        break;
-                    case 6:
-                        System.out.println("Please enter the course name:");
-                        courseName = sc.nextLine();
-                        exist = false;
-                        for (Course c: mainApp.courses){
-                            if(courseName == c.getCourseName()){
-                                    admin.printByCourse(c);
-                                    exist = true;
-                                    break;
-                                    
-                            }
-                        }
-                        if(!exist){
-                            System.out.println("The course name does not exist!");
-                        }
-                        break;
-                    case 7:
-                        System.out.println("Please enter the index number:");
-                        index = sc.next();
-                        exist = false;
-                        for (Course c: mainApp.courses){
-                            if(!exist){
-                                for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
-                                    admin.printByIndex(i);
-                                    exist = true;
-                                    break;
-                                }
-                                    
-                            }}
-                        }
-                        if(!exist){
-                            System.out.println("The index number does not exist!");
-                        }
-                        break;
-                    case 8:
-                        System.out.println("Program terminating...");
-                        break;
-                    default:
-                        System.out.println("Wrong Input!!");
-                        break;
-                }
-                System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
-            }
-        }
-
-
     }
 }
 
