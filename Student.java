@@ -68,47 +68,6 @@ public class Student extends User implements Serializable{
 	}
 	
 	// CLASS METHODS
-	public boolean isAdded(Index index) {
-		return (registered.contains(index) || waitlist.contains(index));
-	}
-	
-	public boolean addIndex(Index index) {
-		
-		if (isAdded(index)) {
-			System.out.println("The index has already been registered before! ");
-			return false;
-		}
-
-		// call processAdd() of RegistrationManager class
-		// return true;
-	
-	}
-	
-	public boolean dropIndex(Index index) {
-		
-		if (isAdded(index)) {
-			if(registered.contains(index))
-				removeReg(index);
-			else if(waitlist.contains(index))
-				removeWaitlist(index);
-
-			return processDrop(index);
-		}
-		else {
-			System.out.println("Unable to drop an unregistered index!");
-			return false;
-		}
-	}
-
-	public void printIndex() {
-
-		System.out.println("Registered indexes: ");
-		for(Index i : registered){
-			System.out.println(i.getIndexNo());
-		}
-
-	}
-	
 	public int checkVacancy(Index index) {
 		return index.getVacancy();
 	}
@@ -128,40 +87,30 @@ public class Student extends User implements Serializable{
 	public void removeWaitlist(Index index) {
 		waitlist.remove(index);
 	}
-
-	public boolean changeIndex(Index sourceInd, Index desInd) {
-		
-		if(!isAdded(sourceInd)) {
-			System.out.println("Index " + sourceInd + " is not registered before!");
-			return false;
-		}
-		
-		// call processSwap() of RegistrationManager class
-		// return true;
-		
+	
+	public void addIndex(Index index) {
+		RegistrationManager.processAdd(this, index);
 	}
 	
+	public void dropIndex(Index index) {
+		RegistrationManager.processDrop(this, index);
+	}
+
+	public void changeIndex(Index sourceInd, Index desInd) {
+		RegistrationManager.processSwap(this, sourceInd, desInd);		
+	}
 	
-	
-	public boolean swapIndex(Index sourceInd, Index desInd, Student sourceID, Student desID) {
-		
-		boolean checkSource = sourceID.isAdded(sourceInd);
-		boolean checkDes = desID.isAdded(desInd);
-		
-		if(!checkSource){
-			System.out.println("Student "+ sourceID+ " has not registered for "+sourceInd+"!");
-			return false;
+	public void swapIndex(Index sourceInd, Index desInd, Student sourceID, Student desID) {
+		RegistrationManager.processSwap(this, sourceInd, desInd, sourceID, desID);
+	}
+
+	public void printIndex() {
+
+		System.out.println("Registered indexes: ");
+		for(Index i : registered){
+			System.out.println(i.getIndexNo());
 		}
-		
-		if(!checkDes){
-			System.out.println("Student "+ desID+" has not registered for "+desInd+"!");
-			return false;
-		}
-		
-		if(checkSource && checkDes){
-			// call processSwap() of RegistrationManager class
-			// return true;
-		}
+
 	}
 	
 }
