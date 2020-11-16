@@ -46,6 +46,7 @@ public class Class implements Serializable{
     }
 
     // CLASS METHODS
+    //Used by a class to check whether a class clashed with another class
     public boolean clash(Class anotherClass){
         if(startTime.compareTo(anotherClass.getEndTime()) > 0 || 
             anotherClass.getStartTime().compareTo(endTime) > 0)
