@@ -52,11 +52,11 @@ public class Student extends User implements Serializable{
 	}
 
 	public void setMatriculationNumber(String matricNumber) {
-		matriculationNumber = matricNumber;
+		this.matricNumber = matricNumber;
 	}
 	
 	public String getMatriculationNumber() {
-		return matriculationNumber;
+		return matricNumber;
 	}
 
 	public ArrayList<Index> getRegistered(){
