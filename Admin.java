@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Date;
+import java.util.Scanner;
 
-public class Admin extends User{
+public class Admin extends User implements Serializable{
     MySTARS mainApp;
 
     public Admin(String name, String username){
@@ -14,9 +15,9 @@ public class Admin extends User{
         period.setPeriod(start, end);
     }
 
-    public void addStudent(String name, String username, String password, int maxAU, String gender, String nationality){
+    public void addStudent(String name, String username, String password, int maxAU, String gender, String nationality, String matricNumber){
         if(PasswordManager.addAccount(username, password)){
-            Student newStudent = new Student(name, username, maxAU, gender, nationality);
+            Student newStudent = new Student(maxAU, gender, nationality, matricNumber);
             mainApp.addStudent(newStudent);
             System.out.println("Student added!");
         }
@@ -27,19 +28,11 @@ public class Admin extends User{
 
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
         Course course = new Course(school, courseCode, courseName, numOfAU);
-        mainApp.courses.add(course);
+        mainApp.addCourse(course);
     }
 
-    public void updateCourse(String courseCode){
-        Course course;
-        for(Course c: mainApp.courses){
-            if(c.courseCode == courseCode){
-                course = c;
-                break;
-            }
-        }
-
-        System.out.println("Updating course " + courseCode);
+    public void updateCourse(Course course){
+        System.out.println("Updating course " + course.getCourseCode());
         System.out.println("(1) Update Course Code");
         System.out.println("(2) Update Course Name");
         System.out.println("(3) Update School");
@@ -55,12 +48,12 @@ public class Admin extends User{
             case 1:
                 System.out.print("New Course Code: ");
                 tem = sc.nextLine();
-                course.setCode(tem);
+                course.setCourseCode(tem);
                 break;
             case 2:
                 System.out.print("New Course Name: ");
                 tem = sc.nextLine();
-                course.setName(tem);
+                course.setCourseName(tem);
                 break;
             case 3:
                 System.out.print("New School: ");
@@ -69,19 +62,30 @@ public class Admin extends User{
                 break;
             case 4:
                 System.out.print("IndexNo to be added: ");
-                //Need read more attributes(indexno, classsize, XXXX)
                 tem = sc.nextLine();
-                course.addIndex(tem); 
+                System.out.print("IndexNo to be classSize: ");
+                int classSize = sc.nextInt();
+                course.addIndex(new Index(course, tem, classSize)); 
                 break;
             case 5:
                 System.out.print("IndexNo to be updated: ");
                 tem = sc.nextLine();
-                course.updateIndex(tem);
+                for(Index i: course.getIndexes()){
+                    if(i.getIndexNo() == tem){
+                        course.updateIndex(i);
+                        break;
+                    }
+                }
                 break;
             case 6:
                 System.out.print("IndexNo to be dropped: ");
                 tem = sc.nextLine();
-                course.dropIndex(tem);
+                for(Index i: course.getIndexes()){
+                    if(i.getIndexNo() == tem){
+                        course.dropIndex(i);
+                        break;
+                    }
+                }
                 break;
             default:
                 System.out.println("Invalid option!");
@@ -96,7 +100,7 @@ public class Admin extends User{
     public void printByCourse(Course course){
         ArrayList<Index> indexes = course.getIndexes();
         for(Index index: indexes){
-            ArrayList<Student> students = index.getRegisteredStud();
+            ArrayList<Student> students = index.getReg();
             for(Student student: students){
                 System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
             }
@@ -104,7 +108,7 @@ public class Admin extends User{
     }
 
     public void printByIndex(Index index){
-        ArrayList<Student> students = index.getRegisteredStud();
+        ArrayList<Student> students = index.getReg();
             for(Student student: students){
                 System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
         }

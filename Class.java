@@ -1,30 +1,35 @@
-import java.util.*;
+import java.io.Serializable;
+import java.util.Date;
 
-public class Class {
+public class Class implements Serializable{
 
     private String type;
     private Date startTime;
     private Date endTime;
     private String venue;
+    private String groupNo;
     private String week;
 
-    public Class(String type, Date startTime, Date endTime, String venue, String week) {
+    // CONSTRUCTOR
+    public Class(String type, Date startTime, Date endTime, String venue, String groupNo, String week) {
         this.type = type;
         this.startTime = startTime;
         this.endTime = endTime;
         this.venue = venue;
+        this.groupNo = groupNo;
         this.week = week;
     }
 
+    // SET AND GET METHODS
     public String getType(){
         return type;
     }
 
-    public Calendar getStartTime(){
+    public Date getStartTime(){
         return startTime;
     }
 
-    public Calendar getEndTime(){
+    public Date getEndTime(){
         return endTime;
     }
 
@@ -32,7 +37,20 @@ public class Class {
         return venue;
     }
 
-    public String week(){
+    public String getGroup(){
+        return groupNo;
+    }
+    
+    public String getWeek(){
         return week;
     }
+
+    // CLASS METHODS
+    public boolean clash(Class anotherClass){
+        if(startTime.compareTo(anotherClass.getEndTime()) > 0 || 
+            anotherClass.getStartTime().compareTo(endTime) > 0)
+            return true;
+        return false;
+    }
+
 }
