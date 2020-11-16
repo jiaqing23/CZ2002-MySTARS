@@ -13,14 +13,15 @@ public class Index implements Serializable{
     private Queue<Student> waitlist = new LinkedList<Student>();
     private ArrayList<Class> classes = new ArrayList<Class>();
 
+	//CONSTRUCTOR
     public Index(Course course, String indexNo, int classSize) {
         this.course = course;
         this.indexNo = indexNo;
         this.classSize = classSize;
         this.vacancy = classSize;
     }
-
-
+	
+	//Set and Get
     public void setIndexNo(String index) {
         this.indexNo = index;
     }
@@ -53,6 +54,8 @@ public class Index implements Serializable{
         return registeredStud;
     }
 
+	//CLASS METHOD
+	//Add a new student into the index
     public void addReg(Student student) {
         registeredStud.add(student);
         vacancy--;
@@ -63,10 +66,12 @@ public class Index implements Serializable{
         vacancy++;
     }
 
+	//Add a student into the waitlist
     public void addWaitlist(Student student) {
         waitlist.add(student);
     }
 
+	//Remove a student from the waitlist
     public void removeWaitlist(Student student) {
         waitlist.remove(student);
     }
