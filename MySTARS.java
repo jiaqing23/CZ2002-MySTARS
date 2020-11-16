@@ -26,22 +26,27 @@ public class MySTARS implements Serializable{
         // TBD
     }
 
+    //Add a new student into the system
     public void addStudent(Student student) {
         students.add(student);
     }
 
+    //Add a new course into the system
     public void addCourse(Course course) {
         courses.add(course);
     }
 
+    //Get the Add/Drop period
     public Period getPeriod(){
         return period;
     }
 
+    //Get the list of all courses
     public ArrayList<Course> getCourses(){
         return courses;
     }
 
+    //Save data into file
     public boolean saveData() {
         try {
             FileOutputStream f = new FileOutputStream(new File(fileName));
@@ -61,6 +66,7 @@ public class MySTARS implements Serializable{
         return false;
     }
 
+    //Load data from file
     public static MySTARS loadData() {
         try {
             FileInputStream f = new FileInputStream(new File(fileName));
@@ -85,6 +91,7 @@ public class MySTARS implements Serializable{
         return null;
     }
 
+    //Login method
     public boolean login() {
         Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
@@ -135,8 +142,11 @@ public class MySTARS implements Serializable{
             }
         }
         
+        //mode=1 mean admin mode
+        //Admin can login in any period
         if(mode == 1) {
             while(choice != 8){
+                //Operations that an admin can performs
                 System.out.println("*************Welcome to MySTARS!*************");
                 System.out.println("(1) Edit registeration period ");
                 System.out.println("(2) Add student");
@@ -276,8 +286,11 @@ public class MySTARS implements Serializable{
         }
     
 
+        //mode=2 mean student mode
+        //Need to make sure that the login period is around the period opened for add/drop
         if(mode == 2 && mainApp.period.validatePeriod()){
             while(choice != 7){
+                //Operations that a student can perform
                 System.out.println("*************Welcome to MySTARS!*************");
                 System.out.println("(1) Add Course ");
                 System.out.println("(2) Drop Course");
@@ -447,7 +460,9 @@ public class MySTARS implements Serializable{
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
-
+   
+        //If the period is not opened for add/drop
+        //The student can only check the courses registered and vacancy of a course
         if(mode == 2 && !mainApp.period.validatePeriod()){
             while(choice != 3){
                 System.out.println("*************Welcome to MySTARS!*************");
