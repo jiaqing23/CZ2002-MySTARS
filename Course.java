@@ -54,14 +54,17 @@ public class Course implements Serializable{
 	}
 
 	// CLASS METHODS
+	//Used to add a new index
 	public void addIndex(Index index) {
 		indexes.add(index);
 	}
 	
+	//Used to drop an existing index 
 	public void dropIndex(Index index) {
 		indexes.remove(index);
 	}
 
+	//Used to update the index number or vacancy of an index
 	public void updateIndex(Index index) {
 
 		System.out.println("(1) Update IndexNo");
@@ -97,6 +100,7 @@ public class Course implements Serializable{
 		} while(option!= 1 && option != 2);
 	}
 	
+	//Used to list out the available indexes for a course
 	public void listIndex() {
 		System.out.println("Indexes available: ");
 		for(int i=0; i<indexes.size();i++) {
