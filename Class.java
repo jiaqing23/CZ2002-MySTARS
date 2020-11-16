@@ -30,7 +30,6 @@ public class Class implements Serializable{
         return classID;
     }
 
-    // SET AND GET METHODS
     public String getType(){
         return type;
     }

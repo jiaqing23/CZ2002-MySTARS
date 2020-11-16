@@ -50,7 +50,6 @@ public class Course implements Serializable{
 		return numOfAU;
 	}
 	
-	
 	public ArrayList<Index> getIndexes() {
 		return indexes;
 	}
@@ -145,5 +144,5 @@ public class Course implements Serializable{
 			System.out.println(indexes.get(i));
 		}
 	}
-	
+
 }
