@@ -21,14 +21,17 @@ public class RegistrationManager implements Serializable{
         return false;
     }
 
+    //Check whether the index is in student's waitlist
     public static boolean isInWaitlist(Student student, Index index){
         return student.getWaitlist().contains(index);
     }
     
+    //Check whether the index is in student's registered index
     public static boolean isRegistered(Student student, Index index){
         return student.getRegistered().contains(index);
     }
 
+    //Process adding of index
     public static boolean processAdd(Student student, Index index){
         if(isClash(student, index)){
             System.out.println("This index clash with other indexes you registered or added into waitlist!");
@@ -57,12 +60,14 @@ public class RegistrationManager implements Serializable{
         return true;
     }
 
+    //Process dropping of index
     public static void processDrop(Student student, Index index){
         if(isInWaitlist(student, index)){
             student.removeWaitlist(index);
             index.removeWaitlist(student);
         }
 
+        //Need to make sure that the student has registered for the index before dropping
         if(isRegistered(student, index)){
             Student newAdd;
             index.removeReg(student);
@@ -86,17 +91,20 @@ public class RegistrationManager implements Serializable{
         }
     }
 
+    //Method used when student wants to change index with friend
     public static void processSwap(Index sourceInd, Index desInd, Student sourceStudent, Student desStudent){
+        //Unable to change if the students has not registered for the index or still in waitlist
         if(!isRegistered(sourceStudent, sourceInd)){
             System.out.println("You have not registered for this index or it is still in your waitlist!");
             return;
         }
-        
+     
         if(!isRegistered(desStudent, desInd)){
             System.out.println("Your friend don't have this index.");
             return;
         }
 
+        //Checking whether there will be any clashes after swapping the indexes
         if(isClash(sourceStudent, sourceInd)){
             System.out.println("This index clash with other indexes you registered!");
             return;
@@ -122,6 +130,7 @@ public class RegistrationManager implements Serializable{
         desInd.addReg(sourceStudent);
     }
 
+    //Method used when the student wants to change index
     public static void processChangeIndex(Student student, Index sourceInd, Index desInd){
 
         if(isInWaitlist(student, sourceInd)){
