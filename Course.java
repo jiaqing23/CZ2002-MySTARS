@@ -70,8 +70,7 @@ public class Course implements Serializable{
 		System.out.println("(4) Remove class");
 		System.out.println("Select Option: ");
         Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
-		sc.next();
+        int option = MySTARS.readInt();
 		
 		String tem;
 		do{
@@ -106,9 +105,9 @@ public class Course implements Serializable{
 					System.out.println("Type of class: ");
 					String type = sc.nextLine();
 					System.out.println("Start time: ");
-					int startTime = sc.nextInt(); sc.nextLine();
+					int startTime = MySTARS.readInt();
 					System.out.println("End time: ");
-					int endTime = sc.nextInt(); sc.nextLine();
+					int endTime = MySTARS.readInt();
 					System.out.println("Venue: ");
 					String venue = sc.nextLine();
 					System.out.println("Group number: ");

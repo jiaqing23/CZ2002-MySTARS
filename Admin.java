@@ -42,8 +42,7 @@ public class Admin extends User implements Serializable{
         System.out.println("(6) Remove Index");
         System.out.println("Select Option: ");
         Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
-        sc.next(); 
+        int option = MySTARS.readInt();
         String tem;
          
         switch(option){
@@ -66,7 +65,7 @@ public class Admin extends User implements Serializable{
                 System.out.print("IndexNo to be added: ");
                 tem = sc.nextLine();
                 System.out.print("IndexNo to be classSize: ");
-                int classSize = sc.nextInt();
+                int classSize = MySTARS.readInt();
                 course.addIndex(new Index(course, tem, classSize)); 
                 break;
             case 5:

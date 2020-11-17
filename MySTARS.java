@@ -103,16 +103,24 @@ public class MySTARS implements Serializable{
 
     //Login method
     public boolean login() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("(1)Admin\t(2)Student");
         System.out.print("Mode: ");
-        this.setMode(sc.nextInt());
+        this.setMode(readInt());
         System.out.print("Username: ");
-        this.username = sc.next();
+        this.username = sc.nextLine();
         System.out.print("Password: ");
         String password = new String(System.console().readPassword());
-        //String password = sc.next();
         return PasswordManager.validateAccount(username, password, this.mode == 1);
+    }
+
+    public static int readInt(){
+        int num = 0;
+        try {
+            num = Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return num;
     }
 
     public static void main(String[] args) {
@@ -162,12 +170,12 @@ public class MySTARS implements Serializable{
                 System.out.println("(3) Add Course");
                 System.out.println("(4) Update Course");
                 System.out.println("(5) Check available slot for an index number");
-                System.out.println("(6) Print student list by index number");
-                System.out.println("(7) Print student list by course");
+                System.out.println("(6) Print student list by course");
+                System.out.println("(7) Print student list by index number");
                 System.out.println("(8) Quit");
                 System.out.print("Your choice: ");
 
-                choice = Integer.parseInt(sc.nextLine());
+                choice = readInt();
                 Admin admin = (Admin)temp;
 
                 switch(choice){
@@ -191,8 +199,7 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter student's password:");
                         String password = sc.nextLine();
                         System.out.println("Please enter student's maximum AU:");
-                        int maxAU = sc.nextInt();
-                        String dummy = sc.nextLine();
+                        int maxAU = readInt();
                         System.out.println("Please enter student's gender:");
                         String gender = sc.nextLine();
                         System.out.println("Please enter student's nationality:");
@@ -209,13 +216,12 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter the course name:");
                         String courseName = sc.nextLine();
                         System.out.println("Please enter the number of AU:");
-                        int numAU = sc.nextInt();
-                        dummy = sc.nextLine();
+                        int numAU = readInt();
                         admin.addCourse(school,courseCode,courseName,numAU);
                         break;
                     case 4:
                         System.out.println("Please enter the course code:");
-                        courseCode = sc.next();
+                        courseCode = sc.nextLine();
                         for (Course c: mainApp.courses){
                             if(courseCode == c.getCourseCode()){
                                     admin.updateCourse(c);
@@ -231,13 +237,12 @@ public class MySTARS implements Serializable{
 
                     case 5:
                         System.out.println("Please enter the index:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
-                        dummy = sc.nextLine();
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
+                                if(index.equals(i.getIndexNo())){
                                     admin.checkVacancy(i);
                                     exist = true;
                                     break;
@@ -254,7 +259,7 @@ public class MySTARS implements Serializable{
                         courseName = sc.nextLine();
                         exist = false;
                         for (Course c: mainApp.courses){
-                            if(courseName == c.getCourseName()){
+                            if(courseName.equals(c.getCourseName())){
                                     admin.printByCourse(c);
                                     exist = true;
                                     break;
@@ -267,12 +272,12 @@ public class MySTARS implements Serializable{
                         break;
                     case 7:
                         System.out.println("Please enter the index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
+                                if(index.equals(i.getIndexNo())){
                                     admin.printByIndex(i);
                                     exist = true;
                                     break;
@@ -309,19 +314,19 @@ public class MySTARS implements Serializable{
                 System.out.println("(5) Change Index Number of Course Registered");
                 System.out.println("(6) Swap Index with Another Student");
                 System.out.println("(7) Quit");
-                choice = sc.nextInt();
+                choice = readInt();
                 
                 Student student = (Student)temp;
                 Index currIndex = null;
                 switch(choice){
                     case 1:
                         System.out.println("Please enter the index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
+                                if(index.equals(i.getIndexNo())){
                                     student.addIndex(i);
                                     exist = true;
                                     break;
@@ -335,17 +340,17 @@ public class MySTARS implements Serializable{
                         break;
                     case 2:
                         System.out.println("Please enter the index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
                         for (Index i: student.getRegistered()){
-                            if(index == i.getIndexNo()){
+                            if(index.equals(i.getIndexNo())){
                                 student.dropIndex(i);
                                 exist = true;
                                 break;
                             }
                         }
                         for (Index i: student.getWaitlist()){
-                            if(index == i.getIndexNo()){
+                            if(index.equals(i.getIndexNo())){
                                 student.dropIndex(i);
                                 exist = true;
                                 break;
@@ -360,12 +365,12 @@ public class MySTARS implements Serializable{
                         break;
                     case 4:
                         System.out.println("Please enter the index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
+                                if(index.equals(i.getIndexNo())){
                                     student.checkVacancy(i);
                                     exist = true;
                                     break;
@@ -379,17 +384,17 @@ public class MySTARS implements Serializable{
                         break;
                     case 5:
                         System.out.println("Please enter the current index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
                         for (Index i: student.getRegistered()){
-                            if(index == i.getIndexNo()){
+                            if(index.equals(i.getIndexNo())){
                                 currIndex = i;
                                 exist = true;
                                 break;
                             }   
                         }
                         for (Index i: student.getWaitlist()){
-                            if(index == i.getIndexNo()){
+                            if(index.equals(i.getIndexNo())){
                                 currIndex = i;
                                 exist = true;
                                 break;
@@ -400,17 +405,17 @@ public class MySTARS implements Serializable{
                             break;
                         }
                         System.out.println("Please enter the new index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
                         for (Index i: currIndex.getCourse().getIndexes()){
-                            if(index == i.getIndexNo()){
+                            if(index.equals(i.getIndexNo())){
                                 student.changeIndex(currIndex,i);
                                 exist = true;
                                 break;
                             }   
                         }
                         for (Index i: currIndex.getCourse().getIndexes()){
-                            if(index == i.getIndexNo()){
+                            if(index.equals(i.getIndexNo())){
                                 student.changeIndex(currIndex,i);
                                 exist = true;
                                 break;
@@ -426,7 +431,7 @@ public class MySTARS implements Serializable{
                         String me = sc.nextLine();
                         exist = false;
                         for (Student s: mainApp.students){
-                            if(me == s.getUsername()){
+                            if(me.equals(s.getUsername())){
                                 peer = s;
                                 exist = true;
                                 break;
@@ -445,20 +450,20 @@ public class MySTARS implements Serializable{
                         }
 
                         System.out.println("Please enter the current index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         for (Course c: mainApp.courses){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
+                                if(index.equals(i.getIndexNo())){
                                     currIndex = i;
                                     break;
                                 }    
                             }
                         }
                         System.out.println("Please enter the new index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         for (Course c: mainApp.courses){
                             for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
+                                if(index.equals(i.getIndexNo())){
                                     student.swapIndex(currIndex, i, peer);
                                     break;
                                 }    
@@ -484,7 +489,7 @@ public class MySTARS implements Serializable{
                 System.out.println("(1) Print Course Registered");
                 System.out.println("(2) Check Course Vacancy");
                 System.out.println("(3) Quit");
-                choice = sc.nextInt();
+                choice = readInt();
                 
                 Student student = (Student)temp;
 
@@ -494,12 +499,12 @@ public class MySTARS implements Serializable{
                         break;
                     case 2:
                         System.out.println("Please enter the index number:");
-                        index = sc.next();
+                        index = sc.nextLine();
                         exist = false;
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index == i.getIndexNo()){
+                                if(index.equals(i.getIndexNo())){
                                     student.checkVacancy(i);
                                     exist = true;
                                     break;
