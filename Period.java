@@ -8,8 +8,19 @@ import java.util.Date;
  * Student can only access the system within the registration period.
  */
 public class Period implements Serializable{
+    /**
+     * Period class object is associated with the Calendar class instance.
+     */
     Calendar calendar = Calendar.getInstance();
+
+    /**
+     * The start time of the registration Period.
+     */
     private Date startPeriod;
+    
+    /**
+     * The end time of the registration Period.
+     */
     private Date endPeriod;
 
     /**
