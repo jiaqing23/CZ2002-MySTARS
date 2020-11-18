@@ -10,12 +10,24 @@ public class RegistrationManager implements Serializable{
         indexes.addAll(student.getWaitlist());
 
         for(Index anotherIndex: indexes){
-            if(index.getCourse() == anotherIndex.getCourse()) return true;
             for(Class class1: index.getClasses()){
                 for(Class class2: anotherIndex.getClasses()){
                     if(class1.clash(class2)) return true;
                 }
             }
+        }
+        
+        return false;
+    }
+
+    public static boolean isRepeated(Student student, Index index){
+        
+        ArrayList<Index> indexes = new ArrayList<Index>();
+        indexes.addAll(student.getRegistered());
+        indexes.addAll(student.getWaitlist());
+
+        for(Index anotherIndex: indexes){
+            if(index.getCourse() == anotherIndex.getCourse()) return true;
         }
         
         return false;
@@ -33,6 +45,11 @@ public class RegistrationManager implements Serializable{
 
     //Process adding of index
     public static boolean processAdd(Student student, Index index){
+        if(isRepeated(student, index)){
+            System.out.println("You took other index of this course!");
+            return false;
+        }
+
         if(isClash(student, index)){
             System.out.println("This index clash with other indexes you registered or added into waitlist!");
             return false;
