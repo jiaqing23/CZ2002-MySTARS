@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 /**
- * Represent uesrs (Admin/Student) that uses the system application.
+ * Represent an user (Admin/Student) that uses the MySTARS system application.
  * User is a superclass that has derived class of Admin or Student.
  */
 public class User implements Serializable {

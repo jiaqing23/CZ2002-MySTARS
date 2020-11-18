@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * Represents an admin that can uses the MySTARS class object.
- * An Admin is also a user, therefore it inherits the User class.
+ * Represents an admin that uses the MySTARS system application.
+ * An Admin is an user, therefore it inherits the User class.
  */
 public class Admin extends User implements Serializable{
 
