@@ -59,6 +59,7 @@ public class PasswordManager implements Serializable{
         return false;
     }
 
+    //Method to check whether the password entered for a username is correct or not
     public static boolean validateAccount(String username, String password, boolean isStaff) {
         try {
             Scanner scanner = new Scanner(new File(fileName));
