@@ -30,7 +30,6 @@ public class Admin extends User implements Serializable{
      * Method that allows Admin to update the registration period with the given start and end date.
      * @param start New starting date of the registration period.
      * @param end New ending date of the registration period.
-     * @return Nothing.
      */
     public void editPeriod(Date start, Date end){
         Period period = mainApp.getPeriod();
@@ -46,7 +45,6 @@ public class Admin extends User implements Serializable{
      * @param gender New Student's gender.
      * @param nationality New Student's nationality.
      * @param matricNumber New Student's matriculation number.
-     * @return Nothing.
      */
     public void addStudent(String name, String username, String password, int maxAU, String gender, String nationality, String matricNumber){
         if(PasswordManager.addAccount(username, password)){
@@ -61,11 +59,10 @@ public class Admin extends User implements Serializable{
 
     /**
      * Method that allows Admin to add an new Course with the given parameters.
-     * @param school The school e.g. SCSE, MAE, etc. that provides the new Course.
+     * @param school The school that provides the new Course. E.g. SCSE, MAE, etc.
      * @param courseCode The code of the new Course. E.g. CZ2001, CZ2002, etc.
      * @param courseName The name of the new Course. E.g. Algorithms
      * @param numOfAU The number of academic units of the new Course
-     * @return Nothing.
      */
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
         Course course = new Course(school, courseCode, courseName, numOfAU);
@@ -75,7 +72,6 @@ public class Admin extends User implements Serializable{
     /**
      * Method that allows Admin to update an existing Course.
      * @param course The exisiting Course object to be updated.
-     * @return Nothing.
      */
     public void updateCourse(Course course){
         System.out.println("Updating course " + course.getCourseCode());
@@ -142,7 +138,6 @@ public class Admin extends User implements Serializable{
     /**
      * Method that allows Admin to check the vacancy of an existing Index of a existing Course.
      * @param index The exisiting Index object to be updated.
-     * @return Nothing.
      */
     public void checkVacancy(Index index){
         System.out.printf("Index %s have $d slots left.\n", index.getIndexNo(), index.getVacancy());
@@ -150,8 +145,7 @@ public class Admin extends User implements Serializable{
 
     /**
      * Method that allows Admin to print all the registered Students of an existing Course. 
-     * @param course The existing Course object with the registered Students to be printed.
-     * @return Nothing.
+     * @param course The existing Course object with the registered Students to be printed. 
      */
     public void printByCourse(Course course){
         ArrayList<Index> indexes = course.getIndexes();
@@ -166,7 +160,6 @@ public class Admin extends User implements Serializable{
     /**
      * Method that allows Admin to print all the registered Students of an existing Index object of an existing Course.
      * @param index The existing Index object with the registered Students to be printed.
-     * @return Nothing.
      */
     public void printByIndex(Index index){
         ArrayList<Student> students = index.getReg();

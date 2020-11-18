@@ -2,14 +2,39 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents a Course created by an Admin.
+ * Every course should have a distinct course code.
+ */
 public class Course implements Serializable{
+	/**
+	 * The school name that provides this Course.
+	 */
 	private String school;
+	/**
+	 * The course code of this Course.
+	 */
 	private String courseCode;
+	/**
+	 * The name of this Course.
+	 */
 	private String courseName;
+	/**
+	 * The number of academic units of this Course.
+	 */
 	private int numOfAU;
+	/**
+	 * All the indexes of this Course.
+	 */
 	private ArrayList<Index> indexes = new ArrayList<Index>();
 	
-	// CONSTRUCTORS
+	/**
+	 * Creates a new Course with the given parameters.
+	 * @param school This Course's school name.
+	 * @param courseCode This Course's course code.
+	 * @param courseName This Course's name.
+	 * @param numOfAU This Course's number of academic units.
+	 */
 	public Course(String school, String courseCode, String courseName, int numOfAU) {
 		this.school = school;
 		this.courseCode = courseCode;
@@ -17,52 +42,97 @@ public class Course implements Serializable{
 		this.numOfAU = numOfAU;
 	}
 
-	// SET AND GET METHODS
+	/**
+	 * Method that changes the school name of a Course.
+	 * @param school The new school name of the calling Course object.
+	 */
 	public void setSchool(String school) {
 		this.school = school;
 	}
 
+	/**
+	 * Method that gets the school name of a Course.
+	 * @return The school name of a calling Course object.
+	 */
 	public String getSchool() {
 		return school;
 	}
 
+	/**
+	 * Method that changes the course code of a Course.
+	 * @param courseCode The new course code of the calling Course object.
+	 */
 	public void setCourseCode(String courseCode) {
 		this.courseCode = courseCode;
 	}
 	
+	/** Method that gets the course code of a Course.
+	 * @return The course code of the calling Course object.
+	 */
 	public String getCourseCode() {
 		return courseCode;
 	}
 
+	/**
+	 * Method that changes the course name of a Course.
+	 * @param courseName The new course name of the calling Course object.
+	 */
 	public void setCourseName(String courseName) {
 		this.courseName=courseName;
 	}
 	
+	/**
+	 * Method that gets the course name of a Course.
+	 * @return The course name of the calling Course object.
+	 */
 	public String getCourseName() {
 		return courseName;
 	}
 	
+	/**
+	 * Method that changes the number of academic units of a Course.
+	 * @param numOfAU The new number of academic units of the calling Course object.
+	 */
 	public void setNumOfAU(int numOfAU) {
 		this.numOfAU = numOfAU;
 	}
 
+	/**
+	 * Method that gets the number of academic units of a Course.
+	 * @return The number of academic units of the calling Course object.
+	 */
 	public int getNumOfAU() {
 		return numOfAU;
 	}
 	
+	/**
+	 * Method that gets all the Index objects of a Course.
+	 * @return All the Index objects of the calling Course object.
+	 */
 	public ArrayList<Index> getIndexes() {
 		return indexes;
 	}
 
-	// CLASS METHODS
+	/**
+	 * Method that adds a new Index to an existing Course.
+	 * @param index The new Index object to be added to the calling Course object.
+	 */
 	public void addIndex(Index index) {
 		indexes.add(index);
 	}
 	
+	/**
+	 * Method that drops an existing Index from an existing Course.
+	 * @param index The existing Index object to be dropped from the calling Course object.
+	 */
 	public void dropIndex(Index index) {
 		indexes.remove(index);
 	}
 
+	/**
+	 * Method that updates an existing Index of an existing Course.
+	 * @param index The existing Index object to be updated of an existing Course.
+	 */
 	public void updateIndex(Index index) {
 		System.out.println("(1) Update IndexNo");
 		System.out.println("(2) Update vacancy");
@@ -144,6 +214,9 @@ public class Course implements Serializable{
 		} while(option < 1 || option > 4);
 	}
 	
+	/**
+	 * Method that prints out all the indexes of a Course.
+	 */
 	public void listIndex() {
 		System.out.println("Indexes available: ");
 		for(int i=0; i<indexes.size();i++) {

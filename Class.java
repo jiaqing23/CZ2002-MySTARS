@@ -56,7 +56,6 @@ public class Class implements Serializable{
      * @param groupNo This Class's group number.
      * @param week This Class's week of occurence.
      * @param dayOfWeek This Class's day of week.
-     * @return Nothing.
      */
     public Class(String classID, String type, int startTime, int endTime, String venue, String groupNo, String week, String dayOfWeek) {
         this.classID = classID;
@@ -70,7 +69,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to get the class ID of a Class.
+     * Method that changes the class ID of a Class.
      * @return The class ID of the calling Class object.
      */
     public String getClassID() {
@@ -78,7 +77,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to get the class type of a Class.
+     * Method that changes the class type of a Class.
      * @return The class type of the calling Class object.
      */
     public String getType(){
@@ -86,7 +85,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to get the start time of a Class.
+     * Method that changes the start time of a Class.
      * @return The starting time of the calling Class object.
      */
     public int getStartTime(){
@@ -94,7 +93,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to get the end time of a Class.
+     * Method that changes the end time of a Class.
      * @return The ending time of the calling Class object.
      */
     public int getEndTime(){
@@ -102,7 +101,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to get the venue of a Class.
+     * Method that changes the venue of a Class.
      * @return The venue of the calling Class object.
      */
     public String getVenue(){
@@ -110,7 +109,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to get the group number of a Class.
+     * Method that changes the group number of a Class.
      * @return The group number of the calling Class object.
      */
     public String getGroup(){
@@ -118,7 +117,7 @@ public class Class implements Serializable{
     }
     
     /**
-     * Method to get the week of occurence of a Class.
+     * Method that changes the week of occurence of a Class.
      * @return The week of occurence of the calling Class object.
      */
     public String getWeek(){
@@ -126,7 +125,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to get the day of week of a Class.
+     * Method that changes the day of week of a Class.
      * @return The day of week of the calling Class object.
      */
     public String getDayOfWeek(){
@@ -134,7 +133,7 @@ public class Class implements Serializable{
     }
 
     /**
-     * Method to check whether a Class is clashed with another Class.
+     * Method that checks whether a Class is clashed with another Class.
      * @param anotherClass The target class to check with the calling Class object.
      * @return Returns true if there's a clash. Otherwise, returns false.
      */
