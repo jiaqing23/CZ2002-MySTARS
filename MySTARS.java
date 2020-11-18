@@ -223,7 +223,7 @@ public class MySTARS implements Serializable{
                         System.out.println("Please enter the course code:");
                         courseCode = sc.nextLine();
                         for (Course c: mainApp.courses){
-                            if(courseCode == c.getCourseCode()){
+                            if(courseCode.equals(c.getCourseCode())){
                                     admin.updateCourse(c);
                                     exist = true;
                                     break;
@@ -314,6 +314,7 @@ public class MySTARS implements Serializable{
                 System.out.println("(5) Change Index Number of Course Registered");
                 System.out.println("(6) Swap Index with Another Student");
                 System.out.println("(7) Quit");
+                System.out.print("Your choice: ");
                 choice = readInt();
                 
                 Student student = (Student)temp;
@@ -489,6 +490,7 @@ public class MySTARS implements Serializable{
                 System.out.println("(1) Print Course Registered");
                 System.out.println("(2) Check Course Vacancy");
                 System.out.println("(3) Quit");
+                System.out.print("Your choice: ");
                 choice = readInt();
                 
                 Student student = (Student)temp;
