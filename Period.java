@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
+
 public class Period implements Serializable{
     Calendar calendar = Calendar.getInstance();
     private Date startPeriod;
