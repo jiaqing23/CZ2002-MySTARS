@@ -9,7 +9,9 @@ public class Period implements Serializable{
 
     // CONSTRUCTOR
     public Period(){
+
         // Default startPeriod: 25th October 2020, 12PM
+        // print format: Wed Nov 25 15:00:00 SGT 2020
         calendar.set(2020, 9, 25, 12, 00, 00);
         this.startPeriod = calendar.getTime();
 
