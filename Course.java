@@ -4,25 +4,29 @@ import java.util.Scanner;
 
 /**
  * Represents a Course created by an Admin.
- * Every course should have a distinct course code.
+ * Every course should have a unique course code.
  */
 public class Course implements Serializable{
 	/**
 	 * The school name that provides this Course.
 	 */
 	private String school;
+
 	/**
 	 * The course code of this Course.
 	 */
 	private String courseCode;
+
 	/**
 	 * The name of this Course.
 	 */
 	private String courseName;
+
 	/**
 	 * The number of academic units of this Course.
 	 */
 	private int numOfAU;
+	
 	/**
 	 * All the indexes of this Course.
 	 */

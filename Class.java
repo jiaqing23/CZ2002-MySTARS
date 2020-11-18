@@ -4,7 +4,7 @@ import java.time.*;
 
 /**
  * Represents an Class of an Index of a Course.
- * Every Class should have a distinct classID.
+ * Every Class should have a unique classID.
  */
 public class Class implements Serializable{
 
@@ -12,34 +12,41 @@ public class Class implements Serializable{
      * The class ID of this Class.
      */
     private String classID;
+
     /**
      * The type of this Class.
      * E.g. LEC, TUT, LAB, SEM, etc. 
      */
     private String type;
+
     /**
      * The start time of this Class.
      */
     private int startTime;
+
     /**
      * The end time of this Class.
      */
     private int endTime;
+
     /**
      * The venue of this Class.
      * E.g. LT2A, LHN TR+18, etc.
      */
     private String venue;
+
     /**
      * The group number of this Class.
      * E.g. SSR1, SS4, etc.
      */
     private String groupNo;
+
     /**
      * The week of occurence of this Class.
      * E.g. ODD, EVEN, BOTH.
      */
     private String week;
+    
     /**
      * The day of week of this Class.
      * E.g. Monday, Tuesday, etc.
