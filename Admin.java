@@ -15,7 +15,7 @@ public class Admin extends User implements Serializable{
     MySTARS mainApp;
 
     /**
-     * Creates an new Admin with the given name, username and MySTARS class object.
+     * Creates a new Admin with the given name, username and MySTARS class object.
      * The name should include both first and last name.
      * @param name This Admin's full name.
      * @param username This Admin account's username.
