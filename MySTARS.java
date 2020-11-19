@@ -139,7 +139,7 @@ public class MySTARS implements Serializable{
 
     /**
      * Method that loads all the main applications's data from a binary text file.
-     * @return True when it is successfully loaded, else return false.
+     * @return MySTARS object that has loaded with the main application's data.
      */
     public static MySTARS loadData() {
         try {
@@ -199,25 +199,32 @@ public class MySTARS implements Serializable{
      * @param args Unused.
      */
     public static void main(String[] args) {
-        
+
         int choice=0;
         String index;
         boolean exist=false;
 
+        // Load the data to the MySTARS main application object.
         MySTARS mainApp = loadData();
+
         if (mainApp == null) {
             mainApp = new MySTARS();
             mainApp.admins.add(new Admin("admin111", "admin", mainApp));
         }
         
+        // Proceed with the login procedures.
+        // If login is unsuccessful, print "Invalid Credential" and exit the program.
         if (!mainApp.login()) {
             System.out.println("Invalid Credential!");
             sc.close();
             return;
         }
 
+        // Create a User object to proceed with the main application's functionalities.
         User temp = null;
 
+        // If mode equals to 2 (STUDENT), check whether the Student account's username exist in the system.
+        // If exist, assign that Student with the specific username as the User.
         if(mainApp.mode == 2){
             for (Student s : mainApp.students) {
                 if(s.getUsername().equals(mainApp.username)){
@@ -226,7 +233,9 @@ public class MySTARS implements Serializable{
                 }
             }
         }
-        else {
+        // Else if mode equals to 1 (ADMIN), check whether the Admin account's username exist in the system.
+        // If exist, assign that Admin with the specific username as the User. 
+        else if(mainApp.mode == 1){
             for (Admin a : mainApp.admins) {
                 if(a.getUsername().equals(mainApp.username)){
                     temp = a;
@@ -235,17 +244,19 @@ public class MySTARS implements Serializable{
             }
         }
         
-        //mainApp.mode=1 mean admin mainApp.mode
-        //Admin can login in any period
+        // ------------ ADMIN MODE ------------ //
+        // Note: Admin can have his/her full access to the system regardless of the course registration period.
         if(mainApp.mode == 1) {
+
             while(choice != 8){
-                //Operations that an admin can performs
-                System.out.println("*************Welcome to MySTARS!*************");
+
+                // Operations that an admin can perform.
+                System.out.println("// --------------- Welcome to MySTARS! --------------- //");
                 System.out.println("(1) Edit registeration period ");
                 System.out.println("(2) Add student");
                 System.out.println("(3) Add Course");
                 System.out.println("(4) Update Course");
-                System.out.println("(5) Check available slot for an index number");
+                System.out.println("(5) Check vacancy of an index number");
                 System.out.println("(6) Print student list by course");
                 System.out.println("(7) Print student list by index number");
                 System.out.println("(8) Quit");
@@ -255,6 +266,8 @@ public class MySTARS implements Serializable{
                 Admin admin = (Admin)temp;
 
                 switch(choice){
+
+                    // EDIT REGISTRATION PERIDOD //
                     case 1:
                         SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MM-yyyy");
                         System.out.println("Please enter the start date (dd-mm-yyyy):");
@@ -267,6 +280,8 @@ public class MySTARS implements Serializable{
                             System.out.println("Please use the correct format (dd-mm-yyyy) !");
                         }
                         break;
+
+                    // ADD STUDENT //
                     case 2:
                         System.out.println("Please enter student's name:");
                         String name = sc.nextLine();
@@ -284,6 +299,8 @@ public class MySTARS implements Serializable{
                         String matricNumber = sc.nextLine();
                         admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber);
                         break;
+
+                    // ADD COURSE //
                     case 3:
                         System.out.println("Please enter school of the course:");
                         String school = sc.nextLine();
@@ -295,6 +312,8 @@ public class MySTARS implements Serializable{
                         int numAU = readInt();
                         admin.addCourse(school,courseCode,courseName,numAU);
                         break;
+
+                    // UPDATE COURSE //
                     case 4:
                         System.out.println("Please enter the course code:");
                         courseCode = sc.nextLine();
@@ -310,7 +329,8 @@ public class MySTARS implements Serializable{
                             System.out.println("The course name does not exist!");
                         }
                         break;
-
+                    
+                    // CHECK VACANCY OF AN INDEX // 
                     case 5:
                         System.out.println("Please enter the index:");
                         index = sc.nextLine();
@@ -330,6 +350,8 @@ public class MySTARS implements Serializable{
                             System.out.println("The index number does not exist!");
                         }
                         break;
+
+                    // PRINT REGISTERED STUDENT LIST BY COURSE //
                     case 6:
                         System.out.println("Please enter the course name:");
                         courseName = sc.nextLine();
@@ -346,6 +368,8 @@ public class MySTARS implements Serializable{
                             System.out.println("The course name does not exist!");
                         }
                         break;
+
+                    // PRINT REGISTERED STUDENT LIST BY INDEX //
                     case 7:
                         System.out.println("Please enter the index number:");
                         index = sc.nextLine();
@@ -365,29 +389,37 @@ public class MySTARS implements Serializable{
                             System.out.println("The index number does not exist!");
                         }
                         break;
+                    
+                    // EXIT THE PROGRAM //
                     case 8:
                         System.out.println("Program terminating...");
                         break;
+
+                    // WRONG INPUT MESSAGE //
                     default:
                         System.out.println("Wrong Input!!");
                         break;
                 }
+                
+                // Saves the data immediately after an operation.
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
     
 
-        //mainApp.mode=2 mean student mainApp.mode
-        //Need to make sure that the login period is around the period opened for add/drop
+        // ------------ STUDENT MODE ------------ //
+        // Note: Student can have his/her full access to the system only within the course registration period.
         if(mainApp.mode == 2 && mainApp.period.validatePeriod()){
+            
             while(choice != 7){
-                //Operations that a student can perform
-                System.out.println("*************Welcome to MySTARS!*************");
-                System.out.println("(1) Add Course ");
+
+                // Operations that a student can perform.
+                System.out.println("// --------------- Welcome to MySTARS! --------------- //");
+                System.out.println("(1) Register Course ");
                 System.out.println("(2) Drop Course");
-                System.out.println("(3) Print Course Registered");
-                System.out.println("(4) Check Course Vacancy");
-                System.out.println("(5) Change Index Number of Course Registered");
+                System.out.println("(3) Print Registered Course");
+                System.out.println("(4) Check Course's Index Vacancy");
+                System.out.println("(5) Change Index Number of Registered Course");
                 System.out.println("(6) Swap Index with Another Student");
                 System.out.println("(7) Quit");
                 System.out.print("Your choice: ");
@@ -395,7 +427,10 @@ public class MySTARS implements Serializable{
                 
                 Student student = (Student)temp;
                 Index currIndex = null;
+                
                 switch(choice){
+
+                    // REGISTER COURSE //
                     case 1:
                         System.out.println("Please enter the index number:");
                         index = sc.nextLine();
@@ -415,6 +450,8 @@ public class MySTARS implements Serializable{
                             System.out.println("The index number does not exist!");
                         }
                         break;
+
+                    // DROP COURSE //
                     case 2:
                         System.out.println("Please enter the index number:");
                         index = sc.nextLine();
@@ -437,9 +474,13 @@ public class MySTARS implements Serializable{
                             System.out.println("You haven't registered for this index!");
                         }
                         break;
+
+                    // PRINT REGISTERED COURSE //
                     case 3:
                         student.printIndex();
                         break;
+
+                    // CHECK COURSE's INDEX VACANCY //
                     case 4:
                         System.out.println("Please enter the index number:");
                         index = sc.nextLine();
@@ -459,6 +500,8 @@ public class MySTARS implements Serializable{
                             System.out.println("The index number does not exist!");
                         }
                         break;
+
+                    // CHANGE INDEX NUMBER OF REGISTERED COURSE //
                     case 5:
                         System.out.println("Please enter the current index number:");
                         index = sc.nextLine();
@@ -503,6 +546,8 @@ public class MySTARS implements Serializable{
                             break;
                         }
                         break;
+
+                    // SWAP INDEX NUMBER WITH ANOTHER STUDENT //
                     case 6:
                         System.out.println("Please enter peer's username:");
                         String me = sc.nextLine();
@@ -547,24 +592,32 @@ public class MySTARS implements Serializable{
                             }
                         }
                         break;
+
+                    // EXIT THE PROGRAM //
                     case 7:
                         System.out.println("Program terminating...");
                         break;
+
+                    // WRONG INPUT MESSAGE //
                     default:
                         System.out.println("Wrong Input!!");
                         break;
                 }
+                // Saves the data immediately after an operation.
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
    
-        //If the period is not opened for add/drop
-        //The student can only check the courses registered and vacancy of a course
+        // ------------ STUDENT MODE ------------ //
+        // Note: Student will only have limited access to the system when current time is not within the course registration period.
         if(mainApp.mode == 2 && !mainApp.period.validatePeriod()){
+
             while(choice != 3){
-                System.out.println("*************Welcome to MySTARS!*************");
-                System.out.println("(1) Print Course Registered");
-                System.out.println("(2) Check Course Vacancy");
+
+                // Limited access and operations that a Student can perform.
+                System.out.println("// --------------- Welcome to MySTARS! --------------- //");
+                System.out.println("(1) Print Registered Course");
+                System.out.println("(2) Check Course's Index Vacancy");
                 System.out.println("(3) Quit");
                 System.out.print("Your choice: ");
                 choice = readInt();
@@ -572,9 +625,13 @@ public class MySTARS implements Serializable{
                 Student student = (Student)temp;
 
                 switch(choice){
+
+                    // PRINT REGISTERED COURSE // 
                     case 1:
                         student.printIndex();
                         break;
+
+                    // CHECK COURSE's INDEX VACANCY //
                     case 2:
                         System.out.println("Please enter the index number:");
                         index = sc.nextLine();
@@ -594,13 +651,18 @@ public class MySTARS implements Serializable{
                             System.out.println("The index number does not exist!");
                         }
                         break;
+
+                    // EXIT THE PROGRAM //
                     case 3:
                         System.out.println("Program terminating...");
                         break;
+
+                    // WRONG INPUT MESSAGE //
                     default:
                         System.out.println("Wrong Input!!");
                         break;
                 }
+                // Saves the data immediately after an operation.
                 System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
             }
         }
