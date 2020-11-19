@@ -31,6 +31,11 @@ public class Student extends User{
 	private String matricNumber;
 
 	/**
+	 * The email of a Student.
+	 */
+	 private String email;
+
+	/**
 	 * The list of registered indexes of a Student.
 	 */
 	private ArrayList<Index> registered = new ArrayList<Index>();
@@ -48,13 +53,15 @@ public class Student extends User{
 	 * @param gender The gender of this Student.
 	 * @param nationality The nationality of this Student.
 	 * @param matricNumber The matriculation number of this Student.
+	 * @param email The email of this Student.
 	 */
-	public Student(String name, String username, int maxAU, String gender, String nationality, String matricNumber) {
+	public Student(String name, String username, int maxAU, String gender, String nationality, String matricNumber, String email) {
 		super(name, username);
 		this.maxAU = maxAU;
 		this.gender = gender;
 		this.nationality = nationality;
 		this.matricNumber = matricNumber;
+		this.email = email;
 	}
 
 	/**
@@ -135,6 +142,22 @@ public class Student extends User{
 	 */
 	public String getMatriculationNumber() {
 		return matricNumber;
+	}
+
+	/**
+	 * Method that changes the email of a Student.
+	 * @param email New email of the calling Student object.
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * Method that gets the email of a Student.
+	 * @return Email of the calling Student object.
+	 */
+	public String getEmail() {
+		return email;
 	}
 
 	/**
