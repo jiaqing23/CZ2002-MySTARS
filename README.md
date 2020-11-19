@@ -7,8 +7,10 @@
 - Shouldn't Student class be extending User class?? （ ✅ DONE BY JIA WEN)
 - Add class need to check clash ✅
 - After a index been registered, it cannot add class or remove class or update class. ✅
+---------------------------------------------------------------------------------------------------
 - Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration.
-- 
+- Report... 💀
+- Debug main program + Add exception handling.
 
 ## Debug 🎅 
 ```java
