@@ -11,7 +11,7 @@
 - After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ Done by Jia Qing)
 ---------------------------------------------------------------------------------------------------
 ## To do 🚌
-- Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （ ✅ 80% DONE BY BRYSON)
+- Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （ ✅ 90% DONE BY BRYSON)
 - Report... 💀
 - Debug main program + Add exception handling.
 
