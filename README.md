@@ -14,6 +14,7 @@
 - Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （ ✅ 90% DONE BY BRYSON)
 - Report... 💀
 - Debug main program + Add exception handling.
+- Special check for valid input for "Monday/Tuesday..", "Male/Female", etc.
 
 ## Debug 🎅 
 ```java

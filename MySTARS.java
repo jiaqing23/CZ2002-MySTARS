@@ -556,7 +556,7 @@ public class MySTARS implements Serializable{
 
                         System.out.print("Please enter peer's Password: ");
                         String password = new String(System.console().readPassword());
-                        if(!PasswordManager.validateAccount(username, password, mainApp.mode == 1)){
+                        if(!PasswordManager.validateAccount(username, password, false)){
                             System.out.println("Wrong password/username!");
                             break;
                         }
