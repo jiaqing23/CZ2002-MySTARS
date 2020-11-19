@@ -168,6 +168,23 @@ public class Course implements Serializable{
 					}
 					else{
 						index.setClassSize(newSize);
+
+						int len = index.getWaitlistLength();
+						while(len > 0 && index.getVacancy() > 0){
+							len--;
+
+							Student newAdd = index.popWaitlist();
+							if(newAdd.getNoOfAU() + index.getCourse().getNumOfAU() <= newAdd.getMaxAU()){
+								newAdd.removeWaitlist(index);
+								newAdd.addReg(index);
+								index.addReg(newAdd);
+								break;
+							}
+							else{
+								index.addWaitlist(newAdd);
+							}
+
+						}
 					}
 					break;
 
