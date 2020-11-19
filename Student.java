@@ -31,7 +31,7 @@ public class Student extends User{
 	private String matricNumber;
 
 	/**
-	 * The email of a Student.
+	 * The email account of a Student.
 	 */
 	 private String email;
 
@@ -53,7 +53,7 @@ public class Student extends User{
 	 * @param gender The gender of this Student.
 	 * @param nationality The nationality of this Student.
 	 * @param matricNumber The matriculation number of this Student.
-	 * @param email The email of this Student.
+	 * @param email The email account of this Student.
 	 */
 	public Student(String name, String username, int maxAU, String gender, String nationality, String matricNumber, String email) {
 		super(name, username);
