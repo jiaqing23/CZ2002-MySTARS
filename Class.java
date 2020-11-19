@@ -145,11 +145,10 @@ public class Class implements Serializable{
     public boolean clash(Class anotherClass){
 
         if(!dayOfWeek.equals(anotherClass.getDayOfWeek()) || 
-            (week.equals("ODD") && anotherClass.getWeek().equals("EVEN")) || (week.equals("EVEN") && anotherClass.getWeek().equals("ODD")))
+            (week.equals("ODD") && anotherClass.getWeek().equals("EVEN")) || (week.equals("EVEN") && anotherClass.getWeek().equals("ODD")) ||
+            startTime > anotherClass.getEndTime() || anotherClass.getStartTime() > endTime)
             return false;
-        else if(startTime > anotherClass.getEndTime() || anotherClass.getStartTime() > endTime)
-            return true;
-        return false;
+        return true;
     }
 
 }
