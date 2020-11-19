@@ -7,7 +7,6 @@
 - Shouldn't Student class be extending User class?? （ ✅ DONE BY JIA WEN)
 - Add class need to check clash ✅
 - After a index been registered, it cannot add class or remove class or update class. ✅
-- Password hidden
 - Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration.
 - 
 
@@ -24,4 +23,4 @@ String str1 = input.nextLine();
 ```
 
 ![Alt Text](https://bestanimations.com/media/cats/608000676cute-kitty-animated-gif-26.gif)
-![Alt Text](https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fexplore%2Fwork-hard&psig=AOvVaw1NZAdarJHvkwR-bS5szo5P&ust=1605842621661000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPiLn4rUje0CFQAAAAAdAAAAABAD)
+![Alt Text](https://media.giphy.com/media/Vzk5PFo9iH5AEustmv/giphy.gif)
