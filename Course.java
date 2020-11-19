@@ -137,28 +137,30 @@ public class Course implements Serializable{
 	 * Method that updates an existing Index of an existing Course.
 	 * @param index The existing Index object to be updated of an existing Course.
 	 */
-	public void updateIndex(Index index) {
-		System.out.println("(1) Update IndexNo");
-		System.out.println("(2) Update vacancy");
-		System.out.println("(3) Add class");
-		System.out.println("(4) Remove class");
-		System.out.println("Select Option: ");
-        Scanner sc = new Scanner(System.in);
-        int option = MySTARS.readInt();
-		
-		String tem;
-		do{
-			switch(option){
+	public void updateIndex(Index index, MySTARS mainApp) {
+		int choice = 0;
+        while(choice != 5){
+			System.out.println("// --------------- Updating index " + index.getIndexNo() + " --------------- //");
+			System.out.println("(1) Update index number");
+			System.out.println("(2) Update class size");
+			System.out.println("(3) Add class");
+			System.out.println("(4) Remove class");
+			System.out.println("(5) Back to update course page");
+			System.out.print("Select Option: ");
+			Scanner sc = MySTARS.getScanner();
+			choice = MySTARS.readInt();
+			
+			String tem;
+			switch(choice){
 				case 1:
-					System.out.print("New IndexNo: ");
+					System.out.print("Please enter the new index number: ");
 					tem = sc.nextLine();
 					index.setIndexNo(tem);
 					break;
 		
 				case 2:
-					System.out.print("New class size: ");
-					tem = sc.nextLine();
-					int newSize = Integer.parseInt(tem);
+					System.out.print("Please enter the new class size: ");
+					int newSize = MySTARS.readInt();
 	
 					// We can't update the newSize lesser than the original number of vacancy
 					if((index.getClassSize() - newSize) > index.getVacancy()){
@@ -166,6 +168,23 @@ public class Course implements Serializable{
 					}
 					else{
 						index.setClassSize(newSize);
+
+						int len = index.getWaitlistLength();
+						while(len > 0 && index.getVacancy() > 0){
+							len--;
+
+							Student newAdd = index.popWaitlist();
+							if(newAdd.getNoOfAU() + index.getCourse().getNumOfAU() <= newAdd.getMaxAU()){
+								newAdd.removeWaitlist(index);
+								newAdd.addReg(index);
+								index.addReg(newAdd);
+								break;
+							}
+							else{
+								index.addWaitlist(newAdd);
+							}
+
+						}
 					}
 					break;
 
@@ -204,18 +223,23 @@ public class Course implements Serializable{
 					tem = sc.nextLine();
 	
 					for(Class c : index.getClasses()){
-						if(c.getClassID() == tem){
+						if(c.getClassID().equals(tem)){
 							index.removeClass(c);
 							break;
 						}
 					}
 					break;
 					
-				default:
-					System.out.println("Invalid option!");
-					break;
+				case 7:
+                    System.out.println("Returning to update course page...");
+                    break;
+                default:
+                    System.out.println("Wrong Input!!");
+                    break;
 			}
-		} while(option < 1 || option > 4);
+
+			mainApp.saveData();
+		}
 	}
 	
 	/**
@@ -223,8 +247,8 @@ public class Course implements Serializable{
 	 */
 	public void listIndex() {
 		System.out.println("Indexes available: ");
-		for(int i=0; i<indexes.size();i++) {
-			System.out.println(indexes.get(i));
+		for (Index i: indexes){
+			System.out.println(i.getIndexNo());
 		}
 	}
 

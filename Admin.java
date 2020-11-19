@@ -1,4 +1,4 @@
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Represents an admin that uses the MySTARS system application.
  * An Admin is an user, therefore it inherits the User class.
  */
-public class Admin extends User implements Serializable{
+public class Admin extends User{
 
     /**
      * Admin class object is associated with the MySTARS main application class.
@@ -74,64 +74,73 @@ public class Admin extends User implements Serializable{
      * @param course The exisiting Course object to be updated.
      */
     public void updateCourse(Course course){
-        System.out.println("Updating course " + course.getCourseCode());
-        System.out.println("(1) Update Course Code");
-        System.out.println("(2) Update Course Name");
-        System.out.println("(3) Update School");
-        System.out.println("(4) Add Index");
-        System.out.println("(5) Update Index");
-        System.out.println("(6) Remove Index");
-        System.out.println("Select Option: ");
-        Scanner sc = new Scanner(System.in);
-        int option = MySTARS.readInt();
-        String tem;
-         
-        switch(option){
-            case 1:
-                System.out.print("New Course Code: ");
-                tem = sc.nextLine();
-                course.setCourseCode(tem);
-                break;
-            case 2:
-                System.out.print("New Course Name: ");
-                tem = sc.nextLine();
-                course.setCourseName(tem);
-                break;
-            case 3:
-                System.out.print("New School: ");
-                tem = sc.nextLine();
-                course.setSchool(tem);
-                break;
-            case 4:
-                System.out.print("IndexNo to be added: ");
-                tem = sc.nextLine();
-                System.out.print("IndexNo to be classSize: ");
-                int classSize = MySTARS.readInt();
-                course.addIndex(new Index(course, tem, classSize)); 
-                break;
-            case 5:
-                System.out.print("IndexNo to be updated: ");
-                tem = sc.nextLine();
-                for(Index i: course.getIndexes()){
-                    if(i.getIndexNo().equals(tem)){
-                        course.updateIndex(i);
-                        break;
+        int choice = 0;
+        while(choice != 7){
+            System.out.println("// --------------- Updating course " + course.getCourseCode() + " --------------- //");
+            System.out.println("(1) Update course code");
+            System.out.println("(2) Update course name");
+            System.out.println("(3) Update school");
+            System.out.println("(4) Add index");
+            System.out.println("(5) Update index");
+            System.out.println("(6) Remove index");
+            System.out.println("(7) Back to home page");
+            System.out.print("Select Option: ");
+            Scanner sc = MySTARS.getScanner();
+            choice = MySTARS.readInt();
+            String tem;
+            
+            switch(choice){
+                case 1:
+                    System.out.print("New Course Code: ");
+                    tem = sc.nextLine();
+                    course.setCourseCode(tem);
+                    break;
+                case 2:
+                    System.out.print("New Course Name: ");
+                    tem = sc.nextLine();
+                    course.setCourseName(tem);
+                    break;
+                case 3:
+                    System.out.print("New School: ");
+                    tem = sc.nextLine();
+                    course.setSchool(tem);
+                    break;
+                case 4:
+                    System.out.print("Please enter the index: ");
+                    tem = sc.nextLine();
+                    System.out.print("Please enter the class size: ");
+                    int classSize = MySTARS.readInt();
+                    course.addIndex(new Index(course, tem, classSize)); 
+                    break;
+                case 5:
+                    System.out.print("Please enter the index: ");
+                    tem = sc.nextLine();
+                    for(Index i: course.getIndexes()){
+                        if(i.getIndexNo().equals(tem)){
+                            course.updateIndex(i, mainApp);
+                            break;
+                        }
                     }
-                }
-                break;
-            case 6:
-                System.out.print("IndexNo to be dropped: ");
-                tem = sc.nextLine();
-                for(Index i: course.getIndexes()){
-                    if(i.getIndexNo().equals(tem)){
-                        course.dropIndex(i);
-                        break;
+                    break;
+                case 6:
+                    System.out.print("Please enter the index: ");
+                    tem = sc.nextLine();
+                    for(Index i: course.getIndexes()){
+                        if(i.getIndexNo().equals(tem)){
+                            course.dropIndex(i);
+                            break;
+                        }
                     }
-                }
-                break;
-            default:
-                System.out.println("Invalid option!");
-                break;
+                    break;
+                case 7:
+                    System.out.println("Returning to home page...");
+                    break;
+                default:
+                    System.out.println("Wrong Input!!");
+                    break;
+            }
+
+            mainApp.saveData();
         }
     }
 
@@ -140,7 +149,7 @@ public class Admin extends User implements Serializable{
      * @param index The exisiting Index object to be updated.
      */
     public void checkVacancy(Index index){
-        System.out.printf("Index %s have $d slots left.\n", index.getIndexNo(), index.getVacancy());
+        System.out.printf("Index %s have %d slots left.%n", index.getIndexNo(), index.getVacancy());
     }
 
     /**
@@ -152,7 +161,7 @@ public class Admin extends User implements Serializable{
         for(Index index: indexes){
             ArrayList<Student> students = index.getReg();
             for(Student student: students){
-                System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
+                System.out.printf("%s, %s, %s%n", student.getName(), student.getNationality(), student.getGender());
             }
         }
     }
@@ -164,7 +173,7 @@ public class Admin extends User implements Serializable{
     public void printByIndex(Index index){
         ArrayList<Student> students = index.getReg();
             for(Student student: students){
-                System.out.printf("%s, %s, %s\n", student.getName(), student.getNationality(), student.getGender());
+                System.out.printf("%s, %s, %s%n", student.getName(), student.getNationality(), student.getGender());
         }
     }
 }

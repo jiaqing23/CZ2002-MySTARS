@@ -118,9 +118,8 @@ public class RegistrationManager implements Serializable{
             student.removeWaitlist(index);
             index.removeWaitlist(student);
         }
-
         //Need to make sure that the student has registered for the index before dropping
-        if(isRegistered(student, index)){
+        else if(isRegistered(student, index)){
             Student newAdd;
             index.removeReg(student);
             student.removeReg(index);
@@ -133,6 +132,7 @@ public class RegistrationManager implements Serializable{
                 if(newAdd.getNoOfAU() + index.getCourse().getNumOfAU() <= newAdd.getMaxAU()){
                     newAdd.removeWaitlist(index);
                     newAdd.addReg(index);
+                    index.addReg(newAdd);
                     break;
                 }
                 else{
@@ -140,6 +140,9 @@ public class RegistrationManager implements Serializable{
                 }
 
             }
+        }
+        else{
+            System.out.println("You haven't registered for this index!");
         }
     }
 
@@ -159,7 +162,7 @@ public class RegistrationManager implements Serializable{
         }
      
         if(!isRegistered(desStudent, desInd)){
-            System.out.println("Your friend don't have this index.");
+            System.out.println("Your friend don't have this index in registered course list.");
             return;
         }
 
@@ -197,16 +200,22 @@ public class RegistrationManager implements Serializable{
      */
     public static void processChangeIndex(Student student, Index sourceInd, Index desInd){
 
+        int waitlist = 0;
         if(isInWaitlist(student, sourceInd)){
             student.removeWaitlist(sourceInd);
+            waitlist = 1;
+        }
+        else if(isRegistered(student, sourceInd){
+            student.removeReg(sourceInd);
         }
         else{
-            student.removeReg(sourceInd);
+            System.out.println("You haven't registered for this index!");
+            return;
         }
 
         boolean valid = processAdd(student, desInd);
 
-        if(isInWaitlist(student, sourceInd)){
+        if(waitlist == 1){
             student.addWaitlist(sourceInd);
         }
         else{

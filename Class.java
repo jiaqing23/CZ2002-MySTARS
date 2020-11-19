@@ -1,6 +1,4 @@
 import java.io.Serializable;
-import java.util.Date;
-import java.time.*;
 
 /**
  * Represents an Class of an Index of a Course.
