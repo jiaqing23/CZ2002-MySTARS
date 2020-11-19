@@ -118,9 +118,8 @@ public class RegistrationManager implements Serializable{
             student.removeWaitlist(index);
             index.removeWaitlist(student);
         }
-
         //Need to make sure that the student has registered for the index before dropping
-        if(isRegistered(student, index)){
+        else if(isRegistered(student, index)){
             Student newAdd;
             index.removeReg(student);
             student.removeReg(index);
@@ -140,6 +139,9 @@ public class RegistrationManager implements Serializable{
                 }
 
             }
+        }
+        else{
+            System.out.println("You don't have this index!");
         }
     }
 

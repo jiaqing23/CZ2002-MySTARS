@@ -1,11 +1,10 @@
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Represent a Student that uses the MySTARS system application.
  * A Student is an user, therefore it inherits the User class.
  */
-public class Student extends User implements Serializable{
+public class Student extends User{
 	/**
 	 * The number of academic units registered by a Student. Default value is 0.
 	 */
