@@ -150,6 +150,12 @@ public class Index implements Serializable{
      */
     public void addReg(Student student) {
         registeredStud.add(student);
+        String msg = "Name:\t\t"+student.getName()+"\nMatric No.:\t"+student.getMatriculationNumber()+
+                        "\n\nWe are pleased to inform you that you have been allocated the following course in coming semester:\n"+
+                        "Course Name:\t" + getCourse().getCourseName() + "\n" +
+                        "Course Code:\t" + getCourse().getCourseCode() + "\n" +
+                        "Index No:\t" + getIndexNo();
+        Notification.sendMail(student.getEmail(), msg);
         vacancy--;
     }
 

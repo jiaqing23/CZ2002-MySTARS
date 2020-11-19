@@ -50,13 +50,14 @@ public class Notification {
            return message;
         } catch (Exception ex) {
            System.out.println("Email failed to send!");
-           Logger.getLogger(DemoSendEmail.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(Notification.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
     public static void main(String[] args) {
-        for(int i = 0; i < 5; i++)
-        sendMail("wjwen5@gmail.com", "You are a pig.");
+        String msg = "Name:\t\tWONGJIAWEN\nMatric No.:\tacasdasda\n\nWe are pleased to inform you that you have been allocated the following course in coming semester:\nsadasdvavgzrhs";
+
+        sendMail("wjwen5@gmail.com", msg);
     }
 }
