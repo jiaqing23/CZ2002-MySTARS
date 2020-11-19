@@ -202,7 +202,7 @@ public class Student extends User implements Serializable{
 	
 	/**
 	 * Method that process the registration of an Index by a Student.
-	 * The process is brought out by the RegistrationManager class.
+	 * The process is brought out by the RegistrationManager class and it is a lengthy legal process.
 	 * @param index Index to be registered by the calling Student object.
 	 */
 	public void addIndex(Index index) {
@@ -211,7 +211,7 @@ public class Student extends User implements Serializable{
 	
 	/**
 	 * Method that process the deregistration of an Index by a Student.
-	 * The process is brought out by the RegistrationManager class.
+	 * The process is brought out by the RegistrationManager class and it is a lengthy legal process.
 	 * @param index Index to be dropped by the calling Student object.
 	 */
 	public void dropIndex(Index index) {
@@ -220,7 +220,7 @@ public class Student extends User implements Serializable{
 
 	/**
 	 * Method that process the change of Index by a Student.
-	 * * The process is brought out by the RegistrationManager class.
+	 * * The process is brought out by the RegistrationManager class and it is a lengthy legal process.
 	 * @param sourceInd Index object to be changed by the calling Student object.
 	 * @param desInd Target Index object to be changed to by the calling Student object.
 	 */
@@ -230,7 +230,7 @@ public class Student extends User implements Serializable{
 	
 	/**
 	 * Method that process the swap of Index by a Student with another Student.
-	 * * * The process is brought out by the RegistrationManager class.
+	 * * * The process is brought out by the RegistrationManager class and it is a lengthy legal process.
 	 * @param sourceInd Index object to be swapped by the calling Student object.
 	 * @param desInd Target Index object to be swapped by the calling Student object.
 	 * @param desID Target Student object to be swapped with by the calling Student object.

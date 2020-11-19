@@ -11,52 +11,113 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Represents the Course Registration main application class.
+ */
 public class MySTARS implements Serializable{
-    private static String fileName = "mySTARS.txt";
-    private int mode;
-    private String username;
+
     private static final Scanner sc = new Scanner(System.in);
 
+    /**
+     * File name that acts as a database that stores the application data.
+     * Default file name is "mySTARS.txt"
+     */
+    private static String fileName = "mySTARS.txt";
+
+    /**
+     * Application mode. Admin == 1, Student == 2.
+     */
+    private int mode;
+
+    /**
+     * Account username for login procedure.
+     */
+    private String username;
+
+    /**
+     * Course Registration main application class is associated with a Period.
+     */
     private Period period = new Period();
+
+    /**
+     * List of Admin objects that will be read in from database.
+     */
     private ArrayList<Admin> admins = new ArrayList<Admin>();
+
+    /**
+     * List of Student objects that will be read in from database.
+     */
     private ArrayList<Student> students = new ArrayList<Student>();
+
+    /**
+     * List of Course objects that will be read in from database.
+     */
     private ArrayList<Course> courses = new ArrayList<Course>();
+
+    /**
+     * Peer Student object that is used for swapping Index.
+     */
     private static Student peer = null;
 
+    /**
+     * Creates a MySTARS application object with the given parameters.
+     */
     public MySTARS() {
         // TBD
     }
 
+    /**
+     * Method that gets the mode of the main application.
+     * @return Mode of the main application.
+     */
     public int getMode(){
         return mode;
     }
 
+    /**
+     * Method that changes the mode of the main application.
+     * @param mode New mode of the calling MySTARS object.
+     */
     public void setMode(int mode){
         this.mode = mode;
     }
 
-    //Add a new student into the system
+    /**
+     * Method that adds a new Student to the main application.
+     * @param student New Student to be added to the calling MySTARS object.
+     */
     public void addStudent(Student student) {
         students.add(student);
     }
 
-    //Add a new course into the system
+    /**
+     * Method that adds a new Course to the main application.
+     * @param course New Course to be added to the calling MySTARS object.
+     */
     public void addCourse(Course course) {
         courses.add(course);
     }
 
-    //Get the Add/Drop period
+    /**
+     * Method that gets the course registration Period of the main application.
+     * @return Course registration Period.
+     */
     public Period getPeriod(){
         return period;
     }
 
-    //Get the list of all courses
+    /**
+     * Method that gets all the courses of the main application.
+     * @return Courses currently in the calling MySTARS object.
+     */
     public ArrayList<Course> getCourses(){
         return courses;
     }
 
-    //Save data into file
+    /**
+     * Method that saves all the main application's data into a binary text file.
+     * @return True when it is successfully saved, else return false.
+     */
     public boolean saveData() {
         try {
             FileOutputStream f = new FileOutputStream(new File(fileName));
@@ -76,7 +137,10 @@ public class MySTARS implements Serializable{
         return false;
     }
 
-    //Load data from file
+    /**
+     * Method that loads all the main applications's data from a binary text file.
+     * @return True when it is successfully loaded, else return false.
+     */
     public static MySTARS loadData() {
         try {
             FileInputStream f = new FileInputStream(new File(fileName));
@@ -101,7 +165,10 @@ public class MySTARS implements Serializable{
         return null;
     }
 
-    //Login method
+    /**
+     * Method that process the account login procedure of a User.
+     * @return True when the login is successful, else return false.
+     */
     public boolean login() {
         System.out.println("(1)Admin\t(2)Student");
         System.out.print("Mode: ");
@@ -113,6 +180,10 @@ public class MySTARS implements Serializable{
         return PasswordManager.validateAccount(username, password, this.mode == 1);
     }
 
+    /**
+     * Method that reads a String into an Integer.
+     * @return Return the converted String.
+     */
     public static int readInt(){
         int num = 0;
         try {
@@ -123,7 +194,12 @@ public class MySTARS implements Serializable{
         return num;
     }
 
+    /**
+     * Main method (driver program).
+     * @param args Unused.
+     */
     public static void main(String[] args) {
+        
         int choice=0;
         String index;
         boolean exist=false;
