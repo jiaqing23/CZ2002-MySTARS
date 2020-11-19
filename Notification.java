@@ -16,8 +16,16 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * Represents an Email Notification that will be sent after a successful course registration.
+ */
 public class Notification {
 
+    /**
+     * Static method to initiate the process of sending an email notification.
+     * @param recepient Email account of a recepient.
+     * @param txt Text to include in the email notification.
+     */
     public static void sendMail(String recepient, String txt){
         System.out.println("Preparing to send email to " + recepient);
         Properties properties = new Properties();
@@ -50,8 +58,17 @@ public class Notification {
         }
     }
 
+    /**
+     * Static method to prepare the layout of the email.
+     * @param session Current mail session.
+     * @param myAccountEmail Host email account address.
+     * @param recepient Recepient's email account address.
+     * @param txt Email notification content.
+     * @return Email message model object.
+     */
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient, String txt) {
         try {
+<<<<<<< HEAD
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient)); 
@@ -77,6 +94,16 @@ public class Notification {
 
 
             return message;
+=======
+           Message message = new MimeMessage(session);
+           message.setFrom(new InternetAddress(myAccountEmail));
+           message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient)); 
+           message.setSubject("Course Registration"); 
+            
+           // set Email content
+           message.setText(txt);
+           return message;
+>>>>>>> ae34624c13d3fffe73e1a39f7fda4bdd17d6bb78
         } catch (Exception ex) {
             System.out.println("Email failed to send!");
             Logger.getLogger(Notification.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,6 +111,10 @@ public class Notification {
         return null;
     }
 
+    /**
+     * Driver program of Email notification.
+     * @param args Unused.
+     */
     public static void main(String[] args) {
         String msg = "Name:\t\tWONGJIAWEN\nMatric No.:\tacasdasda\n\nWe are pleased to inform you that you have been allocated the following course in coming semester:\nsadasdvavgzrhs";
 
