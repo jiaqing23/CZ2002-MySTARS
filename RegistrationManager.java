@@ -1,8 +1,18 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Represents a course Registration Manager that process the logic and flow of course registration.
+ * Registration Manager is a Control Class.
+ */
 public class RegistrationManager implements Serializable{
 
+    /**
+     * Static method that checks whether an Index is clashed with any classes of a registered Index by a Student.
+     * @param student Student object that is being checked. 
+     * @param index Index that is being checked.
+     * @return Return true when there is a clash, else return false.
+     */
     public static boolean isClash(Student student, Index index){
         
         ArrayList<Index> indexes = new ArrayList<Index>();
@@ -20,6 +30,12 @@ public class RegistrationManager implements Serializable{
         return false;
     }
 
+    /**
+     * Static method that checks whether an Index is already being registered (having waitlist, registered status) by a Student.
+     * @param student Student object that is being checked.
+     * @param index Index that is being checked.
+     * @return Return true when there is a repeat registration, else return false.
+     */
     public static boolean isRepeated(Student student, Index index){
         
         ArrayList<Index> indexes = new ArrayList<Index>();
@@ -33,17 +49,32 @@ public class RegistrationManager implements Serializable{
         return false;
     }
 
-    //Check whether the index is in student's waitlist
+    /**
+     * Static method that checks whether an Index is in a waitlist of a Student.
+     * @param student Student object that is being checked.
+     * @param index Index to be checked.
+     * @return
+     */
     public static boolean isInWaitlist(Student student, Index index){
         return student.getWaitlist().contains(index);
     }
     
-    //Check whether the index is in student's registered index
+    /**
+     * Static method that checks whether an Index is registered by a Student.
+     * @param student Student object that is being checked.
+     * @param index Index to be checked.
+     * @return
+     */
     public static boolean isRegistered(Student student, Index index){
         return student.getRegistered().contains(index);
     }
 
-    //Process adding of index
+    /**
+     * Static method that process the request of Index registration by a Student.
+     * @param student Student object that requests a Index registration.
+     * @param index Index to be registered.
+     * @return Return true when Index is successfully registered, else return false.
+     */
     public static boolean processAdd(Student student, Index index){
         if(isRepeated(student, index)){
             System.out.println("You took other index of this course!");
@@ -77,7 +108,11 @@ public class RegistrationManager implements Serializable{
         return true;
     }
 
-    //Process dropping of index
+    /**
+     * Static method that prcoess the request of Index deregistration by a Student.
+     * @param student Student object that requests a Index deregistration.
+     * @param index Index to be deregistered.
+     */
     public static void processDrop(Student student, Index index){
         if(isInWaitlist(student, index)){
             student.removeWaitlist(index);
@@ -108,8 +143,15 @@ public class RegistrationManager implements Serializable{
         }
     }
 
-    //Method used when student wants to change index with friend
+    /**
+     * Static method that process the request of swapping Index registered by two Student.
+     * @param sourceInd Source registered Index of a Student.
+     * @param desInd Target registered Index of another Student.
+     * @param sourceStudent Source Student object.
+     * @param desStudent Target Student object.
+     */
     public static void processSwap(Index sourceInd, Index desInd, Student sourceStudent, Student desStudent){
+
         //Unable to change if the students has not registered for the index or still in waitlist
         if(!isRegistered(sourceStudent, sourceInd)){
             System.out.println("You have not registered for this index or it is still in your waitlist!");
@@ -147,7 +189,12 @@ public class RegistrationManager implements Serializable{
         desInd.addReg(sourceStudent);
     }
 
-    //Method used when the student wants to change index
+    /**
+     * Static method that process the request of changing Index registered by a Student.
+     * @param student Student object that requests a change of Index.
+     * @param sourceInd Source Index that has been registered.
+     * @param desInd Target Index intended to be changed to.
+     */
     public static void processChangeIndex(Student student, Index sourceInd, Index desInd){
 
         if(isInWaitlist(student, sourceInd)){
