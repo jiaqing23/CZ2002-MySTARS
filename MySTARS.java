@@ -415,13 +415,13 @@ public class MySTARS implements Serializable{
 
                 // Operations that a student can perform.
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
-                System.out.println("(1) Register Course ");
+                System.out.println("(1) Add Course ");
                 System.out.println("(2) Drop Course");
-                System.out.println("(3) Print Registered Course");
-                System.out.println("(4) Check Course's Index Vacancy");
-                System.out.println("(5) Change Index Number of Registered Course");
-                System.out.println("(6) Swap Index with Another Student");
-                System.out.println("(7) Quit");
+                System.out.println("(3) Check/Print Courses Registered");
+                System.out.println("(4) Check Vacancies Available");
+                System.out.println("(5) Change Index Number of Course");
+                System.out.println("(6) Swop Index Number with Another Student");
+                System.out.println("(7) Exit");
                 System.out.print("Your choice: ");
                 choice = readInt();
                 
@@ -616,9 +616,9 @@ public class MySTARS implements Serializable{
 
                 // Limited access and operations that a Student can perform.
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
-                System.out.println("(1) Print Registered Course");
-                System.out.println("(2) Check Course's Index Vacancy");
-                System.out.println("(3) Quit");
+                System.out.println("(1) Check/Print Registered Course");
+                System.out.println("(2) Check Vacancies Available");
+                System.out.println("(3) Exit");
                 System.out.print("Your choice: ");
                 choice = readInt();
                 
