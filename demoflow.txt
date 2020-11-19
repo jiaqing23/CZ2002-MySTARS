@@ -137,21 +137,246 @@ Matric Number: U1920015A
 Name: Object-oriented Design & Programming
 School: SCSE
 AU: 3
+Indexes:
+Index No.: 10126
+	Class ID: 10126_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT11 
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Thursday
+
+	Class ID: 10126_LEC2
+	Class type: LEC
+	Start Time: 2.30PM
+	End Time: 3.30PM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Tuesday
+
+	Class ID: 10126_TUT
+	Class type: TUT
+	Start Time: 9.30AM
+	End Time: 10.30AM
+	Venue: TR+17
+	Group Number: FEP1  
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 10126_LAB
+	Class type: LAB
+	Start Time: 2.30PM
+	End Time: 4.30PM
+	Venue: SPL
+	Group Number: FEP1  
+	Week: ODD
+	Day of Week: Monday
+
+Index No.: 10127
+	Class ID: 10127_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT11 
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Thursday
+
+	Class ID: 10127_LEC2
+	Class type: LEC
+	Start Time: 2.30PM
+	End Time: 3.30PM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Tuesday
+
+	Class ID: 10127_TUT
+	Class type: TUT
+	Start Time: 1.30PM
+	End Time: 2.30PM
+	Venue: TR+9
+	Group Number: FSP3
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 10127_LAB
+	Class type: LAB
+	Start Time: 2.30PM
+	End Time: 4.30PM
+	Venue: SPL
+	Group Number: FSP3
+	Week: EVEN
+	Day of Week: Monday
 
 (2) Course code: CZ2001
 Name: Algorithms
 School: SCSE
 AU: 3
+Indexes:
+Index No.: 10124
+	Class ID: 10124_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT10 
+	Group Number: CS2
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 10124_LEC2
+	Class type: LEC
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Monday
+
+	Class ID: 10124_TUT
+	Class type: TUT
+	Start Time: 4.30PM
+	End Time: 5.30PM
+	Venue: TR+9
+	Group Number: SSR1  
+	Week: BOTH
+	Day of Week: Thursday
+
+	Class ID: 10124_LAB
+	Class type: LAB
+	Start Time: 10.30AM
+	End Time: 12.30PM
+	Venue: HWLAB1
+	Group Number: SSR1  
+	Week: EVEN
+	Day of Week: Wednesday
+
+Index No.: 10125
+	Class ID: 10125_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT10 
+	Group Number: CS2
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 10125_LEC2
+	Class type: LEC
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Monday
+
+	Class ID: 10125_TUT
+	Class type: TUT
+	Start Time: 1.30PM
+	End Time: 2.30PM
+	Venue: TR+15
+	Group Number: SSR5
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 10125_LAB
+	Class type: LAB
+	Start Time: 8.30AM
+	End Time: 10.30AM
+	Venue: HWLAB2
+	Group Number: SSR5
+	Week: ODD
+	Day of Week: Wednesday
+
 
 (3) Course code: HE9091
 Name: Principle of Economics
 School: SSS
 AU: 3
+Indexes:
+Index No.: 00551
+	Class ID: 00551_LEC
+	Class type: LEC
+	Start Time: 4.30PM
+	End Time: 6.30PM
+	Venue: ONLINE
+	Group Number: NBS
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 00551_TUT
+	Class type: TUT
+	Start Time: 9.30AM
+	End Time: 10.30AM
+	Venue: LHS-TR+48
+	Group Number: NBS1
+	Week: BOTH
+	Day of Week: Tuesday
+
+Index No.: 00552
+	Class ID: 00552_LEC
+	Class type: LEC
+	Start Time: 4.30PM
+	End Time: 6.30PM
+	Venue: ONLINE
+	Group Number: NBS
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 00552_TUT
+	Class type: TUT
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: LHS-TR+48
+	Group Number: NBS2
+	Week: BOTH
+	Day of Week: Tuesday
 
 (4) Course code: BU8201
 Name: Business Finance
 School: NBS
 AU: 3
+Indexes:
+Index No.: 00402
+	Class ID: 00402_LEC
+	Class type: LEC
+	Start Time: 6.30PM
+	End Time: 8.30PM
+	Venue: ONLINE
+	Group Number: 1
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 00402_SEM
+	Class type: SEM
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: S4-SR10
+	Group Number: 1
+	Week: BOTH
+	Day of Week: Tuesday
+
+Index No.: 00403
+	Class ID: 00403_LEC
+	Class type: LEC
+	Start Time: 6.30PM
+	End Time: 8.30PM
+	Venue: ONLINE
+	Group Number: 1
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 00403_SEM
+	Class type: SEM
+	Start Time: 11.30AM
+	End Time: 12.30PM
+	Venue: S4-SR10
+	Group Number: 2
+	Week: BOTH
+	Day of Week: Tuesday
 
 
 
@@ -198,6 +423,8 @@ AU: 3
 Start period: 1st November 2020, 12PM
 End period: 31st December 2020, 12PM
 
+
+
 // --- Student to be added and login for full access demonstration (studentA) --- //
 Name: Wong Jia Wen
 Username: jiawen016
@@ -207,12 +434,87 @@ Gender: Male
 Nationality: Malaysian
 Matric Number: U1920016A
 
+
+
 // --- Course to be added for demonstration --- //
 (5) Course code: CE3001
 Name: Advanced Computer Architecture
 School: SCSE
 AU: 3
+Indexes:
+Index No.: 10033
+	Class ID: 10033_LEC1
+	Class type: LEC
+	Start Time: 9.30AM
+	End Time: 10.30AM
+	Venue: ONLINE 
+	Group Number: CE3  
+	Week: BOTH
+	Day of Week: Monday
 
+	Class ID: 10033_LEC2
+	Class type: LEC
+	Start Time: 2.30PM
+	End Time: 3.30PM
+	Venue: ONLINE
+	Group Number: CE3
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 10033_TUT
+	Class type: TUT
+	Start Time: 11.30AM
+	End Time: 12.30PM
+	Venue: TR+16
+	Group Number: SE1
+	Week: BOTH
+	Day of Week: Monday
+
+	Class ID: 10033_LAB
+	Class type: LAB
+	Start Time: 12.30PM
+	End Time: 2.30PM
+	Venue: HWLAB3
+	Group Number: SE1
+	Week: EVEN
+	Day of Week: Wednesday
+
+Index No.: 10034
+	Class ID: 10034_LEC1
+	Class type: LEC
+	Start Time: 9.30AM
+	End Time: 10.30AM
+	Venue: ONLINE 
+	Group Number: CE3  
+	Week: BOTH
+	Day of Week: Monday
+
+	Class ID: 10034_LEC2
+	Class type: LEC
+	Start Time: 2.30PM
+	End Time: 3.30PM
+	Venue: ONLINE
+	Group Number: CE3
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 10034_TUT
+	Class type: TUT
+	Start Time: 11.30AM
+	End Time: 12.30PM
+	Venue: TR+17
+	Group Number: SE2
+	Week: BOTH
+	Day of Week: Monday
+
+	Class ID: 10034_LAB
+	Class type: LAB
+	Start Time: 12.30PM
+	End Time: 2.30PM
+	Venue: HWLAB3
+	Group Number: SE2
+	Week: ODD
+	Day of Week: Friday
 
 
 
