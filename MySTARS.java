@@ -301,7 +301,9 @@ public class MySTARS implements Serializable{
                         String nationality = sc.nextLine();
                         System.out.print("Please enter student's matriculation number: ");
                         String matricNumber = sc.nextLine();
-                        admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber);
+                        System.out.print("Please enter student's email account: ");
+                        String email = sc.nextLine();
+                        admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber, email);
                         break;
 
                     // ADD COURSE //
