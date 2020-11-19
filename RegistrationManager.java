@@ -205,7 +205,7 @@ public class RegistrationManager implements Serializable{
             student.removeWaitlist(sourceInd);
             waitlist = 1;
         }
-        else if(isRegistered(student, sourceInd){
+        else if(isRegistered(student, sourceInd)){
             student.removeReg(sourceInd);
         }
         else{
