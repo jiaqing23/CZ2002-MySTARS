@@ -8,6 +8,7 @@
 - Add class need to check clash ✅
 - After a index been registered, it cannot add class or remove class or update class. ✅
 - Can a student change/swap index with another student after the registration period?
+- After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course?
 ---------------------------------------------------------------------------------------------------
 ## To do 🚌
 - Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration.

@@ -1,0 +1,227 @@
+// --- Admin account --- //
+Admin username: admin
+Admin password: admin
+
+
+// --- Default registration period --- //
+Start period: 1st December 2020, 12PM
+End period: 31st December 2020, 12PM
+
+
+// --- 15 Pre-populated Students --- //
+(1) Name: Andy Lau
+Username: andy001
+Password: andy001
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920001A
+
+(2) Name: Bryson Teo
+Username: bryson002
+Password: bryson002
+maxAU: 21
+Gender: Male
+Nationality: Malaysian
+Matric Number: U1920002A
+
+(3) Name: Cody Hong
+Username: cody003
+Password: cody003
+maxAU: 21
+Gender: Male
+Nationality: Malaysian
+Matric Number: U1920003A
+
+(4) Name: Daron Lim
+Username: daron004
+Password: daron004
+maxAU: 21
+Gender: Male
+Nationality: American
+Matric Number: U1920004A
+
+(5) Name: Emily Kim
+Username: emily005
+Password: emily005
+maxAU: 21
+Gender: Female
+Nationality: Korean
+Matric Number: U1920005A
+
+(6) Name: Fatima Tan
+Username: fatima006
+Password: fatima006
+maxAU: 21
+Gender: Female
+Nationality: Singaporean
+Matric Number: U1920006A
+
+(7) Name: Gavin Chong
+Username: gavin007
+Password: gavin007
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920007A
+
+(8) Name: Hayley Tan
+Username: hayley008
+Password: hayley008
+maxAU: 21
+Gender: Female
+Nationality: American
+Matric Number: U1920008A
+
+(9) Name: Isaac Newton
+Username: isaac009
+Password: isaac009
+maxAU: 21
+Gender: Male
+Nationality: British
+Matric Number: U1920009A
+
+(10) Name: Jay Chou
+Username: jay010
+Password: jay010
+maxAU: 21
+Gender: Male
+Nationality: Taiwanese
+Matric Number: U1920010A
+
+(11) Name: Kingston Wong
+Username: kingston011
+Password: kingston011
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920011A
+
+(12) Name: Lucas Tan
+Username: lucas012
+Password: lucas012
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920012A
+
+(13) Name: Mandy Wong
+Username: mandy013
+Password: mandy013
+maxAU: 21
+Gender: Female
+Nationality: Singaporean
+Matric Number: U1920013A
+
+(14) Name: Nathan Lim
+Username: nathan014
+Password: nathan014
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920014A
+
+(15) Name: Ogei Chong
+Username: ogei015
+Password: ogei015
+maxAU: 21
+Gender: Female
+Nationality: Japanese
+Matric Number: U1920015A
+
+
+
+
+// --- 4 Pre-populated Courses --- //
+(1) Course code: CZ2002
+Name: Object-oriented Design & Programming
+School: SCSE
+AU: 3
+
+(2) Course code: CZ2001
+Name: Algorithms
+School: SCSE
+AU: 3
+
+(3) Course code: HE9091
+Name: Principle of Economics
+School: SSS
+AU: 3
+
+(4) Course code: BU8201
+Name: Business Finance
+School: NBS
+AU: 3
+
+
+
+
+<<< --- PROGRAM DEMONSTRATION FLOW --- >>>
+1. Login w/ non-existing username or password. [To be created later w/ Admin]
+2. Existing Student login w/ limited access [Before/After Registration Period]
+
+3. Admin add existing Student.
+4. Admin add new Student w/ invalid data entries.
+5. Admin add new Student.
+6. Admin edit Period to current time.
+
+7. New Student login w/ full access [Within the Registration Period]
+8. Student add a course index w/ available vacancies.
+9. Student add a course index w/ 0 vacancies. [Must remember course code, to show pop waitlist demo]
+10. Student add a same course again.
+11. Student add a non-existing course code.
+
+12. Student check vacancy of a course index
+13. Student check vacancy of a non-existing course code.
+
+14. Add a student to a course index w/ available vacancies, but TIME CLASH.
+
+[ There will be logins and logouts at this part of demo ]
+15. Add studentA to course index w/ 0 vacancies [student A is at infront of the waitlist]
+16. Drop studentB from the same course index. Simulate sent notification.
+17. Display timetable of studentA and show course on waitlist added.
+
+18. Login Admin account
+19. Admin print student list by Index
+20. Admin print student list by Course
+
+21. Admin add a new course
+22. Admin add an existing course
+23. Admin add a new course w/ invalid data entries.
+
+24. Login Student account and add newly added course
+
+
+
+
+// --- Edited registration period --- //
+Start period: 1st November 2020, 12PM
+End period: 31st December 2020, 12PM
+
+// --- Student to be added and login for full access demonstration (studentA) --- //
+Name: Wong Jia Wen
+Username: jiawen016
+Password: jiawen016
+maxAU: 21
+Gender: Male
+Nationality: Malaysian
+Matric Number: U1920016A
+
+// --- Course to be added for demonstration --- //
+(5) Course code: CE3001
+Name: Advanced Computer Architecture
+School: SCSE
+AU: 3
+
+
+
+
+Appendix A:
+1. Student Login
+2. Add a Student
+3. Add a Course
+4. Register Student for a Course
+5. Check vacancy in a Class
+6. Day/Time clash w/ other Course
+7. Waitlist Notification
+8. Print student list by Index/Course

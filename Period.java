@@ -26,17 +26,17 @@ public class Period implements Serializable{
     /**
      * Creates a default registration Period.
      * <p>
-     * Default start period: 25th October 2020, 12PM
+     * Default start period: 1st December 2020, 12PM
      * <p>
-     * Default end period: 25th November 2020, 12PM
+     * Default end period: 31st December 2020, 12PM
      */
     public Period(){
 
-        // print format: Wed Nov 25 15:00:00 SGT 2020
-        calendar.set(2020, 9, 25, 12, 00, 00);
+        // print format: Wed Oct 25 12:00:00 SGT 2020
+        calendar.set(2020, 11, 1, 12, 00, 00);
         this.startPeriod = calendar.getTime();
 
-        calendar.set(2020, 10, 25, 15, 00, 00);
+        calendar.set(2020, 11, 31, 12, 00, 00);
         this.endPeriod = calendar.getTime();
     }
 
@@ -62,8 +62,14 @@ public class Period implements Serializable{
      * @param endPeriod The new end time Date object of the calling Period object.
      */
     public void setPeriod(Date startPeriod, Date endPeriod) {
-        this.startPeriod = startPeriod;
-        this.endPeriod = endPeriod;
+
+        if(startPeriod.compareTo(endPeriod) > 0)
+            System.out.println("Start period can't be smaller than end period!");
+        else{
+            this.startPeriod = startPeriod;
+            this.endPeriod = endPeriod;
+        }
+        
     }
 
     /**
