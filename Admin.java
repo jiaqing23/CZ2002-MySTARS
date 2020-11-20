@@ -187,25 +187,26 @@ public class Admin extends User{
     }
 
     /**
-     * Method that allows Admin to check the vacancy of an existing Index of a existing Course.
-     * @param index The exisiting Index object to be updated.
-     */
-    public void checkVacancy(Index index){
-        System.out.printf("Index %s have %d slots left.%n", index.getIndexNo(), index.getVacancy());
-    }
-
-    /**
      * Method that allows Admin to print all the registered Students of an existing Course. 
      * @param course The existing Course object with the registered Students to be printed. 
      */
     public void printByCourse(Course course){
-        ArrayList<Index> indexes = course.getIndexes();
-        for(Index index: indexes){
-            ArrayList<Student> students = index.getReg();
-            for(Student student: students){
-                System.out.printf("%s, %s, %s%n", student.getName(), student.getNationality(), student.getGender());
+        String alignFormat = "| %-10s | %-22s | %-13s | %-10s |%n";
+        System.out.printf("%nRegistered student of %s: %s%n", course.getCourseCode(), course.getCourseName());
+        System.out.format("+------------+------------------------+---------------+------------+%n");
+        System.out.format("|  Index No  |      Student Name      |  Nationality  |   Gender   |%n");
+        System.out.format("+------------+------------------------+---------------+------------+%n");
+        for (Index i: course.getIndexes()){
+            boolean first = true;
+            if(i.getReg().isEmpty()){
+                System.out.format(alignFormat, i.getIndexNo(),"", "", "");
+            }
+            for(Student student: i.getReg()){
+                System.out.format(alignFormat, first?i.getIndexNo():"", student.getName(), student.getNationality(), student.getGender());
+                first = false;
             }
         }
+        System.out.format("+------------+------------------------+---------------+------------+%n");
     }
 
     /**
@@ -213,9 +214,14 @@ public class Admin extends User{
      * @param index The existing Index object with the registered Students to be printed.
      */
     public void printByIndex(Index index){
-        ArrayList<Student> students = index.getReg();
-            for(Student student: students){
-                System.out.printf("%s, %s, %s%n", student.getName(), student.getNationality(), student.getGender());
+        String alignFormat = "| %-12s | %-13s | %-10s |%n";
+        System.out.printf("%nRegistered student of index %s - %s: %s%n", index.getIndexNo(), index.getCourse().getCourseCode(), index.getCourse().getCourseName());
+        System.out.format("+------------------------+---------------+------------+%n");
+        System.out.format("|      Student Name      |  Nationality  |   Gender   |%n");
+        System.out.format("+------------------------+---------------+------------+%n");
+        for(Student student: index.getReg()){
+            System.out.format(alignFormat, student.getName(), student.getNationality(), student.getGender());
         }
+        System.out.format("+------------------------+---------------+------------+%n");
     }
 }

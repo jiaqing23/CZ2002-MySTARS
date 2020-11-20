@@ -177,15 +177,6 @@ public class Student extends User{
 	}
 	
 	/**
-	 * Method that gets the vacancy of an Index.
-	 * @param index The Index object that has the vacancy to be returned.
-	 * @return The vacancy of the Index object being passed in as parameter. 
-	 */
-	public int checkVacancy(Index index) {
-		return index.getVacancy();
-	}
-	
-	/**
 	 * Method that adds an Index to the registered Index list of a Student.
 	 * The number of registered academic units of a Student is increased at the end of the method.
 	 * @param index The Index object to be added to the registered Index list of the calling Student object.
@@ -265,7 +256,7 @@ public class Student extends User{
 	 * Method that prints all the registered indexes' index number of a Student.
 	 */
 	public void printIndex() {
-		if (registered.size()==0){
+		if (registered.isEmpty()){
 			System.out.println("You haven't registered any course!");
 		}
 		else{

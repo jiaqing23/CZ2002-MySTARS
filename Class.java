@@ -137,6 +137,12 @@ public class Class implements Serializable{
         return dayOfWeek;
     }
 
+    public String getTimeString(){
+        String tem1 = Integer.toString(((int)startTime)) + Integer.toString((int)(60*(startTime-(int)startTime)));
+        String tem2 = Integer.toString(((int)endTime)) + Integer.toString((int)(60*(endTime-(int)endTime)));
+        return (tem1+"-"+tem2+" "+dayOfWeek+"("+week+")");
+    }
+
     /**
      * Method that checks whether a Class is clashed with another Class.
      * @param anotherClass The target class to check with the calling Class object.
