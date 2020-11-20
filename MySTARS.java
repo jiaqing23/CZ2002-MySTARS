@@ -270,7 +270,7 @@ public class MySTARS implements Serializable{
                 System.out.format(alignFormat, i.getIndexNo(),"", "", "", "", "");
             }
             for(Class c: i.getClasses()){
-                System.out.format(alignFormat, first?i.getIndexNo():"", c.getClassID(), c.getType(), c.getGroup(), c.getTimeString(), c.getVenue());
+                System.out.format(alignFormat, first?i.getIndexNo():"", c.getClassID(), c.getType(), c.getGroup(), c.printTimePeriod(), c.getVenue());
                 first = false;
             }
         }

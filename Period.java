@@ -7,7 +7,7 @@ import java.util.Date;
  * Admin can access the system regardless of the registration period.
  * Student can only access the system within the registration period.
  */
-public class Period implements Serializable{
+public class Period implements Serializable, TimePeriod {
     /**
      * Period class object is associated with the Calendar class instance.
      */
@@ -44,7 +44,7 @@ public class Period implements Serializable{
      * Method that gets the start time of the registration Period.
      * @return Start time Date object of the calling Period object.
      */
-    public Date getStartPeriod() {
+    public Date getStartTimePeriod() {
         return startPeriod;
     }
 
@@ -52,7 +52,7 @@ public class Period implements Serializable{
      * Method that gets the end time of the registration Period.
      * @return End time Date object of the calling Period object.
      */
-    public Date getEndPeriod() {
+    public Date getEndTimePeriod() {
         return endPeriod;
     }
 
@@ -85,11 +85,10 @@ public class Period implements Serializable{
     }
 
     /**
-     * Method that prints the registration Period.
+     * Method that prints the Registration Time Period.
      */
-    public void printPeriod(){
-        System.out.println("Start period: " + startPeriod);
-        System.out.println("End period: " + endPeriod);
+    public String printTimePeriod(){
+        return ("Start period: " + startPeriod + "\nEnd period: " + endPeriod);
     }
 
 }

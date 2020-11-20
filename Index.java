@@ -210,7 +210,7 @@ public class Index implements Serializable{
             System.out.println("The classes of this index are: ");
             System.out.println("Type\tGroup\tVenue\tTime");
             for(Class c : classes){
-                System.out.println(c.getType() + "\t" + c.getGroup() + "\t" + c.getVenue() + "\t" + c.getStartTime() + "-" + c.getEndTime() + " " +
+                System.out.println(c.getType() + "\t" + c.getGroup() + "\t" + c.getVenue() + "\t" + c.getStartTimePeriod() + "-" + c.getEndTimePeriod() + " " +
                                     c.getWeek());
             }
         }
