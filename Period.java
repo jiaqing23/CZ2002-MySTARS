@@ -26,17 +26,17 @@ public class Period implements Serializable{
     /**
      * Creates a default registration Period.
      * <p>
-     * Default start period: 1st December 2020, 12PM
+     * Default start period: 1st December 2020, 12AM
      * <p>
-     * Default end period: 31st December 2020, 12PM
+     * Default end period: 31st December 2020, 12AM
      */
     public Period(){
 
         // print format: Wed Oct 25 12:00:00 SGT 2020
-        calendar.set(2020, 11, 1, 12, 00, 00);
+        calendar.set(2020, 11, 1, 00, 00, 00);
         this.startPeriod = calendar.getTime();
 
-        calendar.set(2020, 11, 31, 12, 00, 00);
+        calendar.set(2020, 11, 31, 00, 00, 00);
         this.endPeriod = calendar.getTime();
     }
 

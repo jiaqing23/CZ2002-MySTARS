@@ -19,6 +19,7 @@
 - BRYSON: Check for existing index before adding a new index to a course.
 - boolean "exist" must be reset for every check in each switch case, otherwise not exist print message won't be shown.
 - Need to include feedback message for every operations.
+- Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Student.checkVacancy(Index)" because "student" is null. Somehow student object is no reference in main program.
 
 ## Debug 🎅 
 ```java

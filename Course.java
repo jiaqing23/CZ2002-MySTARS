@@ -199,11 +199,9 @@ public class Course implements Serializable{
 					System.out.print("Type of class: ");
 					String type = sc.nextLine();
 					System.out.print("Start time (8.30AM = 8.5): ");
-					int startTime = MySTARS.readInt();
-					String dummy = sc.nextLine();
+					double startTime = MySTARS.readDouble();
 					System.out.print("End time (8.30PM = 20.5): ");
-					int endTime = MySTARS.readInt();
-					dummy = sc.nextLine();
+					double endTime = MySTARS.readDouble();
 					System.out.print("Venue: ");
 					String venue = sc.nextLine();
 					System.out.print("Group number: ");

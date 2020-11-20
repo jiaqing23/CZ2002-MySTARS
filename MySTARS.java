@@ -203,6 +203,21 @@ public class MySTARS implements Serializable{
     }
 
     /**
+     * Method that reads a String into a Double.
+     * @return Return the converted String
+     */
+    public static double readDouble() {
+        double num = 0;
+
+        try {
+            num = Double.parseDouble(sc.nextLine());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return num;
+    }
+
+    /**
      * Main method (driver program).
      * @param args Unused.
      */

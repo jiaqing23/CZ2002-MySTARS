@@ -20,12 +20,12 @@ public class Class implements Serializable{
     /**
      * The start time of this Class.
      */
-    private int startTime;
+    private double startTime;
 
     /**
      * The end time of this Class.
      */
-    private int endTime;
+    private double endTime;
 
     /**
      * The venue of this Class.
@@ -62,7 +62,7 @@ public class Class implements Serializable{
      * @param week This Class's week of occurence.
      * @param dayOfWeek This Class's day of week.
      */
-    public Class(String classID, String type, int startTime, int endTime, String venue, String groupNo, String week, String dayOfWeek) {
+    public Class(String classID, String type, double startTime, double endTime, String venue, String groupNo, String week, String dayOfWeek) {
         this.classID = classID;
         this.type = type;
         this.startTime = startTime;
@@ -93,7 +93,7 @@ public class Class implements Serializable{
      * Method that changes the start time of a Class.
      * @return The starting time of the calling Class object.
      */
-    public int getStartTime(){
+    public double getStartTime(){
         return startTime;
     }
 
@@ -101,7 +101,7 @@ public class Class implements Serializable{
      * Method that changes the end time of a Class.
      * @return The ending time of the calling Class object.
      */
-    public int getEndTime(){
+    public double getEndTime(){
         return endTime;
     }
 
