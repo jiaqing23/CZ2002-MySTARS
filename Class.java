@@ -1,4 +1,6 @@
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Represents an Class of an Index of a Course.
@@ -20,12 +22,12 @@ public class Class implements Serializable{
     /**
      * The start time of this Class.
      */
-    private double startTime;
+    private Date startTime;
 
     /**
      * The end time of this Class.
      */
-    private double endTime;
+    private Date endTime;
 
     /**
      * The venue of this Class.
@@ -62,7 +64,7 @@ public class Class implements Serializable{
      * @param week This Class's week of occurence.
      * @param dayOfWeek This Class's day of week.
      */
-    public Class(String classID, String type, double startTime, double endTime, String venue, String groupNo, String week, String dayOfWeek) {
+    public Class(String classID, String type, Date startTime, Date endTime, String venue, String groupNo, String week, String dayOfWeek) {
         this.classID = classID;
         this.type = type;
         this.startTime = startTime;
@@ -93,7 +95,7 @@ public class Class implements Serializable{
      * Method that changes the start time of a Class.
      * @return The starting time of the calling Class object.
      */
-    public double getStartTime(){
+    public Date getStartTime(){
         return startTime;
     }
 
@@ -101,7 +103,7 @@ public class Class implements Serializable{
      * Method that changes the end time of a Class.
      * @return The ending time of the calling Class object.
      */
-    public double getEndTime(){
+    public Date getEndTime(){
         return endTime;
     }
 
@@ -138,8 +140,9 @@ public class Class implements Serializable{
     }
 
     public String getTimeString(){
-        String tem1 = Integer.toString(((int)startTime)) + Integer.toString((int)(60*(startTime-(int)startTime)));
-        String tem2 = Integer.toString(((int)endTime)) + Integer.toString((int)(60*(endTime-(int)endTime)));
+        SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+        String tem1 = sdf.format(startTime);
+        String tem2 = sdf.format(endTime);
         return (tem1+"-"+tem2+" "+dayOfWeek+"("+week+")");
     }
 
@@ -152,7 +155,7 @@ public class Class implements Serializable{
 
         if(!dayOfWeek.equals(anotherClass.getDayOfWeek()) || 
             (week.equals("ODD") && anotherClass.getWeek().equals("EVEN")) || (week.equals("EVEN") && anotherClass.getWeek().equals("ODD")) ||
-            startTime > anotherClass.getEndTime() || anotherClass.getStartTime() > endTime)
+            startTime.compareTo(anotherClass.getEndTime())>0 || anotherClass.getStartTime().compareTo(endTime)>0)
             return false;
         return true;
     }
