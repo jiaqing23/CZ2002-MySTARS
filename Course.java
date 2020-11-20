@@ -195,8 +195,8 @@ public class Course implements Serializable{
 						System.out.println("This index already registered by someone, cannot add class.");
 						break;
 					}
-					ArrayList<String> wd = new ArrayList<String>();
-					Collections.addAll(wd,"MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY".split(","));
+					ArrayList<String> dayOfWeekList = new ArrayList<String>();
+					Collections.addAll(dayOfWeekList,"MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY".split(","));
 					System.out.print("Class ID: ");
 					String classID = sc.nextLine();
 					System.out.print("Type of class: ");
@@ -214,8 +214,8 @@ public class Course implements Serializable{
 					String dayOfWeek;
 					while(true){
 						System.out.print("Day of week (Monday, Tuesday...): ");
-						dayOfWeek = sc.nextLine();
-						if (wd.contains(dayOfWeek.toUpperCase()))break;
+						dayOfWeek = sc.nextLine().toUpperCase();
+						if (dayOfWeekList.contains(dayOfWeek))break;
 						else{
 							System.out.println("Please enter the correct format for day of week!");
 						}
