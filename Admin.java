@@ -131,12 +131,14 @@ public class Admin extends User{
                         for(Index i: c.getIndexes()){
                             if(i.getIndexNo().equals(tem)){
                                 exist = true;
+                                System.out.println("This index no already exists!");
                                 break;
                             }
                         }
                         if(exist) break;
                     }
                     if(!exist) course.addIndex(new Index(course, tem, classSize)); 
+                
                     break;
 
                 case 5:
