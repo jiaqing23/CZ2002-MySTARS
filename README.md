@@ -8,7 +8,12 @@
 - Add class need to check clash ✅
 - After a index been registered, it cannot add class or remove class or update class. ✅
 - Can a student change/swap index with another student after the registration period? ( ✅ Nope)
+<<<<<<< HEAD
 - After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ DONE BY JIAQING)
+=======
+- After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ Done by Jia Qing)
+- Jia Wen: If enter wrong mode or username, should we loop back to the menu instead of terminating program?
+>>>>>>> e197e3a7c566f8ce2514b6951f176872df1fa4c3
 
 ## To do 🚌
 - Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （90% ✅BRYSON)
@@ -16,9 +21,15 @@
 - BRYSON: Check for existing course before adding a new course. Tested, system will add two objects with the same course information. (✅ DONE BY JIAQING)
 - BRYSON: Check for existing index before adding a new index to a course. (✅ DONE BY JIAQING)
 - Report... 💀
-- Special check for valid input for "Monday/Tuesday..", "Male/Female", etc.
+- Special check for valid input for "Monday/Tuesday..", "Male/Female", etc. （ ✅ DONE BY JIA WEN)
 - boolean "exist" must be reset for every check in each switch case, otherwise not exist print message won't be shown.
 - Need to include feedback message for every operations.
+<<<<<<< HEAD
+=======
+- Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Student.checkVacancy(Index)" because "student" is null. Somehow student object is no reference in main program.
+- Limit input for... school? （ ✅ DONE BY JIA WEN)
+- Jia Wen: Time change to 8.30am blahblah???? （ ✅ DONE BY JIA WEN)
+>>>>>>> e197e3a7c566f8ce2514b6951f176872df1fa4c3
 
 ## Debug 🎅 
 ```java
@@ -31,6 +42,18 @@ try {
 }
 String str1 = input.nextLine();
 ```
+
+## Program Testing 💻
+Step 1: Delete everything inside mySTARS.txt  
+Step 2: Delete every account inside account.txt (EXCEPT FOR ADMIN's // First line of the file)  
+Step 3: For the first login, uncomment the following codes and login into admin account.  
+```java
+// Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
+System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
+Populate.prepopulate(admin, mainApp.courses);
+System.out.println("Finished prepopulating!");
+```
+Step 4: Comment the codes above immediately after prepoulation is done. [DO THIS BEFORE LOGIN INTO ADMIN AGAIN].
 
 ![Alt Text](https://bestanimations.com/media/cats/608000676cute-kitty-animated-gif-26.gif)
 ![Alt Text](https://media.giphy.com/media/Vzk5PFo9iH5AEustmv/giphy.gif)

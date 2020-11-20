@@ -1,6 +1,9 @@
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -199,12 +202,51 @@ public class Course implements Serializable{
 					Collections.addAll(dayOfWeekList,"MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY".split(","));
 					System.out.print("Class ID: ");
 					String classID = sc.nextLine();
-					System.out.print("Type of class: ");
-					String type = sc.nextLine();
-					System.out.print("Start time (8.30AM = 8.5): ");
-					double startTime = MySTARS.readDouble();
-					System.out.print("End time (8.30PM = 20.5): ");
-					double endTime = MySTARS.readDouble();
+					String type;
+					while(true){
+						System.out.print("Type of class (LEC/TUT/LAB/SEM): ");
+						type = sc.nextLine().toUpperCase();
+						if(type=="LEC"||type=="TUT"||type=="LAB"||type=="SEM")break;
+						else
+						System.out.print("Please enter LEC/TUT/LAB/SEM! ");
+					}
+					double startTime;
+					double endTime;
+					while(true){
+						while(true){
+							System.out.print("Start time (In 24Hr format, eg.15:30): ");
+							String strStartTime = sc.nextLine();
+							try {
+								final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+								final Date dateObj = sdf.parse(strStartTime);
+								strStartTime=sdf.format(dateObj);
+								String[] timeSplit = strStartTime.split(":");
+								startTime = Double.parseDouble(timeSplit[0])+Double.parseDouble(timeSplit[1])/60;
+								break;
+							} catch (final ParseException e) {
+								System.out.println("Please follow the 24Hr format (08:30 / 14:45)!");
+							}
+						}
+						while(true){
+							System.out.print("End time (In 24Hr format, eg.18:30): ");
+							String strEndTime = sc.nextLine();
+							try {
+								final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+								final Date dateObj = sdf.parse(strEndTime);
+								strEndTime=sdf.format(dateObj);
+								String[] timeSplit = strEndTime.split(":");
+								endTime = Double.parseDouble(timeSplit[0])+Double.parseDouble(timeSplit[1])/60;
+								break;
+							} catch (final ParseException e) {
+								System.out.println("Please follow the 24Hr format (08:30 / 14:45)!");
+							}
+						}
+						if(endTime<startTime){
+							System.out.println("***Error: End time is earlier than start time!***");
+							System.out.println();
+						}
+						else break;
+				}
 					System.out.print("Venue: ");
 					String venue = sc.nextLine();
 					System.out.print("Group number: ");
