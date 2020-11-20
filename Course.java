@@ -194,22 +194,23 @@ public class Course implements Serializable{
 						System.out.println("This index already registered by someone, cannot add class.");
 						break;
 					}
-					System.out.println("Class ID: ");
+					System.out.print("Class ID: ");
 					String classID = sc.nextLine();
-					System.out.println("Type of class: ");
+					System.out.print("Type of class: ");
 					String type = sc.nextLine();
-					System.out.println("Start time: ");
+					System.out.print("Start time (8.30AM = 8.5): ");
 					int startTime = MySTARS.readInt();
 					String dummy = sc.nextLine();
-					System.out.println("End time: ");
+					System.out.print("End time (8.30PM = 20.5): ");
 					int endTime = MySTARS.readInt();
-					System.out.println("Venue: ");
+					dummy = sc.nextLine();
+					System.out.print("Venue: ");
 					String venue = sc.nextLine();
-					System.out.println("Group number: ");
+					System.out.print("Group number: ");
 					String groupNo = sc.nextLine();
-					System.out.println("Week(ODD, EVEN, BOTH): ");
+					System.out.print("Week(ODD, EVEN, BOTH): ");
 					String week = sc.nextLine();
-					System.out.println("Day of week: ");
+					System.out.print("Day of week (Monday, ...): ");
 					String dayOfWeek = sc.nextLine();
 	
 					Class temClass = new Class(classID, type, startTime, endTime, venue, groupNo, week, dayOfWeek);
@@ -229,6 +230,8 @@ public class Course implements Serializable{
 							index.removeClass(c);
 							break;
 						}
+						else
+							System.out.println("Class ID doesn't exist!");
 					}
 					break;
 					
