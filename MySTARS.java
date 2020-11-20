@@ -516,7 +516,8 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             for(Index i : c.getIndexes()){
                                 if(index.equals(i.getIndexNo())){
-                                    student.checkVacancy(i);
+                                    int vacancy = student.checkVacancy(i);
+                                    System.out.println("Vacancies: " + vacancy);
                                     exist = true;
                                     break;
                                 }

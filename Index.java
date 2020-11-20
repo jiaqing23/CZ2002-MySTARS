@@ -153,7 +153,7 @@ public class Index implements Serializable{
     public void addReg(Student student) {
         registeredStud.add(student);
         Notification.sendMail(student.getEmail(), student.getName(), student.getMatriculationNumber(),
-                            getCourse().getCourseName(), getCourse().getCourseCode(), getIndexNo());
+                             getCourse().getCourseCode(), getCourse().getCourseName(), getIndexNo());
         vacancy--;
     }
 

@@ -8,20 +8,28 @@
 - Add class need to check clash ✅
 - After a index been registered, it cannot add class or remove class or update class. ✅
 - Can a student change/swap index with another student after the registration period? ( ✅ Nope)
+<<<<<<< HEAD
 - After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ Done by Jia Qing)
 - Jia Wen: If enter wrong mode or username, should we loop back to the menu instead of terminating program?
+=======
+- After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ DONE BY JIAQING)
+>>>>>>> 7a13aa262069bbc9fc3431fd3b368c9fe6f31134
 
 ## To do 🚌
-- Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （✅ 90% DONE BY BRYSON)
+- Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （90% ✅BRYSON)
+- Debug main program. (Progress: 70% ✅BRYSON, ✅JIAQING, ✅JIAWEN)
+- BRYSON: Check for existing course before adding a new course. Tested, system will add two objects with the same course information. (✅ DONE BY JIAQING)
+- BRYSON: Check for existing index before adding a new index to a course. (✅ DONE BY JIAQING)
 - Report... 💀
-- Debug main program. (IN-PROGRESS BRYSON)
 - Special check for valid input for "Monday/Tuesday..", "Male/Female", etc.
-- BRYSON: Check for existing course before adding a new course. Tested, system will add two objects with the same course information.
-- BRYSON: Check for existing index before adding a new index to a course.
 - boolean "exist" must be reset for every check in each switch case, otherwise not exist print message won't be shown.
 - Need to include feedback message for every operations.
+<<<<<<< HEAD
 - Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Student.checkVacancy(Index)" because "student" is null. Somehow student object is no reference in main program.
 - Limit input for... school?
+=======
+
+>>>>>>> 7a13aa262069bbc9fc3431fd3b368c9fe6f31134
 
 ## Debug 🎅 
 ```java
