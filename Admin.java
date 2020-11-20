@@ -68,6 +68,7 @@ public class Admin extends User{
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
         Course course = new Course(school, courseCode, courseName, numOfAU);
         mainApp.addCourse(course);
+        System.out.println("Course added!");
     }
 
     /**
@@ -77,6 +78,7 @@ public class Admin extends User{
     public void updateCourse(Course course){
         int choice = 0;
         while(choice != 7){
+            System.out.println();
             System.out.println("// --------------- Updating course " + course.getCourseCode() + " --------------- //");
             System.out.println("(1) Update course code");
             System.out.println("(2) Update course name");
@@ -140,7 +142,7 @@ public class Admin extends User{
                     System.out.println("Wrong Input!!");
                     break;
             }
-
+            System.out.println("Saving data...");
             mainApp.saveData();
         }
     }

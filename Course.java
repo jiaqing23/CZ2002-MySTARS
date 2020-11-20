@@ -140,6 +140,7 @@ public class Course implements Serializable{
 	public void updateIndex(Index index, MySTARS mainApp) {
 		int choice = 0;
         while(choice != 5){
+			System.out.println();
 			System.out.println("// --------------- Updating index " + index.getIndexNo() + " --------------- //");
 			System.out.println("(1) Update index number");
 			System.out.println("(2) Update class size");
@@ -199,6 +200,7 @@ public class Course implements Serializable{
 					String type = sc.nextLine();
 					System.out.println("Start time: ");
 					int startTime = MySTARS.readInt();
+					String dummy = sc.nextLine();
 					System.out.println("End time: ");
 					int endTime = MySTARS.readInt();
 					System.out.println("Venue: ");
@@ -230,7 +232,7 @@ public class Course implements Serializable{
 					}
 					break;
 					
-				case 7:
+				case 5:
                     System.out.println("Returning to update course page...");
                     break;
                 default:

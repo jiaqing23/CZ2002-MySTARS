@@ -131,7 +131,11 @@ public class MySTARS implements Serializable{
 
             o.close();
             f.close();
+            
+            System.out.println("Data saved!");
+            System.out.println();
             return true;
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         } catch (IOException e) {
@@ -255,6 +259,7 @@ public class MySTARS implements Serializable{
             while(choice != 8){
 
                 // Operations that an admin can perform.
+                System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
                 System.out.println("(1) Edit registeration period ");
                 System.out.println("(2) Add student");
@@ -421,6 +426,7 @@ public class MySTARS implements Serializable{
             while(choice != 7){
 
                 // Operations that a student can perform.
+                System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
                 System.out.println("(1) Add Course ");
                 System.out.println("(2) Drop Course");
@@ -606,6 +612,7 @@ public class MySTARS implements Serializable{
             while(choice != 3){
 
                 // Limited access and operations that a Student can perform.
+                System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
                 System.out.println("(1) Check/Print Registered Course");
                 System.out.println("(2) Check Vacancies Available");
