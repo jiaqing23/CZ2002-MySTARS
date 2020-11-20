@@ -97,10 +97,14 @@ public class RegistrationManager implements Serializable{
         }
 
         if(index.getVacancy() > 0 && student.getMaxAU() >= student.getNoOfAU() + index.getCourse().getNumOfAU()){
+            System.out.println("Succesfully registered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
+            System.out.println("Index: " + index.getIndexNo());
             index.addReg(student);
             student.addReg(index);
         }
         else{
+            System.out.println("Succesfully registered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
+            System.out.println("Index: " + index.getIndexNo() + " into waitlist");
             index.addWaitlist(student);
             student.addWaitlist(index);
         }

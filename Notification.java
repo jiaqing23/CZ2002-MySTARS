@@ -100,11 +100,8 @@ public class Notification {
         return null;
     }
 
-    /**
-     * Driver program of Email notification.
-     * @param args Unused.
-     */
-    public static void main(String[] args) {
-        sendMail("tan23qing@gmail.com", "Tan", "U1920941E", "CZ1003", "Intro to Computational Thinking", "10030");
-    }
+    // Debug driver program.
+    // public static void main(String[] args) {
+    //     sendMail("brysonteoyh@gmail.com", "Teo", "U1920640A", "CZ1003", "Intro to Computational Thinking", "10030");
+    // }
 }
