@@ -265,9 +265,14 @@ public class Student extends User{
 	 * Method that prints all the registered indexes' index number of a Student.
 	 */
 	public void printIndex() {
-		System.out.println("Registered indexes: ");
-		for(Index i : registered){
-			System.out.println(i.getIndexNo());
+		if (registered.size()==0){
+			System.out.println("You haven't registered any course!");
+		}
+		else{
+			System.out.println("Registered indexes: ");
+			for(Index i : registered){
+				System.out.println(i.getIndexNo());
+			}
 		}
 
 	}

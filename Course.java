@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -194,6 +195,8 @@ public class Course implements Serializable{
 						System.out.println("This index already registered by someone, cannot add class.");
 						break;
 					}
+					ArrayList<String> wd = new ArrayList<String>();
+					Collections.addAll(wd,"MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY".split(","));
 					System.out.print("Class ID: ");
 					String classID = sc.nextLine();
 					System.out.print("Type of class: ");
@@ -208,9 +211,15 @@ public class Course implements Serializable{
 					String groupNo = sc.nextLine();
 					System.out.print("Week(ODD, EVEN, BOTH): ");
 					String week = sc.nextLine();
-					System.out.print("Day of week (Monday, ...): ");
-					String dayOfWeek = sc.nextLine();
-	
+					String dayOfWeek;
+					while(true){
+						System.out.print("Day of week (Monday, Tuesday...): ");
+						dayOfWeek = sc.nextLine();
+						if (wd.contains(dayOfWeek.toUpperCase()))break;
+						else{
+							System.out.println("Please enter the correct format for day of week!");
+						}
+					}
 					Class temClass = new Class(classID, type, startTime, endTime, venue, groupNo, week, dayOfWeek);
 					index.addClass(temClass);
 					break;
