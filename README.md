@@ -11,9 +11,9 @@
 - After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ Done by Jia Qing)
 
 ## To do 🚌
-- Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （✅ 90% DONE BY BRYSON)
+- Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （90% ✅BRYSON)
 - Report... 💀
-- Debug main program. (IN-PROGRESS BRYSON)
+- Debug main program. (Progress: 70% ✅BRYSON, ✅JIAQING, ✅JIAWEN)
 - Special check for valid input for "Monday/Tuesday..", "Male/Female", etc.
 - BRYSON: Check for existing course before adding a new course. Tested, system will add two objects with the same course information.
 - BRYSON: Check for existing index before adding a new index to a course.

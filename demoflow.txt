@@ -420,8 +420,8 @@ Index No.: 00403
 
 
 // --- Edited registration period --- //
-Start period: 1st November 2020, 12PM
-End period: 31st December 2020, 12PM
+Start period: 1st November 2020, 12AM
+End period: 31st December 2020, 12AM
 
 
 
