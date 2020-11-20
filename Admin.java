@@ -66,6 +66,13 @@ public class Admin extends User{
      * @param numOfAU The number of academic units of the new Course
      */
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
+        for(Course c: mainApp.getCourses()){
+            if(c.getCourseCode().equals(courseCode)){
+                System.out.println("This course code is already exist!");
+                return;
+            }
+        }
+
         Course course = new Course(school, courseCode, courseName, numOfAU);
         mainApp.addCourse(course);
         System.out.println("Course added!");
@@ -120,7 +127,18 @@ public class Admin extends User{
                     tem = sc.nextLine();
                     System.out.print("Please enter the class size: ");
                     int classSize = MySTARS.readInt();
-                    course.addIndex(new Index(course, tem, classSize)); 
+                    for(Course c: mainApp.getCourses()){
+                        for(Index i: c.getIndexes()){
+                            if(i.getIndexNo().equals(tem)){
+                                exist = true;
+                                System.out.println("This index no already exists!");
+                                break;
+                            }
+                        }
+                        if(exist) break;
+                    }
+                    if(!exist) course.addIndex(new Index(course, tem, classSize)); 
+                
                     break;
 
                 case 5:
