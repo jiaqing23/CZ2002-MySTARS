@@ -331,9 +331,6 @@ public class MySTARS implements Serializable{
         // Note: Admin can have his/her full access to the system regardless of the course registration period.
         if(mainApp.mode == 1) {
 
-<<<<<<< HEAD
-            while(choice != 10){
-=======
             Admin admin = (Admin)temp;
 
             // Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
@@ -341,13 +338,8 @@ public class MySTARS implements Serializable{
             // Populate.prepopulate(admin, mainApp.courses);
             // System.out.println("Finished prepopulating!");
 
-            while(choice != 8){
+            while(choice != 10){
                 
-<<<<<<< HEAD
-=======
->>>>>>> e197e3a7c566f8ce2514b6951f176872df1fa4c3
-
->>>>>>> dbb4aee23cf515b6f6e4233db45709d3897cf99c
                 // Operations that an admin can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
@@ -396,14 +388,8 @@ public class MySTARS implements Serializable{
                         while(true){
                             System.out.print("Please enter student's gender (Female/Male): ");
                             gender = sc.nextLine();
-<<<<<<< HEAD
                             if(gender.equalsIgnoreCase("MALE") || gender.equalsIgnoreCase("FEMALE"))
                                 break; 
-=======
-                            if(gender.toUpperCase().equals("MALE")||gender.toUpperCase().equals("FEMALE"))
-                            break;
-                            else 
->>>>>>> e197e3a7c566f8ce2514b6951f176872df1fa4c3
                             System.out.print("Invalid input! Please enter Female / Male !");
                         }
                         System.out.print("Please enter student's nationality: ");
@@ -417,10 +403,6 @@ public class MySTARS implements Serializable{
 
                     // ADD COURSE //
                     case 3:
-<<<<<<< HEAD
-                        System.out.print("Please choose school of the course: ");
-                        String school = sc.nextLine();
-=======
                         ArrayList<String> schoolList = new ArrayList<String>();
                         Collections.addAll(schoolList,"NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
                         String school;
@@ -431,7 +413,6 @@ public class MySTARS implements Serializable{
                                 System.out.println("Please choose school from the list shown!");
                             }else break;
                     }
->>>>>>> e197e3a7c566f8ce2514b6951f176872df1fa4c3
                         System.out.print("Please enter the course code: ");
                         String courseCode = sc.nextLine();
                         System.out.print("Please enter the course name: ");
