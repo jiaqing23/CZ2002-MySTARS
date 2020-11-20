@@ -33,5 +33,8 @@ try {
 String str1 = input.nextLine();
 ```
 
+## Demonstration 💻
+Step 1:
+
 ![Alt Text](https://bestanimations.com/media/cats/608000676cute-kitty-animated-gif-26.gif)
 ![Alt Text](https://media.giphy.com/media/Vzk5PFo9iH5AEustmv/giphy.gif)
