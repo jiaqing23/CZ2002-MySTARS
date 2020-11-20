@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Populate {
@@ -49,54 +51,64 @@ public class Populate {
             }
         }
 
+        SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+
         for(Course c: courses){
 
             if(c.getCourseCode().equals("CZ2001")){
                 for(Index i: c.getIndexes()){
+                    try{
                     if(i.getIndexNo().equals("10124")){
-                        i.addClass(new Class("10124_LEC1", "LEC", 8.5, 9.5, "LT10", "CS2", "BOTH", "Friday"));
-                        i.addClass(new Class("10124_LEC2", "LEC", 10.5, 11.5, "LT11", "CS2", "BOTH", "Monday"));
-                        i.addClass(new Class("10124_TUT", "TUT", 16.5, 17.5, "TR+9", "SSR1", "BOTH", "Thursday"));
-                        i.addClass(new Class("10124_LAB", "LAB", 10.5, 12.5, "HWLAB1", "SSR1", "EVEN", "Wednesday"));
+                        i.addClass(new Class("10124_LEC1", "LEC", sdf.parse("8:30"), sdf.parse("9:30"), "LT10", "CS2", "BOTH", "Friday"));
+                        i.addClass(new Class("10124_LEC2", "LEC", sdf.parse("10:30"), sdf.parse("11:30"), "LT11", "CS2", "BOTH", "Monday"));
+                        i.addClass(new Class("10124_TUT", "TUT", sdf.parse("16:30"), sdf.parse("17:30"), "TR+9", "SSR1", "BOTH", "Thursday"));
+                        i.addClass(new Class("10124_LAB", "LAB", sdf.parse("10:30"), sdf.parse("12:30"), "HWLAB1", "SSR1", "EVEN", "Wednesday"));
                     }
                     
                     if(i.getIndexNo().equals("10125")){
-                        i.addClass(new Class("10125_LEC1", "LEC", 8.5, 9.5, "LT10", "CS2", "BOTH", "Friday"));
-                        i.addClass(new Class("10125_LEC2", "LEC", 10.5, 11.5, "LT11", "CS2", "BOTH", "Monday"));
-                        i.addClass(new Class("10125_TUT", "TUT", 13.5, 14.5, "TR+15", "SSR5", "BOTH", "Wednesday"));
-                        i.addClass(new Class("10125_LAB", "LAB", 8.5, 10.5, "HWLAB1", "SSR5", "ODD", "Wednesday"));
+                        i.addClass(new Class("10125_LEC1", "LEC", sdf.parse("8:30"), sdf.parse("9:30"), "LT10", "CS2", "BOTH", "Friday"));
+                        i.addClass(new Class("10125_LEC2", "LEC", sdf.parse("10:30"), sdf.parse("11:30"), "LT11", "CS2", "BOTH", "Monday"));
+                        i.addClass(new Class("10125_TUT", "TUT", sdf.parse("13:30"), sdf.parse("14:30"), "TR+15", "SSR5", "BOTH", "Wednesday"));
+                        i.addClass(new Class("10125_LAB", "LAB", sdf.parse("8:30"), sdf.parse("10:30"), "HWLAB1", "SSR5", "ODD", "Wednesday"));
                     }
+                }catch (ParseException e){
+                    e.printStackTrace();
+                }
                 }
             }
 
             if(c.getCourseCode().equals("CZ2002")){
                 for(Index i: c.getIndexes()){
+                    try{
                     if(i.getIndexNo().equals("10126")){
-                        i.addClass(new Class("10126_LEC1", "LEC", 8.5, 9.5, "LT11", "CS2", "BOTH", "Thursday"));
-                        i.addClass(new Class("10126_LEC2", "LEC", 14.5, 15.5, "LT11", "CS2", "BOTH", "Tuesday"));
-                        i.addClass(new Class("10126_TUT", "TUT", 9.5, 10.5, "TR+17", "FEP1", "BOTH", "Wednesday"));
-                        i.addClass(new Class("10126_LAB", "LAB", 14.5, 16.5, "SPL", "FEP1", "ODD", "Monday"));
+                        i.addClass(new Class("10126_LEC1", "LEC", sdf.parse("8:30"), sdf.parse("9:30"), "LT11", "CS2", "BOTH", "Thursday"));
+                        i.addClass(new Class("10126_LEC2", "LEC", sdf.parse("14:30"), sdf.parse("15:30"), "LT11", "CS2", "BOTH", "Tuesday"));
+                        i.addClass(new Class("10126_TUT", "TUT", sdf.parse("9:30"), sdf.parse("10:30"), "TR+17", "FEP1", "BOTH", "Wednesday"));
+                        i.addClass(new Class("10126_LAB", "LAB", sdf.parse("14:30"), sdf.parse("16:30"), "SPL", "FEP1", "ODD", "Monday"));
                     }
 
                     if(i.getIndexNo().equals("10127")){
-                        i.addClass(new Class("10127_LEC1", "LEC", 8.5, 9.5, "LT10", "CS2", "BOTH", "Thursday"));
-                        i.addClass(new Class("10127_LEC2", "LEC", 14.5, 15.5, "LT11", "CS2", "BOTH", "Tuesday"));
-                        i.addClass(new Class("10127_TUT", "TUT", 13.5, 14.5, "TR+9", "FSP3", "BOTH", "Wednesday"));
-                        i.addClass(new Class("10127_LAB", "LAB", 14.5, 16.5, "SPL", "FSP3", "EVEN", "Monday"));
+                        i.addClass(new Class("10127_LEC1", "LEC", sdf.parse("8:30"), sdf.parse("9:30"), "LT10", "CS2", "BOTH", "Thursday"));
+                        i.addClass(new Class("10127_LEC2", "LEC", sdf.parse("14:30"), sdf.parse("15:30"), "LT11", "CS2", "BOTH", "Tuesday"));
+                        i.addClass(new Class("10127_TUT", "TUT", sdf.parse("13:30"), sdf.parse("14:30"), "TR+9", "FSP3", "BOTH", "Wednesday"));
+                        i.addClass(new Class("10127_LAB", "LAB", sdf.parse("14:30"), sdf.parse("16:30"), "SPL", "FSP3", "EVEN", "Monday"));
                     }
+                }catch(ParseException e){
+                    e.printStackTrace();
+                }
                 }
             }
-
+            try{
             if(c.getCourseCode().equals("HE9091")){
                 for(Index i: c.getIndexes()){
                     if(i.getIndexNo().equals("00551")){
-                        i.addClass(new Class("00551_LEC", "LEC", 16.5, 18.5, "ONLINE", "NBS", "BOTH", "Friday"));
-                        i.addClass(new Class("00551_TUT", "TUT", 9.5, 10.5, "LHS-TR+48", "NBS1", "BOTH", "Tuesday"));
+                        i.addClass(new Class("00551_LEC", "LEC", sdf.parse("16:30"), sdf.parse("18:30"), "ONLINE", "NBS", "BOTH", "Friday"));
+                        i.addClass(new Class("00551_TUT", "TUT", sdf.parse("9:30"), sdf.parse("10:30"), "LHS-TR+48", "NBS1", "BOTH", "Tuesday"));
                     }
 
                     if(i.getIndexNo().equals("00552")){
-                        i.addClass(new Class("00552_LEC", "LEC", 16.5, 18.5, "ONLINE", "NBS", "BOTH", "Friday"));
-                        i.addClass(new Class("00552_TUT", "TUT", 10.5, 11.5, "LHS-TR+48", "NBS2", "BOTH", "Tuesday"));
+                        i.addClass(new Class("00552_LEC", "LEC", sdf.parse("16:30"), sdf.parse("18:30"), "ONLINE", "NBS", "BOTH", "Friday"));
+                        i.addClass(new Class("00552_TUT", "TUT", sdf.parse("10:30"), sdf.parse("11:30"), "LHS-TR+48", "NBS2", "BOTH", "Tuesday"));
                     }
                 }
             }
@@ -105,18 +117,21 @@ public class Populate {
                 for(Index i: c.getIndexes()){
                     if(i.getIndexNo().equals("00402")){
                         if(i.getIndexNo().equals("00402")){
-                            i.addClass(new Class("00402_LEC", "LEC", 18.5, 20.5, "ONLINE", "1", "BOTH", "Wednesday"));
-                            i.addClass(new Class("00402_TUT", "TUT", 10.5, 11.5, "S4-SR10", "1", "BOTH", "Tuesday"));
+                            i.addClass(new Class("00402_LEC", "LEC", sdf.parse("18:30"), sdf.parse("20:30"), "ONLINE", "1", "BOTH", "Wednesday"));
+                            i.addClass(new Class("00402_TUT", "TUT", sdf.parse("10:30"), sdf.parse("11:30"), "S4-SR10", "1", "BOTH", "Tuesday"));
                         }
                     }
 
                     if(i.getIndexNo().equals("00403")){
-                        i.addClass(new Class("00403_LEC", "LEC", 18.5, 20.5, "ONLINE", "1", "BOTH", "Wednesday"));
-                            i.addClass(new Class("00403_TUT", "TUT", 11.5, 12.5, "S4-SR10", "2", "BOTH", "Tuesday"));
+                        i.addClass(new Class("00403_LEC", "LEC", sdf.parse("18:30"), sdf.parse("20:30"), "ONLINE", "1", "BOTH", "Wednesday"));
+                            i.addClass(new Class("00403_TUT", "TUT", sdf.parse("11:30"), sdf.parse("12:30"), "S4-SR10", "2", "BOTH", "Tuesday"));
                     }
                 }
             }
+        }catch(ParseException e){
+            e.printStackTrace();
         }
+    }
     }
     
 }

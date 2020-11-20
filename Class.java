@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -138,13 +139,10 @@ public class Class implements Serializable, TimePeriod {
         return dayOfWeek;
     }
 
-    /**
-     * Method that formats Date class object to print out as a timetable.
-     * @return Return formatted results.
-     */
     public String printTimePeriod(){
-        String tem1 = Integer.toString(((int)startTime)) + Integer.toString((int)(60*(startTime-(int)startTime)));
-        String tem2 = Integer.toString(((int)endTime)) + Integer.toString((int)(60*(endTime-(int)endTime)));
+        SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+        String tem1 = sdf.format(startTime);
+        String tem2 = sdf.format(endTime);
         return (tem1+"-"+tem2+" "+dayOfWeek+"("+week+")");
     }
 
