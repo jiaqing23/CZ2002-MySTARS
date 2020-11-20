@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -342,8 +343,16 @@ public class MySTARS implements Serializable{
 
                     // ADD COURSE //
                     case 3:
-                        System.out.println("Please choose school of the course: ");
-                        String school = sc.nextLine();
+                        ArrayList<String> schoolList = new ArrayList<String>();
+                        Collections.addAll(schoolList,"NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
+                        String school;
+                        while(true){
+                            System.out.println("School List: NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
+                            school = sc.nextLine().toUpperCase();
+                            if(!schoolList.contains(school)){
+                                System.out.println("Please choose school from the list shown!");
+                            }else break;
+                    }
                         System.out.print("Please enter the course code: ");
                         String courseCode = sc.nextLine();
                         System.out.print("Please enter the course name: ");
