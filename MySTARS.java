@@ -243,6 +243,10 @@ public class MySTARS implements Serializable{
             return;
         }
 
+        for(Student s: mainApp.students){
+            System.out.println(s.getUsername());
+        }
+
         // Create a User object to proceed with the main application's functionalities.
         User temp = null;
 
