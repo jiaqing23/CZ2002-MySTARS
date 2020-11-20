@@ -245,6 +245,10 @@ public class MySTARS implements Serializable{
             return;
         }
 
+        for(Student s: mainApp.students){
+            System.out.println(s.getUsername());
+        }
+
         // Create a User object to proceed with the main application's functionalities.
         User temp = null;
 
@@ -322,7 +326,7 @@ public class MySTARS implements Serializable{
                         while(true){
                             System.out.print("Please enter student's gender (Female/Male): ");
                             gender = sc.nextLine();
-                            if(gender.toUpperCase()=="MALE"||gender.toUpperCase()=="FEMALE")
+                            if(gender.toUpperCase().equals("MALE")||gender.toUpperCase().equals("FEMALE"))
                             break;
                             else 
                             System.out.print("Invalid input! Please enter Female / Male !");
