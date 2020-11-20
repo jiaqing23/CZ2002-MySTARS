@@ -286,7 +286,6 @@ public class MySTARS implements Serializable{
 
             while(choice != 8){
                 
-
                 // Operations that an admin can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
