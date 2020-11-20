@@ -15,7 +15,10 @@
 - Report... 💀
 - Debug main program. (IN-PROGRESS BRYSON)
 - Special check for valid input for "Monday/Tuesday..", "Male/Female", etc.
-- Check for existing course before adding a new course.
+- BRYSON: Check for existing course before adding a new course. Tested, system will add two objects with the same course information.
+- BRYSON: Check for existing index before adding a new index to a course.
+- boolean "exist" must be reset for every check in each switch case, otherwise not exist print message won't be shown.
+- Need to include feedback message for every operations.
 
 ## Debug 🎅 
 ```java

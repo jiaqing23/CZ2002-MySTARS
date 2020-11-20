@@ -333,11 +333,10 @@ public class MySTARS implements Serializable{
                                     admin.updateCourse(c);
                                     exist = true;
                                     break;
-                                    
                             }
                         }
                         if(!exist){
-                            System.out.println("The course name does not exists!");
+                            System.out.println("The course code doesn't exists!");
                         }
                         break;
                     
@@ -349,13 +348,13 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index.equals(i.getIndexNo())){
-                                    admin.checkVacancy(i);
-                                    exist = true;
-                                    break;
+                                    if(index.equals(i.getIndexNo())) {
+                                        admin.checkVacancy(i);
+                                        exist = true;
+                                        break;
+                                    }
                                 }
-                                    
-                            }}
+                            }
                         }
                         if(!exist){
                             System.out.println("The index number does not exists!");
@@ -388,13 +387,13 @@ public class MySTARS implements Serializable{
                         for (Course c: mainApp.courses){
                             if(!exist){
                                 for(Index i : c.getIndexes()){
-                                if(index.equals(i.getIndexNo())){
-                                    admin.printByIndex(i);
-                                    exist = true;
-                                    break;
+                                    if(index.equals(i.getIndexNo())){
+                                        admin.printByIndex(i);
+                                        exist = true;
+                                        break;
+                                    }
                                 }
-                                    
-                            }}
+                            }
                         }
                         if(!exist){
                             System.out.println("The index number does not exists!");
@@ -413,8 +412,9 @@ public class MySTARS implements Serializable{
                 }
                 
                 // Saves the data immediately after an operation.
-                mainApp.saveData();
                 //System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+                System.out.println("Saving data ...");
+                mainApp.saveData();
             }
         }
     
@@ -601,6 +601,7 @@ public class MySTARS implements Serializable{
                 }
                 // Saves the data immediately after an operation.
                 //System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+                System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }
@@ -662,6 +663,7 @@ public class MySTARS implements Serializable{
                 }
                 // Saves the data immediately after an operation.
                 //System.out.println(mainApp.saveData()?"Successfully Saved!":"Failed");
+                System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }

@@ -76,10 +76,13 @@ public class Admin extends User{
      * @param course The exisiting Course object to be updated.
      */
     public void updateCourse(Course course){
+
+        boolean exist = false;
         int choice = 0;
+        
         while(choice != 7){
             System.out.println();
-            System.out.println("// --------------- Updating course " + course.getCourseCode() + " --------------- //");
+            System.out.println("// --------------- Updating course " + course.getCourseCode() + ": " + course.getCourseName() + " --------------- //");
             System.out.println("(1) Update course code");
             System.out.println("(2) Update course name");
             System.out.println("(3) Update school");
@@ -93,21 +96,25 @@ public class Admin extends User{
             String tem;
             
             switch(choice){
+
                 case 1:
                     System.out.print("New Course Code: ");
                     tem = sc.nextLine();
                     course.setCourseCode(tem);
                     break;
+
                 case 2:
                     System.out.print("New Course Name: ");
                     tem = sc.nextLine();
                     course.setCourseName(tem);
                     break;
+
                 case 3:
                     System.out.print("New School: ");
                     tem = sc.nextLine();
                     course.setSchool(tem);
                     break;
+
                 case 4:
                     System.out.print("Please enter the index: ");
                     tem = sc.nextLine();
@@ -115,29 +122,43 @@ public class Admin extends User{
                     int classSize = MySTARS.readInt();
                     course.addIndex(new Index(course, tem, classSize)); 
                     break;
+
                 case 5:
                     System.out.print("Please enter the index: ");
                     tem = sc.nextLine();
                     for(Index i: course.getIndexes()){
                         if(i.getIndexNo().equals(tem)){
                             course.updateIndex(i, mainApp);
+                            exist = true;
                             break;
                         }
                     }
+
+                    if(!exist) {
+                        System.out.println("The index number does not exists!");
+                    }
                     break;
+
                 case 6:
                     System.out.print("Please enter the index: ");
                     tem = sc.nextLine();
                     for(Index i: course.getIndexes()){
                         if(i.getIndexNo().equals(tem)){
                             course.dropIndex(i);
+                            exist = true;
                             break;
                         }
                     }
+
+                    if(!exist) {
+                        System.out.println("The index number does not exists!");
+                    }
                     break;
+
                 case 7:
                     System.out.println("Returning to home page...");
                     break;
+
                 default:
                     System.out.println("Wrong Input!!");
                     break;

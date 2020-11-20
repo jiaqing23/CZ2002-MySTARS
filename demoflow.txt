@@ -1,6 +1,6 @@
 // --- Admin account --- //
 Admin username: admin
-Admin password: admin
+Admin password: 123456
 
 
 // --- Default registration period --- //

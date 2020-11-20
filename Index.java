@@ -118,6 +118,7 @@ public class Index implements Serializable{
             }
         }
         classes.add(temClass);
+        System.out.println("Class added!");
     }
 
     /**
@@ -126,6 +127,7 @@ public class Index implements Serializable{
      */
     public void removeClass(Class temClass) {
         classes.remove(temClass);
+        System.out.println("Class removed!");
     }
 
     /**
