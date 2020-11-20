@@ -276,15 +276,16 @@ public class MySTARS implements Serializable{
         // ------------ ADMIN MODE ------------ //
         // Note: Admin can have his/her full access to the system regardless of the course registration period.
         if(mainApp.mode == 1) {
+            
+            Admin admin = (Admin)temp;
+
+            // Before demonstration prepopulation, comment it out after prepopulation!!
+            // System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
+            // Populate.prepopulate(admin, mainApp.courses);
+            // System.out.println("Finished prepopulating!");
 
             while(choice != 8){
                 
-                Admin admin = (Admin)temp;
-
-                // Before demonstration prepopulation, comment it out after prepopulation!!
-                // System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
-                // Populate.prepopulate(admin, mainApp.courses);
-                // System.out.println("Finished prepopulating!");
 
                 // Operations that an admin can perform.
                 System.out.println();

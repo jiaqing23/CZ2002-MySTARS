@@ -37,7 +37,16 @@ String str1 = input.nextLine();
 ```
 
 ## Demonstration 💻
-Step 1:
+Step 1: Delete everything inside mySTARS.txt
+Step 2: Delete every account inside account.txt (EXCEPT FOR ADMIN's // First line of the file)
+Step 3: For the first login, uncomment the following codes and login into admin account.
+```java
+// Before demonstration prepopulation, comment it out after prepopulation!!
+System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
+Populate.prepopulate(admin, mainApp.courses);
+System.out.println("Finished prepopulating!");
+```
+Step 4: Comment the codes above immediately after prepoulation is done. [DO THIS BEFORE LOGIN INTO ADMIN AGAIN].
 
 ![Alt Text](https://bestanimations.com/media/cats/608000676cute-kitty-animated-gif-26.gif)
 ![Alt Text](https://media.giphy.com/media/Vzk5PFo9iH5AEustmv/giphy.gif)
