@@ -12,11 +12,11 @@
 
 ## To do 🚌
 - Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （90% ✅BRYSON)
-- Report... 💀
 - Debug main program. (Progress: 70% ✅BRYSON, ✅JIAQING, ✅JIAWEN)
-- Special check for valid input for "Monday/Tuesday..", "Male/Female", etc.
 - BRYSON: Check for existing course before adding a new course. Tested, system will add two objects with the same course information. (✅ DONE BY JIAQING)
 - BRYSON: Check for existing index before adding a new index to a course. (✅ DONE BY JIAQING)
+- Report... 💀
+- Special check for valid input for "Monday/Tuesday..", "Male/Female", etc.
 - boolean "exist" must be reset for every check in each switch case, otherwise not exist print message won't be shown.
 - Need to include feedback message for every operations.
 
