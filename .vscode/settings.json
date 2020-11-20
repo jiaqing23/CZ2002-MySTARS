@@ -1,12 +1,5 @@
 {
-    "java.project.referencedLibraries": {
-        "include": [
-            "lib/**/*.jar",
-            "c:\\Users\\User\\Downloads\\javax.mail.jar",
-            "activation.jar"
-        ],
-        "exclude": [
-            "javax.mail.jar"
-        ]
-    }
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ]
 }
