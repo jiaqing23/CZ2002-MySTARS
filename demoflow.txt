@@ -3,9 +3,13 @@ Admin username: admin
 Admin password: 123456
 
 
+
+
 // --- Default registration period --- //
-Start period: 1st December 2020, 12PM
-End period: 31st December 2020, 12PM
+Start period: 1st December 2020, 12AM
+End period: 31st December 2020, 12AM
+
+
 
 
 // --- 15 Pre-populated Students --- //
@@ -16,6 +20,7 @@ maxAU: 21
 Gender: Male
 Nationality: Singaporean
 Matric Number: U1920001A
+Email: andy001@mystars.com
 
 (2) Name: Bryson Teo
 Username: bryson002
@@ -24,6 +29,7 @@ maxAU: 21
 Gender: Male
 Nationality: Malaysian
 Matric Number: U1920002A
+Email: bryson002@mystars.com
 
 (3) Name: Cody Hong
 Username: cody003
@@ -32,6 +38,7 @@ maxAU: 21
 Gender: Male
 Nationality: Malaysian
 Matric Number: U1920003A
+Email: cody003@mystars.com
 
 (4) Name: Daron Lim
 Username: daron004
@@ -40,6 +47,7 @@ maxAU: 21
 Gender: Male
 Nationality: American
 Matric Number: U1920004A
+Email: daron004@mystars.com
 
 (5) Name: Emily Kim
 Username: emily005
@@ -48,6 +56,7 @@ maxAU: 21
 Gender: Female
 Nationality: Korean
 Matric Number: U1920005A
+Email: emily005@mystars.com
 
 (6) Name: Fatima Tan
 Username: fatima006
@@ -56,6 +65,7 @@ maxAU: 21
 Gender: Female
 Nationality: Singaporean
 Matric Number: U1920006A
+Email: fatima006@mystars.com
 
 (7) Name: Gavin Chong
 Username: gavin007
@@ -64,6 +74,7 @@ maxAU: 21
 Gender: Male
 Nationality: Singaporean
 Matric Number: U1920007A
+Email: gavin007@mystars.com
 
 (8) Name: Hayley Tan
 Username: hayley008
@@ -72,6 +83,7 @@ maxAU: 21
 Gender: Female
 Nationality: American
 Matric Number: U1920008A
+Email: hayley008@mystars.com
 
 (9) Name: Isaac Newton
 Username: isaac009
@@ -80,6 +92,7 @@ maxAU: 21
 Gender: Male
 Nationality: British
 Matric Number: U1920009A
+Email: isaac009@mystars.com
 
 (10) Name: Jay Chou
 Username: jay010
@@ -88,6 +101,7 @@ maxAU: 21
 Gender: Male
 Nationality: Taiwanese
 Matric Number: U1920010A
+Email: jay010@mystars.com
 
 (11) Name: Kingston Wong
 Username: kingston011
@@ -96,6 +110,7 @@ maxAU: 21
 Gender: Male
 Nationality: Singaporean
 Matric Number: U1920011A
+Email: kingston011@mystars.com
 
 (12) Name: Lucas Tan
 Username: lucas012
@@ -104,6 +119,7 @@ maxAU: 21
 Gender: Male
 Nationality: Singaporean
 Matric Number: U1920012A
+Email: lucas012@mystars.com
 
 (13) Name: Mandy Wong
 Username: mandy013
@@ -112,6 +128,7 @@ maxAU: 21
 Gender: Female
 Nationality: Singaporean
 Matric Number: U1920013A
+Email: mandy013@mystars.com
 
 (14) Name: Nathan Lim
 Username: nathan014
@@ -120,6 +137,7 @@ maxAU: 21
 Gender: Male
 Nationality: Singaporean
 Matric Number: U1920014A
+Email: nathan014@mystars.com
 
 (15) Name: Ogei Chong
 Username: ogei015
@@ -128,6 +146,7 @@ maxAU: 21
 Gender: Female
 Nationality: Japanese
 Matric Number: U1920015A
+Email: ogei015@mystars.com
 
 
 
@@ -381,6 +400,9 @@ Index No.: 00403
 
 
 
+
+
+
 <<< --- PROGRAM DEMONSTRATION FLOW --- >>>
 1. Login w/ non-existing username or password. [To be created later w/ Admin]
 2. Existing Student login w/ limited access [Before/After Registration Period]
@@ -419,9 +441,13 @@ Index No.: 00403
 
 
 
+
+
 // --- Edited registration period --- //
 Start period: 1st November 2020, 12AM
 End period: 31st December 2020, 12AM
+
+
 
 
 
@@ -433,6 +459,9 @@ maxAU: 21
 Gender: Male
 Nationality: Malaysian
 Matric Number: U1920016A
+Email: 
+
+
 
 
 
