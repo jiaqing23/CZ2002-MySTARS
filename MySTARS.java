@@ -325,11 +325,6 @@ public class MySTARS implements Serializable{
 
             while(choice != 10){
                 
-
-                // Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
-                // System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
-                // Populate.prepopulate(admin, mainApp.courses);
-                // System.out.println("Finished prepopulating!");
                 // Operations that an admin can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
