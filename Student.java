@@ -140,7 +140,7 @@ public class Student extends User{
 	 * Method that gets the matriculation number of a Student.
 	 * @return The matriculation number of the calling Student object.
 	 */
-	public String getMatriculationNumber() {
+	public String getMatricNumber() {
 		return matricNumber;
 	}
 

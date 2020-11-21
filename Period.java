@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -87,8 +88,9 @@ public class Period implements Serializable, TimePeriod {
     /**
      * Method that prints the Registration Time Period.
      */
-    public String printTimePeriod(){
-        return ("Start period: " + startPeriod + "\nEnd period: " + endPeriod);
+    public String getTimePeriodString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy(EEE) HH:mm");
+        return ("Start period: " + sdf.format(startPeriod) + "\nEnd period: " + sdf.format(endPeriod));
     }
 
 }

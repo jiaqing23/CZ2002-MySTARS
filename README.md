@@ -23,6 +23,7 @@
 - Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Student.checkVacancy(Index)" because "student" is null. Somehow student object is no reference in main program.
 - Limit input for... school? （ ✅ DONE BY JIA WEN)
 - Jia Wen: Time change to 8.30am blahblah???? （ ✅ DONE BY JIA WEN)
+- Need to add javadoc for Email.java
 
 ## Debug 🎅 
 ```java

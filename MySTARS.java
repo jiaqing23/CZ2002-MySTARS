@@ -255,7 +255,7 @@ public class MySTARS implements Serializable{
                 System.out.format(alignFormat, i.getIndexNo(),"", "", "", "", "");
             }
             for(Class c: i.getClasses()){
-                System.out.format(alignFormat, first?i.getIndexNo():"", c.getClassID(), c.getType(), c.getGroup(), c.printTimePeriod(), c.getVenue());
+                System.out.format(alignFormat, first?i.getIndexNo():"", c.getClassID(), c.getType(), c.getGroup(), c.getTimePeriodString(), c.getVenue());
                 first = false;
             }
         }
@@ -315,7 +315,6 @@ public class MySTARS implements Serializable{
         // ------------ ADMIN MODE ------------ //
         // Note: Admin can have his/her full access to the system regardless of the course registration period.
         if(mainApp.mode == 1) {
-
             Admin admin = (Admin)temp;
 
             // Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
@@ -323,21 +322,22 @@ public class MySTARS implements Serializable{
             // Populate.prepopulate(admin, mainApp.courses);
             // System.out.println("Finished prepopulating!");
 
-            while(choice != 10){
+            while(choice != 11){
                 
                 // Operations that an admin can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
-                System.out.println("(1) Edit registeration period ");
-                System.out.println("(2) Add student");
-                System.out.println("(3) Add course");
-                System.out.println("(4) Update course");
-                System.out.println("(5) Check all courses");
-                System.out.println("(6) Check vacancy of course");
-                System.out.println("(7) Check timetable of course");
-                System.out.println("(8) Print student list by course");
-                System.out.println("(9) Print student list by index number");
-                System.out.println("(10) Quit");
+                System.out.println("(1) Edit registration period ");
+                System.out.println("(2) Check registration period");
+                System.out.println("(3) Add student");
+                System.out.println("(4) Add course");
+                System.out.println("(5) Update course");
+                System.out.println("(6) Check all courses");
+                System.out.println("(7) Check vacancy of course");
+                System.out.println("(8) Check timetable of course");
+                System.out.println("(9) Print student list by course");
+                System.out.println("(10) Print student list by index number");
+                System.out.println("(11) Quit");
                 System.out.print("Your choice: ");
                 choice = readInt();
                 
@@ -359,8 +359,13 @@ public class MySTARS implements Serializable{
                         }
                         break;
 
-                    // ADD STUDENT //
+                    //CHECK REGISTRATION PERIOD //
                     case 2:
+                        System.out.println(mainApp.period.getTimePeriodString());
+                        break;
+
+                    // ADD STUDENT //
+                    case 3:
                         System.out.print("Please enter student's name: ");
                         String name = sc.nextLine();
                         System.out.print("Please enter student's username: ");
@@ -387,7 +392,7 @@ public class MySTARS implements Serializable{
                         break;
 
                     // ADD COURSE //
-                    case 3:
+                    case 4:
                         ArrayList<String> schoolList = new ArrayList<String>();
                         Collections.addAll(schoolList,"NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
                         String school;
@@ -408,7 +413,7 @@ public class MySTARS implements Serializable{
                         break;
 
                     // UPDATE COURSE //
-                    case 4:
+                    case 5:
                         System.out.print("Please enter the course code: ");
                         courseCode = sc.nextLine();
                         for(Course c: mainApp.courses){
@@ -424,26 +429,26 @@ public class MySTARS implements Serializable{
                         break;
                     
                     // CHECK ALL COURSE //
-                    case 5:
+                    case 6:
                         mainApp.printAllCourses();
                         break;
                     
                     // CHECK VACANCY OF A COURSE // 
-                    case 6:
+                    case 7:
                         System.out.print("Please enter the course code: ");
                         courseCode = sc.nextLine();
                         mainApp.printCourseVacancies(courseCode);
                         break;
 
                     // CHECK TIMETABLE OF A COURSE //
-                    case 7:
+                    case 8:
                         System.out.print("Please enter the course code: ");
                         courseCode = sc.nextLine();
                         mainApp.printCourseTimetable(courseCode);
                         break;
 
                     // PRINT REGISTERED STUDENT LIST BY COURSE //
-                    case 8:
+                    case 9:
                         System.out.print("Please enter the course code: ");
                         courseName = sc.nextLine();
                         for (Course c: mainApp.courses){
@@ -460,7 +465,7 @@ public class MySTARS implements Serializable{
                         break;
 
                     // PRINT REGISTERED STUDENT LIST BY INDEX //
-                    case 9:
+                    case 10:
                         System.out.print("Please enter the index number: ");
                         index = sc.nextLine();
                         for (Course c: mainApp.courses){
@@ -480,7 +485,7 @@ public class MySTARS implements Serializable{
                         break;
                     
                     // EXIT THE PROGRAM //
-                    case 10:
+                    case 11:
                         System.out.println("Program terminating...");
                         break;
 

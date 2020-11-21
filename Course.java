@@ -206,9 +206,8 @@ public class Course implements Serializable{
 					while(true){
 						System.out.print("Type of class (LEC/TUT/LAB/SEM): ");
 						type = sc.nextLine().toUpperCase();
-						if(type=="LEC"||type=="TUT"||type=="LAB"||type=="SEM")break;
-						else
-						System.out.print("Please enter LEC/TUT/LAB/SEM! ");
+						if(type.equals("LEC")||type.equals("TUT")||type.equals("LAB")||type.equals("SEM"))break;
+						else System.out.print("Please enter LEC/TUT/LAB/SEM! ");
 					}
 					Date startTime;
 					Date endTime;

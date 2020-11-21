@@ -152,9 +152,17 @@ public class Index implements Serializable{
      */
     public void addReg(Student student) {
         registeredStud.add(student);
-        Notification.sendMail(student.getEmail(), student.getName(), student.getMatriculationNumber(),
-                             getCourse().getCourseCode(), getCourse().getCourseName(), getIndexNo());
         vacancy--;
+
+        ArrayList<RegisterNotification> method = new ArrayList<RegisterNotification>();
+        method.add(new Email());
+        sendRegisterNotification(student, method);
+    }
+
+    public void sendRegisterNotification(Student student, ArrayList<RegisterNotification> method){
+        for(RegisterNotification i: method){
+            i.sendRegisterNotification(student, this);
+        }
     }
 
     /**

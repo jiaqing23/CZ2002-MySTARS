@@ -139,8 +139,8 @@ public class Class implements Serializable, TimePeriod {
         return dayOfWeek;
     }
 
-    public String printTimePeriod(){
-        SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
+    public String getTimePeriodString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String tem1 = sdf.format(startTime);
         String tem2 = sdf.format(endTime);
         return (tem1+"-"+tem2+" "+dayOfWeek+"("+week+")");
