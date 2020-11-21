@@ -191,7 +191,6 @@ public class Course implements Serializable{
 							else{
 								index.addWaitlist(newAdd);
 							}
-
 						}
 					}
 					break;
@@ -290,7 +289,7 @@ public class Course implements Serializable{
                     System.out.println("Wrong Input!!");
                     break;
 			}
-			
+
 			// Saves the data immediately after an operation.
 			System.out.println("Saving data ...");
 			mainApp.saveData();
