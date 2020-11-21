@@ -386,10 +386,18 @@ public class MySTARS implements Serializable{
                         String nationality = sc.nextLine();
                         System.out.print("Please enter student's matriculation number: ");
                         String matricNumber = sc.nextLine();
+                        for(Student s: mainApp.students){
+                            if(s.getMatricNumber().equals(matricNumber){
+                                exist = true;
+                                System.out.println("Student with this matriculation number has already exist!");
+                                break;
+                            }
+                        }
+                        if(exist) break;
+
                         System.out.print("Please enter student's email account: ");
                         String email = sc.nextLine();
                         admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber, email);
-
 
                         // Print listing of all students
                         System.out.print("\nListing of all Students: \n");

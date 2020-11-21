@@ -4,33 +4,16 @@
 
 ## Queries ❓
 
-- line 108 @ MySTARS.java, shouldn't mode == 1 be logging into admin instead of students? （ ✅ DONE BY JIA WEN)
-- Shouldn't Student class be extending User class?? （ ✅ DONE BY JIA WEN)
-- Add class need to check clash ✅
-- After a index been registered, it cannot add class or remove class or update class. ✅
-- Can a student change/swap index with another student after the registration period? ( ✅ Nope)
-- After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ Done by Jia Qing)
-- Jia Wen: If enter wrong mode or username, should we loop back to the menu instead of terminating program? (BRYSON: Not needed?)
-- BRYSON: If we aren't checking for existing matriculation number when adding a new student, we need to assume that we only check for existing student account username while checking.
+- BRYSON: If we aren't checking for existing matriculation number when adding a new student, we need to assume that we only check for existing student account username while checking. (✅ DONE BY BRYSON) >> Checked for existing matriculation number.
+- BRYSON: Admin printByIndex() alignment got bugs. (✅ DONE BY JIAQING)
 - BRYSON: Invalid entries checking: Admins: (1)Adding a student (2)Adding a courses.
 - BRYSON: Admin update class size, vacancy is not being updated.
 - BRYSON: Admin adding and dropping Index feedback message.
-- BRYSON: Admin printByIndex() alignment got bugs.
 
 
 ## To do 🚌
 
-- Demonstration flow. Courses, indexes, students, admins to be created prior to the demonstration. （90% ✅BRYSON)
-- Debug main program. (Progress: 70% ✅BRYSON, ✅JIAQING, ✅JIAWEN)
-- BRYSON: Check for existing course before adding a new course. Tested, system will add two objects with the same course information. (✅ DONE BY JIAQING)
-- BRYSON: Check for existing index before adding a new index to a course. (✅ DONE BY JIAQING)
-- Special check for valid input for "Monday/Tuesday..", "Male/Female", etc. （ ✅ DONE BY JIA WEN)
-- Limit input for... school? （✅ DONE BY JIA WEN)
-- Jia Wen: Time change to 8.30am blahblah???? （✅ DONE BY JIA WEN)
-- Need to add javadoc for Email.java (✅ DONE BY BRYSON)
 - Report... 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
-- boolean "exist" must be reset for every check in each switch case, otherwise not exist print message won't be shown.
-- Need to include feedback message for every operations.
 
 
 ## Debug 🎅 
