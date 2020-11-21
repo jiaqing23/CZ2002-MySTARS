@@ -210,18 +210,15 @@ public class Course implements Serializable{
 						else
 						System.out.print("Please enter LEC/TUT/LAB/SEM! ");
 					}
-					double startTime;
-					double endTime;
+					Date startTime;
+					Date endTime;
 					while(true){
 						while(true){
 							System.out.print("Start time (In 24Hr format, eg.15:30): ");
 							String strStartTime = sc.nextLine();
 							try {
 								final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
-								final Date dateObj = sdf.parse(strStartTime);
-								strStartTime=sdf.format(dateObj);
-								String[] timeSplit = strStartTime.split(":");
-								startTime = Double.parseDouble(timeSplit[0])+Double.parseDouble(timeSplit[1])/60;
+								startTime = sdf.parse(strStartTime);
 								break;
 							} catch (final ParseException e) {
 								System.out.println("Please follow the 24Hr format (08:30 / 14:45)!");
@@ -232,16 +229,13 @@ public class Course implements Serializable{
 							String strEndTime = sc.nextLine();
 							try {
 								final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
-								final Date dateObj = sdf.parse(strEndTime);
-								strEndTime=sdf.format(dateObj);
-								String[] timeSplit = strEndTime.split(":");
-								endTime = Double.parseDouble(timeSplit[0])+Double.parseDouble(timeSplit[1])/60;
+								endTime = sdf.parse(strEndTime);
 								break;
 							} catch (final ParseException e) {
 								System.out.println("Please follow the 24Hr format (08:30 / 14:45)!");
 							}
 						}
-						if(endTime<startTime){
+						if(endTime.compareTo(startTime)<0){
 							System.out.println("***Error: End time is earlier than start time!***");
 							System.out.println();
 						}

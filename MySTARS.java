@@ -200,21 +200,6 @@ public class MySTARS implements Serializable{
         return num;
     }
 
-    /**
-     * Method that reads a String into a Double.
-     * @return Return the converted String
-     */
-    public static double readDouble() {
-        double num = 0;
-
-        try {
-            num = Double.parseDouble(sc.nextLine());
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        return num;
-    }
-
     public void printCourseVacancies(String courseCode){
         Course course = null;
         for(Course c: courses){
@@ -270,7 +255,7 @@ public class MySTARS implements Serializable{
                 System.out.format(alignFormat, i.getIndexNo(),"", "", "", "", "");
             }
             for(Class c: i.getClasses()){
-                System.out.format(alignFormat, first?i.getIndexNo():"", c.getClassID(), c.getType(), c.getGroup(), c.getTimeString(), c.getVenue());
+                System.out.format(alignFormat, first?i.getIndexNo():"", c.getClassID(), c.getType(), c.getGroup(), c.printTimePeriod(), c.getVenue());
                 first = false;
             }
         }
@@ -340,11 +325,6 @@ public class MySTARS implements Serializable{
 
             while(choice != 10){
                 
-
-                // Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
-                // System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
-                // Populate.prepopulate(admin, mainApp.courses);
-                // System.out.println("Finished prepopulating!");
                 // Operations that an admin can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
