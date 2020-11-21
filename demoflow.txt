@@ -404,7 +404,7 @@ Index No.: 00403
 
 
 <<< --- PROGRAM DEMONSTRATION FLOW --- >>>
-1. Login w/ non-existing username or password. [To be created later w/ Admin]
+1. Login w/ non-existing username or password.
 2. Existing Student login w/ limited access [Before/After Registration Period]
 
 3. Admin add existing Student.
@@ -412,9 +412,17 @@ Index No.: 00403
 5. Admin add new Student.
 6. Admin edit Period to current time.
 
+21. Admin add a new course w/ Index[13579] that has 1 vacancies left.
+22. Admin add an existing course
+23. Admin add a new course w/ invalid data entries.
+
+[ There will be logins and logouts at this part of demo ]
 7. New Student login w/ full access [Within the Registration Period]
-8. Student add a course index w/ available vacancies.
-9. Student add a course index w/ 0 vacancies. [Must remember course code, to show pop waitlist demo]
+8. StudentA(andy001) add a course index w/ available vacancies (1 vacancies).
+9. StudentB(jiawen016) add a course index w/ 0 vacancies.
+16. Drop studentA from the course index. Simulate sent notification.
+17. Display timetable of studentB and show course on waitlist added.
+
 10. Student add a same course again.
 11. Student add a non-existing course code.
 
@@ -422,26 +430,11 @@ Index No.: 00403
 13. Student check vacancy of a non-existing course code.
 
 14. Add a student to a course index w/ available vacancies, but TIME CLASH.
-
-[ There will be logins and logouts at this part of demo ]
-15. Add studentA to course index w/ 0 vacancies [student A is at infront of the waitlist]
-16. Drop studentB from the same course index. Simulate sent notification.
-17. Display timetable of studentA and show course on waitlist added.
+[10125,10126]
 
 18. Login Admin account
 19. Admin print student list by Index
 20. Admin print student list by Course
-
-21. Admin add a new course
-22. Admin add an existing course
-23. Admin add a new course w/ invalid data entries.
-
-24. Login Student account and add newly added course
-
-
-
-
-
 
 // --- Edited registration period --- //
 Start period: 1st November 2020, 12AM
@@ -459,7 +452,7 @@ maxAU: 21
 Gender: Male
 Nationality: Malaysian
 Matric Number: U1920016A
-Email: 
+Email: brys0001@e.ntu.edu.sg
 
 
 

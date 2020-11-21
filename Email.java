@@ -103,7 +103,7 @@ public class Email implements RegisterNotification {
             return message;
         } catch (Exception ex) {
             System.out.println("Email failed to send!");
-            Logger.getLogger(Notification.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Email.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }   
