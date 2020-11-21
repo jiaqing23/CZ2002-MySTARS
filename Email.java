@@ -16,8 +16,14 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * Represents an Email that implements the Notification interface, that is to be sent to Student who successfully registered a Course.
+ */
 public class Email implements RegisterNotification {
 
+    /**
+     * Method that sends an email notification to Student that successfully registered an Index.
+     */
     @Override
     public void sendRegisterNotification(Student student, Index index) {
         String recepient = student.getEmail();
@@ -57,6 +63,18 @@ public class Email implements RegisterNotification {
 
     }
 
+    /**
+     * Method that prepares the layout of the email.
+     * @param session Current mail session.
+     * @param myAccountEmail Host(System) email account address.
+     * @param recepient Recepient's(Student) email account address.
+     * @param name Recepient's(Student) name.
+     * @param matricNo Recepient's(Student) matriculation number.
+     * @param courseCode Succesfully registered course code.
+     * @param courseName Succesfully registered course name.
+     * @param indexNo Successfully registered index number.
+     * @return Email Message model object.
+     */
     private Message prepareRegisterNotificationMessage(Session session, String myAccountEmail, String recepient,  String name, String matricNo, String courseCode, String courseName, String indexNo) {
         try {
             Message message = new MimeMessage(session);
@@ -82,13 +100,11 @@ public class Email implements RegisterNotification {
 
             message.setContent(multipart);
 
-
             return message;
         } catch (Exception ex) {
             System.out.println("Email failed to send!");
             Logger.getLogger(Notification.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
-    
+    }   
 }

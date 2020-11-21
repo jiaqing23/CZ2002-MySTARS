@@ -88,7 +88,7 @@ public class Admin extends User{
         
         while(choice != 7){
             System.out.println();
-            System.out.println("// --------------- Updating course " + course.getCourseCode() + ": " + course.getCourseName() + " --------------- //");
+            System.out.println("// --------------- Updating Course " + course.getCourseCode() + ": " + course.getCourseName() + " --------------- //");
             System.out.println("(1) Update course code");
             System.out.println("(2) Update course name");
             System.out.println("(3) Update school");
@@ -103,24 +103,28 @@ public class Admin extends User{
             
             switch(choice){
 
+                // UPDATE COURSE CODE //
                 case 1:
                     System.out.print("New Course Code: ");
                     tem = sc.nextLine();
                     course.setCourseCode(tem);
                     break;
 
+                // UPDATE COURSE NAME //
                 case 2:
                     System.out.print("New Course Name: ");
                     tem = sc.nextLine();
                     course.setCourseName(tem);
                     break;
 
+                // UPDATE SCHOOL //
                 case 3:
                     System.out.print("New School: ");
                     tem = sc.nextLine();
                     course.setSchool(tem);
                     break;
 
+                // ADD INDEX //
                 case 4:
                     System.out.print("Please enter the index: ");
                     tem = sc.nextLine();
@@ -140,6 +144,7 @@ public class Admin extends User{
                 
                     break;
 
+                // UPDATE INDEX //
                 case 5:
                     System.out.print("Please enter the index: ");
                     tem = sc.nextLine();
@@ -156,6 +161,7 @@ public class Admin extends User{
                     }
                     break;
 
+                // REMOVE INDEX //
                 case 6:
                     System.out.print("Please enter the index: ");
                     tem = sc.nextLine();
@@ -172,6 +178,7 @@ public class Admin extends User{
                     }
                     break;
 
+                // BACK TO HOME PAGE //
                 case 7:
                     System.out.println("Returning to home page...");
                     break;
@@ -180,7 +187,9 @@ public class Admin extends User{
                     System.out.println("Wrong Input!!");
                     break;
             }
-            System.out.println("Saving data...");
+            
+            // Saves the data immediately after an operation.
+            System.out.println("Saving data ...");
             mainApp.saveData();
         }
     }

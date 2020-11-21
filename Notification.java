@@ -59,12 +59,16 @@ public class Notification {
     }
 
     /**
-     * Static method to prepare the layout of the email.
+     * Static method that prepares the layout of the email.
      * @param session Current mail session.
-     * @param myAccountEmail Host email account address.
-     * @param recepient Recepient's email account address.
-     * @param txt Email notification content.
-     * @return Email message model object.
+     * @param myAccountEmail Host(System) email account address.
+     * @param recepient Recepient's(Student) email account address.
+     * @param name Recepient's(Student) name.
+     * @param matricNo Recepient's(Student) matriculation number.
+     * @param courseCode Succesfully registered course code.
+     * @param courseName Succesfully registered course name.
+     * @param indexNo Successfully registered index number.
+     * @return Email Message model object.
      */
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient,  String name, String matricNo, String courseCode, String courseName, String indexNo) {
         try {

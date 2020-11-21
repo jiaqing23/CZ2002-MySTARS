@@ -145,7 +145,7 @@ public class Course implements Serializable{
 		int choice = 0;
         while(choice != 5){
 			System.out.println();
-			System.out.println("// --------------- Updating index " + index.getIndexNo() + " --------------- //");
+			System.out.println("// --------------- Updating Index " + index.getIndexNo() + " --------------- //");
 			System.out.println("(1) Update index number");
 			System.out.println("(2) Update class size");
 			System.out.println("(3) Add class");
@@ -157,12 +157,15 @@ public class Course implements Serializable{
 			
 			String tem;
 			switch(choice){
+
+				// UPDATE INDEX NUMBER //
 				case 1:
 					System.out.print("Please enter the new index number: ");
 					tem = sc.nextLine();
 					index.setIndexNo(tem);
 					break;
-		
+				
+				// UPDATE CLASS SIZE //
 				case 2:
 					System.out.print("Please enter the new class size: ");
 					int newSize = MySTARS.readInt();
@@ -192,7 +195,8 @@ public class Course implements Serializable{
 						}
 					}
 					break;
-
+				
+				// ADD CLASS //
 				case 3:
 					if(index.getVacancy() != index.getClassSize()){
 						System.out.println("This index already registered by someone, cannot add class.");
@@ -258,7 +262,8 @@ public class Course implements Serializable{
 					Class temClass = new Class(classID, type, startTime, endTime, venue, groupNo, week, dayOfWeek);
 					index.addClass(temClass);
 					break;
-
+				
+				// REMOVE CLASS //
 				case 4:
 					if(index.getVacancy() != index.getClassSize()){
 						System.out.println("This index already registered by someone, cannot remove class.");
@@ -276,7 +281,8 @@ public class Course implements Serializable{
 							System.out.println("Class ID doesn't exist!");
 					}
 					break;
-					
+				
+				// BACK TO UPDATE COURSE PAGE //
 				case 5:
                     System.out.println("Returning to update course page...");
                     break;
@@ -284,7 +290,9 @@ public class Course implements Serializable{
                     System.out.println("Wrong Input!!");
                     break;
 			}
-
+			
+			// Saves the data immediately after an operation.
+			System.out.println("Saving data ...");
 			mainApp.saveData();
 		}
 	}

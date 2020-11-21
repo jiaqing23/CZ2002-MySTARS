@@ -19,10 +19,11 @@
 - Special check for valid input for "Monday/Tuesday..", "Male/Female", etc. （ ✅ DONE BY JIA WEN)
 - Limit input for... school? （✅ DONE BY JIA WEN)
 - Jia Wen: Time change to 8.30am blahblah???? （✅ DONE BY JIA WEN)
+- Need to add javadoc for Email.java (✅ DONE BY BRYSON)
 - Report... 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
 - boolean "exist" must be reset for every check in each switch case, otherwise not exist print message won't be shown.
 - Need to include feedback message for every operations.
-- Need to add javadoc for Email.java (IN PROGRESS - BRYSON)
+
 
 ## Debug 🎅 
 ```java
