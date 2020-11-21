@@ -399,7 +399,7 @@ public class MySTARS implements Serializable{
                         System.out.print("Please enter student's matriculation number: ");
                         String matricNumber = sc.nextLine();
                         for(Student s: mainApp.students){
-                            if(s.getMatricNumber().equals(matricNumber){
+                            if(s.getMatricNumber().equals(matricNumber)){
                                 exist = true;
                                 System.out.println("Student with this matriculation number has already exist!");
                                 break;
