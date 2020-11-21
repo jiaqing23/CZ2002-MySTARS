@@ -262,6 +262,16 @@ public class MySTARS implements Serializable{
         System.out.format("+--------------+------------+------------+------------+----------------------------+---------------+%n");
     }
 
+    public void printHeader(){
+        System.out.println("      ___       ___            ___       ___       ___       ___       ___   ");
+        System.out.println("     /\\__\\     /\\__\\          /\\  \\     /\\  \\     /\\  \\     /\\  \\     /\\  \\  ");
+        System.out.println("    /::L_L_   |::L__L        /::\\  \\    \\:\\  \\   /::\\  \\   /::\\  \\   /::\\  \\ ");
+        System.out.println("   /:/L:\\__\\  |:::\\__\\      /\\:\\:\\__\\   /::\\__\\ /::\\:\\__\\ /::\\:\\__\\ /\\:\\:\\__\\");
+        System.out.println("   \\/_/:/  /  /:;;/__/      \\:\\:\\/__/  /:/\\/__/ \\/\\::/  / \\;:::/  / \\:\\:\\/__/");
+        System.out.println("     /:/  /   \\/__/          \\::/  /   \\/__/      /:/  /   |:\\/__/   \\::/  / ");
+        System.out.println("     \\/__/                    \\/__/               \\/__/     \\|__|     \\/__/  ");
+    }
+
     /**
      * Main method (driver program).
      * @param args Unused.
@@ -287,6 +297,8 @@ public class MySTARS implements Serializable{
             sc.close();
             return;
         }
+
+        mainApp.printHeader();
 
         // Create a User object to proceed with the main application's functionalities.
         User temp = null;

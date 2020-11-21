@@ -222,7 +222,7 @@ public class Admin extends User{
      * @param index The existing Index object with the registered Students to be printed.
      */
     public void printByIndex(Index index){
-        String alignFormat = "| %-12s | %-13s | %-10s |%n";
+        String alignFormat = "| %-22s | %-13s | %-10s |%n";
         System.out.printf("%nRegistered student of index %s - %s: %s%n", index.getIndexNo(), index.getCourse().getCourseCode(), index.getCourse().getCourseName());
         System.out.format("+------------------------+---------------+------------+%n");
         System.out.format("|      Student Name      |  Nationality  |   Gender   |%n");
