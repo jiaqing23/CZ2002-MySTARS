@@ -4,10 +4,6 @@
 
 ## Queries ❓
 
-- BRYSON: If we aren't checking for existing matriculation number when adding a new student, we need to assume that we only check for existing student account username while checking. (✅ DONE BY BRYSON) >> Checked for existing matriculation number.
-- BRYSON: Admin printByIndex() alignment got bugs. (✅ DONE BY JIAQING)
-- BRYSON: Admin update class size, vacancy is not being updated. (✅ DONE BY BRYSON)
-- BRYSON: Admin adding and dropping Index feedback message.
 - BRYSON: Invalid entries checking: Admins: (1)Adding a student (2)Adding a courses. ❓❓❓
 
 
