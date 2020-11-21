@@ -11,6 +11,12 @@
 - Can a student change/swap index with another student after the registration period? ( ✅ Nope)
 - After setting a new class size, if there's student in the waitlist, we should dequeue appropriate amount of them to register the course? (✅ Done by Jia Qing)
 - Jia Wen: If enter wrong mode or username, should we loop back to the menu instead of terminating program? (BRYSON: Not needed?)
+- BRYSON: If we aren't checking for existing matriculation number when adding a new student, we need to assume that we only check for existing student account username while checking.
+- BRYSON: Invalid entries checking: Admins: (1)Adding a student (2)Adding a courses.
+- BRYSON: Admin update class size, vacancy is not being updated.
+- BRYSON: Admin adding and dropping Index feedback message.
+- BRYSON: Admin printByIndex() alignment got bugs.
+
 
 ## To do 🚌
 
