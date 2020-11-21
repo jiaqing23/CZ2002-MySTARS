@@ -87,6 +87,7 @@ public class Index implements Serializable{
      * @param classSize The new class size of the calling Index object.
      */
     public void setClassSize(int classSize) {
+        this.vacancy += classSize - this.classSize;
         this.classSize = classSize;
     }
 

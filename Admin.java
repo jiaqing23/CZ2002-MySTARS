@@ -140,7 +140,10 @@ public class Admin extends User{
                         }
                         if(exist) break;
                     }
-                    if(!exist) course.addIndex(new Index(course, tem, classSize)); 
+                    if(!exist){
+                        course.addIndex(new Index(course, tem, classSize)); 
+                        System.out.println("Index added!");
+                    }
                 
                     break;
 
@@ -168,6 +171,7 @@ public class Admin extends User{
                     for(Index i: course.getIndexes()){
                         if(i.getIndexNo().equals(tem)){
                             course.dropIndex(i);
+                            System.out.println("Index removed!");
                             exist = true;
                             break;
                         }
