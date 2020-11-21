@@ -149,7 +149,6 @@ public class Class implements Serializable{
      * @return Returns true if there's a clash. Otherwise, returns false.
      */
     public boolean clash(Class anotherClass){
-
         if(!dayOfWeek.equals(anotherClass.getDayOfWeek()) || 
             (week.equals("ODD") && anotherClass.getWeek().equals("EVEN")) || (week.equals("EVEN") && anotherClass.getWeek().equals("ODD")) ||
             startTime > anotherClass.getEndTime() || anotherClass.getStartTime() > endTime)
