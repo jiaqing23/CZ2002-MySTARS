@@ -97,16 +97,16 @@ public class RegistrationManager implements Serializable{
         }
 
         if(index.getVacancy() > 0 && student.getMaxAU() >= student.getNoOfAU() + index.getCourse().getNumOfAU()){
-            System.out.println("Succesfully registered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
-            System.out.println("Index: " + index.getIndexNo());
             index.addReg(student);
             student.addReg(index);
+            System.out.println("Succesfully registered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
+            System.out.println("Index: " + index.getIndexNo());
         }
         else{
-            System.out.println("Succesfully registered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
-            System.out.println("Index: " + index.getIndexNo() + " into waitlist");
             index.addWaitlist(student);
             student.addWaitlist(index);
+            System.out.println("Succesfully registered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
+            System.out.println("Index: " + index.getIndexNo() + " into waitlist");
         }
 
         return true;
@@ -121,6 +121,9 @@ public class RegistrationManager implements Serializable{
         if(isInWaitlist(student, index)){
             student.removeWaitlist(index);
             index.removeWaitlist(student);
+            System.out.println("Succesfully deregistered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
+            System.out.println("Index: " + index.getIndexNo());
+            
         }
         //Need to make sure that the student has registered for the index before dropping
         else if(isRegistered(student, index)){
@@ -142,8 +145,9 @@ public class RegistrationManager implements Serializable{
                 else{
                     index.addWaitlist(newAdd);
                 }
-
             }
+            System.out.println("Succesfully deregistered " + index.getCourse().getCourseCode() + " " + index.getCourse().getCourseName());
+            System.out.println("Index: " + index.getIndexNo());
         }
         else{
             System.out.println("You haven't registered for this index!");

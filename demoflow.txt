@@ -1,17 +1,3 @@
-// --- Admin account --- //
-Admin username: admin
-Admin password: 123456
-
-
-
-
-// --- Default registration period --- //
-Start period: 1st December 2020, 12AM
-End period: 31st December 2020, 12AM
-
-
-
-
 // --- 15 Pre-populated Students --- //
 (1) Name: Andy Lau
 Username: andy001
@@ -399,42 +385,49 @@ Index No.: 00403
 
 
 
+// --- Admin account --- //
+Admin username: admin
+Admin password: 123456
 
+
+// --- Default registration period --- //
+Start period: 1st December 2020, 12AM
+End period: 31st December 2020, 12AM
 
 
 
 <<< --- PROGRAM DEMONSTRATION FLOW --- >>>
 1. Login w/ non-existing username or password.
-2. Existing Student login w/ limited access [Before/After Registration Period]
+2. Existing Student login w/ limited access [Before Registration Period] and demo the functionalities.
 
-3. Admin add existing Student.
-4. Admin add new Student w/ invalid data entries.
-5. Admin add new Student.
-6. Admin edit Period to current time.
+3. Admin add existing Student + w/ invalid data entries. [Gender]
+5. Admin add new StudentA.
+6. Admin add new StudentB.
 
-21. Admin add a new course w/ Index[13579] that has 1 vacancies left.
-22. Admin add an existing course
-23. Admin add a new course w/ invalid data entries.
+// --- (studentA) --- //
+Name: Wong Jia Wen
+Username: jiawen016
+Password: jiawen016
+maxAU: 21
+Gender: Female
+Nationality: Malaysian
+Matric Number: U1920016A
+Email: brys0001@e.ntu.edu.sg
 
-[ There will be logins and logouts at this part of demo ]
-7. New Student login w/ full access [Within the Registration Period]
-8. StudentA(andy001) add a course index w/ available vacancies (1 vacancies).
-9. StudentB(jiawen016) add a course index w/ 0 vacancies.
-16. Drop studentA from the course index. Simulate sent notification.
-17. Display timetable of studentB and show course on waitlist added.
+// --- (studentB) --- //
+Name: Tan Jia Qing
+Username: jiaqing017
+Password: jiaqing017
+maxAU: 21
+Gender: Male
+Nationality: Malaysian
+Matric Number: U1920017A
+Email: brys0001@e.ntu.edu.sg
 
-10. Student add a same course again.
-11. Student add a non-existing course code.
+7. Admin add an existing course + w/ invalid data entries. [School]
+9. Admin add a new course w/ CZ2005 Index[13579] that has 1 vacancies left.
 
-12. Student check vacancy of a course index
-13. Student check vacancy of a non-existing course code.
-
-14. Add a student to a course index w/ available vacancies, but TIME CLASH.
-[10125,10126]
-
-18. Login Admin account
-19. Admin print student list by Index
-20. Admin print student list by Course
+10. Admin edit Period to current time.
 
 // --- Edited registration period --- //
 Start period: 1st November 2020, 12AM
@@ -443,16 +436,30 @@ End period: 31st December 2020, 12AM
 
 
 
+[ There will be logins and logouts at this part of demo ]
+11. New StudentA login w/ full access [Within the Registration Period]
+12. StudentA(jiawen016) add a course index w/ available vacancies (1 vacancies).
+13. StudentB(jiaqing017) add a course index w/ 0 vacancies.
+14. Drop studentA from the course index. Simulate sent notification.
+15. Display timetable of studentB and show course on waitlist added.
 
-// --- Student to be added and login for full access demonstration (studentA) --- //
-Name: Wong Jia Wen
-Username: jiawen016
-Password: jiawen016
-maxAU: 21
-Gender: Male
-Nationality: Malaysian
-Matric Number: U1920016A
-Email: brys0001@e.ntu.edu.sg
+16. StudentB add a same course again.
+17. StudentB add a non-existing course code.
+18. Student check vacancy of a course index
+19. Student check vacancy of a non-existing course code.
+
+20. Add a student to a course index w/ available vacancies, but TIME CLASH.
+[10125,10126]
+
+21. Register prepopulated student to pre-populated courses.
+22. Login Admin account
+23. Admin print student list by Index
+24. Admin print student list by Course
+
+25. 
+
+
+
 
 
 

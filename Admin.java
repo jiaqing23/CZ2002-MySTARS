@@ -67,7 +67,7 @@ public class Admin extends User{
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
         for(Course c: mainApp.getCourses()){
             if(c.getCourseCode().equals(courseCode)){
-                System.out.println("This course code is already exist!");
+                System.out.println("This course code already exist!");
                 return;
             }
         }
@@ -100,6 +100,8 @@ public class Admin extends User{
             Scanner sc = MySTARS.getScanner();
             choice = MySTARS.readInt();
             String tem;
+
+            exist = false;
             
             switch(choice){
 
@@ -107,7 +109,15 @@ public class Admin extends User{
                 case 1:
                     System.out.print("New Course Code: ");
                     tem = sc.nextLine();
-                    course.setCourseCode(tem);
+                    for(Course c: mainApp.getCourses()){
+                        if(c.getCourseCode().equals(tem)){
+                            exist = true;
+                            System.out.println("This course code already exist!");
+                            break;
+                        }
+                    }
+
+                    if(!exist) course.setCourseCode(tem);
                     break;
 
                 // UPDATE COURSE NAME //
@@ -227,7 +237,7 @@ public class Admin extends User{
      */
     public void printByIndex(Index index){
         String alignFormat = "| %-22s | %-13s | %-10s |%n";
-        System.out.printf("%nRegistered student of index %s - %s: %s%n", index.getIndexNo(), index.getCourse().getCourseCode(), index.getCourse().getCourseName());
+        System.out.printf("%nRegistered student of Index %s - %s: %s%n", index.getIndexNo(), index.getCourse().getCourseCode(), index.getCourse().getCourseName());
         System.out.format("+------------------------+---------------+------------+%n");
         System.out.format("|      Student Name      |  Nationality  |   Gender   |%n");
         System.out.format("+------------------------+---------------+------------+%n");

@@ -415,7 +415,7 @@ public class MySTARS implements Serializable{
                             gender = sc.nextLine();
                             if(gender.equalsIgnoreCase("MALE") || gender.equalsIgnoreCase("FEMALE"))
                                 break; 
-                            System.out.print("Invalid input! Please enter Female / Male !");
+                            System.out.println("Invalid input! Please enter Female / Male !");
                         }
                         System.out.print("Please enter student's nationality: ");
                         String nationality = sc.nextLine();
@@ -424,7 +424,7 @@ public class MySTARS implements Serializable{
                         for(Student s: mainApp.students){
                             if(s.getMatricNumber().equals(matricNumber)){
                                 exist = true;
-                                System.out.println("Student with this matriculation number has already exist!");
+                                System.out.println("Student with this matriculation number already exist!");
                                 break;
                             }
                         }
@@ -438,6 +438,7 @@ public class MySTARS implements Serializable{
                         System.out.print("\nListing of all Students: \n");
                         for(Student s: mainApp.students) {
                             System.out.println("Name: " + s.getName());
+                            System.out.println("Username: " + s.getUsername());
                             System.out.println("Gender: " + s.getGender());
                             System.out.println("Nationality: " + s.getNationality());
                             System.out.println("Matric Number: " + s.getMatricNumber());

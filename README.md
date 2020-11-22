@@ -4,8 +4,6 @@
 
 ## Queries ❓
 
-- BRYSON: Invalid entries checking: Admins: (1)Adding a student (2)Adding a courses. ❓❓❓
-
 
 ## To do 🚌
 
