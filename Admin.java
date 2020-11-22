@@ -47,7 +47,7 @@ public class Admin extends User{
      * @param email New Student's email account.
      */
     public void addStudent(String name, String username, String password, int maxAU, String gender, String nationality, String matricNumber, String email){
-        if(PasswordManager.addAccount(username, password)){
+        if(AccountManager.addAccount(username, password)){
             Student newStudent = new Student(name, username, maxAU, gender, nationality, matricNumber, email);
             mainApp.addStudent(newStudent);
             System.out.println("Student added!");

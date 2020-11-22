@@ -9,10 +9,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 /**
- * Represents a Password Manager that creates Admin/Student's accounts and validates the login process of the application.
- * The account password is hashed by one of the method of the Password Manager class.
+ * Represents a Account Manager that creates Admin/Student's accounts and validates the login process of the application.
+ * The account password is hashed by one of the method of the Account Manager class.
  */
-public class PasswordManager implements Serializable{
+public class AccountManager implements Serializable{
 
     /**
      * File name that stores the Admin/Student's account information.
@@ -110,11 +110,4 @@ public class PasswordManager implements Serializable{
        
         return false;
     }
-
-    // public static void main(String[] args) {
-    //     System.out.println(validateAccount("jiaqing23","23032000",false)); //True
-    //     System.out.println(validateAccount("jiaqing23","23032000",true)); //False
-    //     System.out.println(validateAccount("jiaqing23","23032001",false)); //False
-    //     System.out.println(validateAccount("jiaqing24","23032001",false)); //False
-    // }
 }

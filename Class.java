@@ -71,7 +71,7 @@ public class Class implements Serializable, TimePeriod {
         this.endTime = endTime;
         this.venue = venue;
         this.groupNo = groupNo;
-        this.week = week; //"ODD, EVEN, BOTH"
+        this.week = week;
         this.dayOfWeek = dayOfWeek;
     }
 

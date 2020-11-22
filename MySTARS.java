@@ -183,7 +183,7 @@ public class MySTARS implements Serializable{
         this.username = sc.nextLine();
         System.out.print("Password: ");
         String password = new String(System.console().readPassword());
-        return PasswordManager.validateAccount(username, password, this.mode == 1);
+        return AccountManager.validateAccount(username, password, this.mode == 1);
     }
 
     /**
@@ -673,7 +673,7 @@ public class MySTARS implements Serializable{
 
                         System.out.print("Please enter peer's Password: ");
                         String password = new String(System.console().readPassword());
-                        if(!PasswordManager.validateAccount(username, password, false)){
+                        if(!AccountManager.validateAccount(username, password, false)){
                             System.out.println("Wrong password/username!");
                             break;
                         }
