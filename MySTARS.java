@@ -64,7 +64,12 @@ public class MySTARS implements Serializable{
      * Creates a MySTARS application object with the given parameters.
      */
     public MySTARS() {
-        // TBD
+        //Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
+        Admin firstAdmin = new Admin("admin", "123456", this);
+        this.admins.add(firstAdmin);
+        System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
+        Populate.prepopulate(firstAdmin, this.courses);
+        System.out.println("Finished prepopulating!");
     }
 
     /**
@@ -316,7 +321,6 @@ public class MySTARS implements Serializable{
 
         if (mainApp == null) {
             mainApp = new MySTARS();
-            mainApp.admins.add(new Admin("admin111", "admin", mainApp));
         }
         
         // Proceed with the login procedures.
