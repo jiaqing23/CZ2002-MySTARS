@@ -228,7 +228,7 @@ public class MySTARS implements Serializable{
             System.out.println("The course code doesn't exists!");
             return;
         }
-        String alignFormat = "| %-12s | %-10d | %-10d | %-10d |%n";
+        String alignFormat = "| %-12s | %-10d | %-9d | %-10d |%n";
         System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
         System.out.format("+--------------+------------+-----------+------------+%n");
         System.out.format("|   Index No   | Class Size |  Vacancy  |  Waitlist  |%n");
@@ -236,7 +236,7 @@ public class MySTARS implements Serializable{
         for (Index i: course.getIndexes()){
             System.out.format(alignFormat, i.getIndexNo(), i.getClassSize(), i.getVacancy(), i.getWaitlistLength());
         }
-        System.out.format("+--------------+------------+------------+------------+%n");
+        System.out.format("+--------------+------------+-----------+------------+%n");
     }
 
     public void printAllCourses(){
@@ -770,7 +770,7 @@ public class MySTARS implements Serializable{
                 // Limited access and operations that a Student can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
-                System.out.println("You are not allowed register course now, the registration period is:");
+                System.out.println("You are not allowed to register any courses now, the registration period is:");
                 System.out.println(mainApp.period.getTimePeriodString() + "\n");
 
                 System.out.println("(1) Check/print registered course");

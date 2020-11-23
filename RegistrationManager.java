@@ -77,12 +77,12 @@ public class RegistrationManager implements Serializable{
      */
     public static boolean processAdd(Student student, Index index){
         if(isRepeated(student, index)){
-            System.out.println("You took other index of this course!");
+            System.out.println("You have already taken this course!");
             return false;
         }
 
         if(isClash(student, index)){
-            System.out.println("This index clash with other indexes you registered or added into waitlist!");
+            System.out.println("This index's timeslot clashes with your other registered indexes / indexes in waitlist!");
             return false;
         }
 
