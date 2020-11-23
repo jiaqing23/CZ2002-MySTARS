@@ -466,84 +466,47 @@ End period: 31st December 2020, 12AM
 
 
 // --- Course to be added for demonstration --- //
-(5) Course code: CE3001
-Name: Advanced Computer Architecture
+(5) Course code: CZ2005
+Name: Operating Systems
 School: SCSE
 AU: 3
 Indexes:
-Index No.: 10033
-	Class ID: 10033_LEC1
+Index No.: 10142
+	Class ID: 10142_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: ONLINE 
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Tuesday
+
+	Class ID: 10142_LEC2
 	Class type: LEC
 	Start Time: 9.30AM
 	End Time: 10.30AM
-	Venue: ONLINE 
-	Group Number: CE3  
+	Venue: ONLINE
+	Group Number: CS2
 	Week: BOTH
-	Day of Week: Monday
+	Day of Week: Thursday
 
-	Class ID: 10033_LEC2
-	Class type: LEC
+	Class ID: 10142_TUT
+	Class type: TUT
 	Start Time: 2.30PM
 	End Time: 3.30PM
-	Venue: ONLINE
-	Group Number: CE3
-	Week: BOTH
-	Day of Week: Friday
-
-	Class ID: 10033_TUT
-	Class type: TUT
-	Start Time: 11.30AM
-	End Time: 12.30PM
-	Venue: TR+16
-	Group Number: SE1
-	Week: BOTH
-	Day of Week: Monday
-
-	Class ID: 10033_LAB
-	Class type: LAB
-	Start Time: 12.30PM
-	End Time: 2.30PM
-	Venue: HWLAB3
-	Group Number: SE1
-	Week: EVEN
-	Day of Week: Wednesday
-
-Index No.: 10034
-	Class ID: 10034_LEC1
-	Class type: LEC
-	Start Time: 9.30AM
-	End Time: 10.30AM
-	Venue: ONLINE 
-	Group Number: CE3  
-	Week: BOTH
-	Day of Week: Monday
-
-	Class ID: 10034_LEC2
-	Class type: LEC
-	Start Time: 2.30PM
-	End Time: 3.30PM
-	Venue: ONLINE
-	Group Number: CE3
-	Week: BOTH
-	Day of Week: Friday
-
-	Class ID: 10034_TUT
-	Class type: TUT
-	Start Time: 11.30AM
-	End Time: 12.30PM
 	Venue: TR+17
-	Group Number: SE2
+	Group Number: SSR2
 	Week: BOTH
-	Day of Week: Monday
+	Day of Week: Tuesday
 
-	Class ID: 10034_LAB
+	Class ID: 10142_LAB
 	Class type: LAB
-	Start Time: 12.30PM
-	End Time: 2.30PM
-	Venue: HWLAB3
-	Group Number: SE2
-	Week: ODD
-	Day of Week: Friday
+	Start Time: 10.30AM
+	End Time: 12.30PM
+	Venue: SWLAB1
+	Group Number: SSR2
+	Week: EVEN
+	Day of Week: Tuesday
 
 
 
