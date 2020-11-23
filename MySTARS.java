@@ -119,6 +119,10 @@ public class MySTARS implements Serializable{
         return courses;
     }
 
+    public ArrayList<Student> getStudents(){
+        return students;
+    }
+
     /**
      * Method that saves all the main application's data into a binary text file.
      * @return True when it is successfully saved, else return false.
@@ -133,7 +137,7 @@ public class MySTARS implements Serializable{
             o.close();
             f.close();
             
-            System.out.println("Data saved!");
+            //System.out.println("Data saved!");
             System.out.println();
             return true;
 
@@ -180,7 +184,7 @@ public class MySTARS implements Serializable{
             System.out.print("Mode: ");
             mode = readInt();
             if (mode == 1 || mode == 2) break;
-            else System.out.println("Please enter number to choose the mode!");
+            else System.out.println("Please enter 1 or 2 to choose the mode!");
         }
         int tries = 3;
         while(tries>=0){
@@ -190,7 +194,7 @@ public class MySTARS implements Serializable{
             String password = new String(System.console().readPassword());
             if(AccountManager.validateAccount(username, password, this.mode == 1))return true;
             else{
-                System.out.printf("Wrong username or password! You can try for %d more time(s).\n",tries);
+                System.out.printf("Wrong username or password! You can try for %d more time(s).%n",tries);
                 tries-=1;
             }
         }
@@ -206,7 +210,7 @@ public class MySTARS implements Serializable{
         try {
             num = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return num;
     }
@@ -254,11 +258,11 @@ public class MySTARS implements Serializable{
             System.out.println("The course code doesn't exists!");
             return;
         }
-        String alignFormat = "| %-12s | %-10s | %-10s | %-10s | %-26s | %-13s |%n";
+        String alignFormat = "| %-12s | %-10s | %-10s | %-10s | %-30s | %-13s |%n";
         System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
-        System.out.format("+--------------+------------+------------+------------+----------------------------+---------------+%n");
-        System.out.format("|   Index No   |  Class ID  |    Type    |  Group No  |            Time            |     Venue     |%n");
-        System.out.format("+--------------+------------+------------+------------+----------------------------+---------------+%n");
+        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("|   Index No   |  Class ID  |    Type    |  Group No  |              Time              |     Venue     |%n");
+        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
         
         for (Index i: course.getIndexes()){
             boolean first = true;
@@ -270,7 +274,7 @@ public class MySTARS implements Serializable{
                 first = false;
             }
         }
-        System.out.format("+--------------+------------+------------+------------+----------------------------+---------------+%n");
+        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
     }
 
     public void printHeader(){
@@ -289,10 +293,9 @@ public class MySTARS implements Serializable{
             case 3:
                 System.out.println("\u2588\u2588\u2588\u2557   \u2588\u2588\u2588\u2557\u2588\u2588\u2557   \u2588\u2588\u2557    \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\r\n\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2551\u255A\u2588\u2588\u2557 \u2588\u2588\u2554\u255D    \u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255D\u255A\u2550\u2550\u2588\u2588\u2554\u2550\u2550\u255D\u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557\u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557\u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255D\r\n\u2588\u2588\u2554\u2588\u2588\u2588\u2588\u2554\u2588\u2588\u2551 \u255A\u2588\u2588\u2588\u2588\u2554\u255D     \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557   \u2588\u2588\u2551   \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551\u2588\u2588\u2588\u2588\u2588\u2588\u2554\u255D\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\r\n\u2588\u2588\u2551\u255A\u2588\u2588\u2554\u255D\u2588\u2588\u2551  \u255A\u2588\u2588\u2554\u255D      \u255A\u2550\u2550\u2550\u2550\u2588\u2588\u2551   \u2588\u2588\u2551   \u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2551\u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557\u255A\u2550\u2550\u2550\u2550\u2588\u2588\u2551\r\n\u2588\u2588\u2551 \u255A\u2550\u255D \u2588\u2588\u2551   \u2588\u2588\u2551       \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551   \u2588\u2588\u2551   \u2588\u2588\u2551  \u2588\u2588\u2551\u2588\u2588\u2551  \u2588\u2588\u2551\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551\r\n\u255A\u2550\u255D     \u255A\u2550\u255D   \u255A\u2550\u255D       \u255A\u2550\u2550\u2550\u2550\u2550\u2550\u255D   \u255A\u2550\u255D   \u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u255D");
                 break;
+            default:
+                break;
         }
-
-
-
     }
 
     /**
@@ -355,7 +358,7 @@ public class MySTARS implements Serializable{
             // Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
 
 
-            while(choice != 11){
+            while(choice != 12){
                 
                 // Operations that an admin can perform.
                 System.out.println();
@@ -368,9 +371,10 @@ public class MySTARS implements Serializable{
                 System.out.println("(6) Check all courses");
                 System.out.println("(7) Check vacancy of course");
                 System.out.println("(8) Check timetable of course");
-                System.out.println("(9) Print student list by course");
-                System.out.println("(10) Print student list by index number");
-                System.out.println("(11) Quit");
+                System.out.println("(9) Print student list");
+                System.out.println("(10) Print student list by course");
+                System.out.println("(11) Print student list by index number");
+                System.out.println("(12) Quit");
                 System.out.print("Your choice: ");
                 choice = readInt();
                 
@@ -432,26 +436,16 @@ public class MySTARS implements Serializable{
                         String email = sc.nextLine();
                         admin.addStudent(name,username,password,maxAU,gender,nationality,matricNumber, email);
 
-                        // Print listing of all students
-                        System.out.print("\nListing of all Students: \n");
-                        for(Student s: mainApp.students) {
-                            System.out.println("Name: " + s.getName());
-                            System.out.println("Username: " + s.getUsername());
-                            System.out.println("Gender: " + s.getGender());
-                            System.out.println("Nationality: " + s.getNationality());
-                            System.out.println("Matric Number: " + s.getMatricNumber());
-                            System.out.println("Username: " + s.getUsername());
-                            System.out.println();
-                        }
+                        admin.printStudents();
                         break;
 
                     // ADD COURSE //
                     case 4:
                         ArrayList<String> schoolList = new ArrayList<String>();
-                        Collections.addAll(schoolList,"NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
+                        Collections.addAll(schoolList,"NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
                         String school;
                         while(true){
-                            System.out.println("School List: NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
+                            System.out.println("School List: NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
                             school = sc.nextLine().toUpperCase();
                             if(!schoolList.contains(school)){
                                 System.out.println("Please choose school from the list shown!");
@@ -464,6 +458,7 @@ public class MySTARS implements Serializable{
                         System.out.print("Please enter the number of AU: ");
                         int numAU = readInt();
                         admin.addCourse(school,courseCode,courseName,numAU);
+                        mainApp.printAllCourses();
                         break;
 
                     // UPDATE COURSE //
@@ -477,6 +472,7 @@ public class MySTARS implements Serializable{
                                     break;
                             }
                         }
+                        
                         if(!exist){
                             System.out.println("The course code doesn't exists!");
                         }
@@ -500,9 +496,14 @@ public class MySTARS implements Serializable{
                         courseCode = sc.nextLine();
                         mainApp.printCourseTimetable(courseCode);
                         break;
-
-                    // PRINT REGISTERED STUDENT LIST BY COURSE //
+                    
+                    //PRINT STUDENT LIST//
                     case 9:
+                        admin.printStudents();
+                        break;
+                    
+                    // PRINT REGISTERED STUDENT LIST BY COURSE //
+                    case 10:
                         System.out.print("Please enter the course code: ");
                         courseName = sc.nextLine();
                         for (Course c: mainApp.courses){
@@ -519,7 +520,7 @@ public class MySTARS implements Serializable{
                         break;
 
                     // PRINT REGISTERED STUDENT LIST BY INDEX //
-                    case 10:
+                    case 11:
                         System.out.print("Please enter the index number: ");
                         index = sc.nextLine();
                         for (Course c: mainApp.courses){
@@ -539,7 +540,7 @@ public class MySTARS implements Serializable{
                         break;
                     
                     // EXIT THE PROGRAM //
-                    case 11:
+                    case 12:
                         System.out.println("Program terminating...");
                         break;
 
@@ -550,7 +551,7 @@ public class MySTARS implements Serializable{
                 }
                 
                 // Saves the data immediately after an operation.
-                System.out.println("Saving data ...");
+                //System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }
@@ -734,7 +735,7 @@ public class MySTARS implements Serializable{
                 }
                 
                 // Saves the data immediately after an operation.
-                System.out.println("Saving data ...");
+                //System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }
@@ -748,6 +749,9 @@ public class MySTARS implements Serializable{
                 // Limited access and operations that a Student can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
+                System.out.println("You are not allowed register course now, the registration period is:");
+                System.out.println(mainApp.period.getTimePeriodString() + "\n");
+
                 System.out.println("(1) Check/print registered course");
                 System.out.println("(2) Check all courses");
                 System.out.println("(3) Check vacancy of course");
@@ -796,7 +800,7 @@ public class MySTARS implements Serializable{
                 }
                 
                 // Saves the data immediately after an operation.
-                System.out.println("Saving data ...");
+                //System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }

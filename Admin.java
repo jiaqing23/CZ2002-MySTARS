@@ -246,4 +246,20 @@ public class Admin extends User{
         }
         System.out.format("+------------------------+---------------+------------+%n");
     }
+
+    /**
+     * Method that allows Admin to print all the Students in the database after adding a new Student into the database.
+     */
+    public void printStudents(){
+        String alignFormat = "| %-22s | %-18s | %-15s | %-17s | %-8s |%n";
+        System.out.printf("%nStudent List%n");
+        System.out.format("+------------------------+--------------------+-----------------+-------------------|----------|%n");
+        System.out.format("|          Name          |      Username      |    Matric No    |    Nationality    |  Gender  |%n");
+        System.out.format("+------------------------+--------------------+-----------------+-------------------|----------|%n");
+        for(Student student: mainApp.getStudents()){
+            System.out.format(alignFormat, student.getName(), student.getUsername(), student.getMatricNumber(), 
+                                student.getNationality(), student.getGender());
+        }
+        System.out.format("+------------------------+--------------------+-----------------+-------------------|----------|%n");
+    }
 }
