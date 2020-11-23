@@ -180,7 +180,7 @@ public class MySTARS implements Serializable{
             System.out.print("Mode: ");
             mode = readInt();
             if (mode == 1 || mode == 2) break;
-            else System.out.println("Please enter number to choose the mode!");
+            else System.out.println("Please enter 1 or 2 to choose the mode!");
         }
         int tries = 3;
         while(tries>=0){
@@ -190,7 +190,7 @@ public class MySTARS implements Serializable{
             String password = new String(System.console().readPassword());
             if(AccountManager.validateAccount(username, password, this.mode == 1))return true;
             else{
-                System.out.printf("Wrong username or password! You can try for %d more time(s).\n",tries);
+                System.out.printf("Wrong username or password! You can try for %d more time(s).%n",tries);
                 tries-=1;
             }
         }
@@ -206,7 +206,7 @@ public class MySTARS implements Serializable{
         try {
             num = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return num;
     }
@@ -254,11 +254,11 @@ public class MySTARS implements Serializable{
             System.out.println("The course code doesn't exists!");
             return;
         }
-        String alignFormat = "| %-12s | %-10s | %-10s | %-10s | %-26s | %-13s |%n";
+        String alignFormat = "| %-12s | %-10s | %-10s | %-10s | %-30s | %-13s |%n";
         System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
-        System.out.format("+--------------+------------+------------+------------+----------------------------+---------------+%n");
-        System.out.format("|   Index No   |  Class ID  |    Type    |  Group No  |            Time            |     Venue     |%n");
-        System.out.format("+--------------+------------+------------+------------+----------------------------+---------------+%n");
+        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("|   Index No   |  Class ID  |    Type    |  Group No  |              Time              |     Venue     |%n");
+        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
         
         for (Index i: course.getIndexes()){
             boolean first = true;
@@ -270,7 +270,7 @@ public class MySTARS implements Serializable{
                 first = false;
             }
         }
-        System.out.format("+--------------+------------+------------+------------+----------------------------+---------------+%n");
+        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
     }
 
     public void printHeader(){
@@ -288,6 +288,8 @@ public class MySTARS implements Serializable{
                 break;
             case 3:
                 System.out.println("\u2588\u2588\u2588\u2557   \u2588\u2588\u2588\u2557\u2588\u2588\u2557   \u2588\u2588\u2557    \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\r\n\u2588\u2588\u2588\u2588\u2557 \u2588\u2588\u2588\u2588\u2551\u255A\u2588\u2588\u2557 \u2588\u2588\u2554\u255D    \u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255D\u255A\u2550\u2550\u2588\u2588\u2554\u2550\u2550\u255D\u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557\u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557\u2588\u2588\u2554\u2550\u2550\u2550\u2550\u255D\r\n\u2588\u2588\u2554\u2588\u2588\u2588\u2588\u2554\u2588\u2588\u2551 \u255A\u2588\u2588\u2588\u2588\u2554\u255D     \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557   \u2588\u2588\u2551   \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551\u2588\u2588\u2588\u2588\u2588\u2588\u2554\u255D\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\r\n\u2588\u2588\u2551\u255A\u2588\u2588\u2554\u255D\u2588\u2588\u2551  \u255A\u2588\u2588\u2554\u255D      \u255A\u2550\u2550\u2550\u2550\u2588\u2588\u2551   \u2588\u2588\u2551   \u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2551\u2588\u2588\u2554\u2550\u2550\u2588\u2588\u2557\u255A\u2550\u2550\u2550\u2550\u2588\u2588\u2551\r\n\u2588\u2588\u2551 \u255A\u2550\u255D \u2588\u2588\u2551   \u2588\u2588\u2551       \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551   \u2588\u2588\u2551   \u2588\u2588\u2551  \u2588\u2588\u2551\u2588\u2588\u2551  \u2588\u2588\u2551\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2551\r\n\u255A\u2550\u255D     \u255A\u2550\u255D   \u255A\u2550\u255D       \u255A\u2550\u2550\u2550\u2550\u2550\u2550\u255D   \u255A\u2550\u255D   \u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u255D  \u255A\u2550\u255D\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u255D");
+                break;
+            default:
                 break;
         }
 
