@@ -230,9 +230,9 @@ public class MySTARS implements Serializable{
         }
         String alignFormat = "| %-12s | %-10d | %-10d | %-10d |%n";
         System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
-        System.out.format("+--------------+------------+------------+------------+%n");
-        System.out.format("|   Index No   | Class Size |  Vaccancy  |  Waitlist  |%n");
-        System.out.format("+--------------+------------+------------+------------+%n");
+        System.out.format("+--------------+------------+-----------+------------+%n");
+        System.out.format("|   Index No   | Class Size |  Vacancy  |  Waitlist  |%n");
+        System.out.format("+--------------+------------+-----------+------------+%n");
         for (Index i: course.getIndexes()){
             System.out.format(alignFormat, i.getIndexNo(), i.getClassSize(), i.getVacancy(), i.getWaitlistLength());
         }
