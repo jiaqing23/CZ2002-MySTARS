@@ -137,7 +137,7 @@ public class MySTARS implements Serializable{
             o.close();
             f.close();
             
-            System.out.println("Data saved!");
+            //System.out.println("Data saved!");
             System.out.println();
             return true;
 
@@ -551,7 +551,7 @@ public class MySTARS implements Serializable{
                 }
                 
                 // Saves the data immediately after an operation.
-                System.out.println("Saving data ...");
+                //System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }
@@ -735,7 +735,7 @@ public class MySTARS implements Serializable{
                 }
                 
                 // Saves the data immediately after an operation.
-                System.out.println("Saving data ...");
+                //System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }
@@ -800,7 +800,7 @@ public class MySTARS implements Serializable{
                 }
                 
                 // Saves the data immediately after an operation.
-                System.out.println("Saving data ...");
+                //System.out.println("Saving data ...");
                 mainApp.saveData();
             }
         }
