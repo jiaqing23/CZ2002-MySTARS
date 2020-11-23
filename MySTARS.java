@@ -460,6 +460,7 @@ public class MySTARS implements Serializable{
                         System.out.print("Please enter the number of AU: ");
                         int numAU = readInt();
                         admin.addCourse(school,courseCode,courseName,numAU);
+                        mainApp.printAllCourses();
                         break;
 
                     // UPDATE COURSE //
