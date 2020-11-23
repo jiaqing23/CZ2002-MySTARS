@@ -1,6 +1,35 @@
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
+
+
+class SortbyDatetime implements Comparator<Class> 
+{ 
+    public int compare(Class a, Class b) 
+    {   
+        HashMap<String, Integer> weekdayToNumber = new HashMap<String, Integer>();    
+        weekdayToNumber.put("MONDAY", 1);  
+        weekdayToNumber.put("TUESDAY", 2);  
+        weekdayToNumber.put("WEDNESDAY", 3);  
+        weekdayToNumber.put("THURSDAY", 4);  
+        weekdayToNumber.put("FRIDAY", 5);  
+        weekdayToNumber.put("SATURDAY", 6);  
+        weekdayToNumber.put("SUNDAY", 7);  
+
+        int weekdayA = weekdayToNumber.get(a.getDayOfWeek());
+        int weekdayB = weekdayToNumber.get(b.getDayOfWeek());
+
+        if(weekdayA == weekdayB){
+            return a.getStartTimePeriod().compareTo(b.getStartTimePeriod());
+        }
+        else{
+            return (weekdayA-weekdayB);
+        }
+    } 
+} 
+
 
 /**
  * Represents an Class of an Index of a Course.

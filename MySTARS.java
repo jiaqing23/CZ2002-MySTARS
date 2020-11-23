@@ -65,11 +65,12 @@ public class MySTARS implements Serializable{
      */
     public MySTARS() {
         //Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
-        Admin firstAdmin = new Admin("admin", "123456", this);
+        Admin firstAdmin = new Admin("Mr. Admin", "admin", this);
         this.admins.add(firstAdmin);
         System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
         Populate.prepopulate(firstAdmin, this.courses);
         System.out.println("Finished prepopulating!");
+        this.saveData();
     }
 
     /**
@@ -246,7 +247,6 @@ public class MySTARS implements Serializable{
 
     public void printAllCourses(){
         String alignFormat = "| %-11s | %-43s | %-10s | %-6d |%n";
-       // System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
         System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
         System.out.format("| Course Code |                 Course Name                 |   School   |   AU   |%n");
         System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
@@ -648,7 +648,7 @@ public class MySTARS implements Serializable{
 
                     // PRINT REGISTERED COURSE //
                     case 3:
-                        student.printIndex();
+                        student.printTimetable();
                         break;
                     
                     //CHECK ALL COURSES//
@@ -791,7 +791,7 @@ public class MySTARS implements Serializable{
 
                     // PRINT REGISTERED COURSE // 
                     case 1:
-                        student.printIndex();
+                        student.printTimetable();
                         break;
 
                     //CHECK ALL COURSES//

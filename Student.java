@@ -1,4 +1,7 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Represent a Student that uses the MySTARS system application.
@@ -253,17 +256,64 @@ public class Student extends User{
 	}
 
 	/**
-	 * Method that prints all the registered indexes' index number of a Student.
+	 * Method that prints all the registered course timetable of a Student.
 	 */
-	public void printIndex() {
+	public void printTimetable() {
 		if (registered.isEmpty()){
 			System.out.println("You haven't registered any course!");
+			return;
 		}
-		else{
-			System.out.println("Registered indexes: ");
-			for(Index i : registered){
-				System.out.println(i.getIndexNo());
+		
+		System.out.println("Registered courses timetable: ");
+		ArrayList<Class> classes = new ArrayList<Class>();
+		HashMap<Class, Index> classToIndex = new HashMap<Class, Index>(); 
+		for(Index i : registered){
+			for(Class c: i.getClasses()){
+				classes.add(c);
+				classToIndex.put(c, i);
 			}
 		}
+
+		Collections.sort(classes, new SortbyDatetime());
+		
+		String[] weekday = { "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY" };
+		ArrayList<ArrayList<Class>> classesByWeekday = new ArrayList<>(7);
+		for(int i = 0; i < 7; i++) {
+			classesByWeekday.add(new ArrayList());
+		}
+		for(int i = 0; i < 7; i++){
+			for(Class c: classes){
+				if(c.getDayOfWeek().equals(weekday[i])){
+					classesByWeekday.get(i).add(c);
+				}
+			}
+		}
+
+		String alignFormat = "| %-11s | %-12s | %-11s | %-11s | %-10s | %-12s | %-9s | %-6s |%n";
+		System.out.format("+-------------+--------------+-------------+-------------+------------+--------------+-----------+--------+%n");
+		System.out.format("|   Weekday   |     Time     | Course Code |    Index    | Class Type | Group Number |   Venue   |  Week  |%n");
+		System.out.format("+-------------+--------------+-------------+-------------+------------+--------------+-----------+--------+%n");
+
+		for(int j = 0; j< 7; j++){
+			ArrayList<Class> ar = classesByWeekday.get(j);
+			if(ar.isEmpty()){
+				System.out.format(alignFormat, weekday[j], "", "", "", "", "", "", "");
+			}
+			boolean first = true;
+			for(Class c: ar){
+
+				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+				String tem1 = sdf.format(c.getStartTimePeriod());
+				String tem2 = sdf.format(c.getEndTimePeriod());
+				Index i = classToIndex.get(c);
+				System.out.format(alignFormat, first?weekday[j]:"", tem1+"-"+tem2, i.getCourse().getCourseCode(), i.getIndexNo(),
+									c.getType(), c.getGroup(), c.getVenue(), c.getWeek());
+				first = false;
+			}
+			
+		
+			
+		}
+		System.out.format("+-------------+--------------+-------------+-------------+------------+--------------+-----------+--------+%n");
 	}
 }
