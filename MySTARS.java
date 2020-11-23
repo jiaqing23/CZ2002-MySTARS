@@ -211,6 +211,9 @@ public class MySTARS implements Serializable{
             num = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
             //e.printStackTrace();
+            System.out.println("Please enter only number!");
+            System.out.print("Please key in again: ");
+            num = readInt();
         }
         return num;
     }
