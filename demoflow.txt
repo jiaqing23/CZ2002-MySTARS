@@ -456,7 +456,6 @@ End period: 31st December 2020, 12AM
 23. Admin print student list by Index
 24. Admin print student list by Course
 
-25. 
 
 
 

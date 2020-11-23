@@ -359,6 +359,7 @@ public class MySTARS implements Serializable{
             // System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
             // Populate.prepopulate(admin, mainApp.courses);
             // System.out.println("Finished prepopulating!");
+            // mainApp.saveData();
 
             while(choice != 12){
                 
