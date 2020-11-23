@@ -444,10 +444,10 @@ public class MySTARS implements Serializable{
                     // ADD COURSE //
                     case 4:
                         ArrayList<String> schoolList = new ArrayList<String>();
-                        Collections.addAll(schoolList,"NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
+                        Collections.addAll(schoolList,"NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
                         String school;
                         while(true){
-                            System.out.println("School List: NBS, CBE, CEE, CSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
+                            System.out.println("School List: NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
                             school = sc.nextLine().toUpperCase();
                             if(!schoolList.contains(school)){
                                 System.out.println("Please choose school from the list shown!");
@@ -473,6 +473,7 @@ public class MySTARS implements Serializable{
                                     break;
                             }
                         }
+                        
                         if(!exist){
                             System.out.println("The course code doesn't exists!");
                         }
