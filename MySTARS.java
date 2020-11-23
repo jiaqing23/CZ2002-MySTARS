@@ -244,11 +244,11 @@ public class MySTARS implements Serializable{
        // System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
         System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
         System.out.format("| Course Code |                 Course Name                 |   School   |   AU   |%n");
-        System.out.format("+-------------+---------------------------------------------+------------+--------|%n");
+        System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
         for (Course c: courses){
             System.out.format(alignFormat, c.getCourseCode(), c.getCourseName(), c.getSchool(), c.getNumOfAU());
         }
-        System.out.format("+-------------+---------------------------------------------+------------+--------|%n");
+        System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
     }
 
     public void printCourseTimetable(String courseCode){
