@@ -62,13 +62,6 @@ public class Admin extends User{
      * @param numOfAU The number of academic units of the new Course
      */
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
-        for(Course c: mainApp.getCourses()){
-            if(c.getCourseCode().equals(courseCode)){
-                System.out.println("This course code already exist!");
-                return;
-            }
-        }
-
         Course course = new Course(school, courseCode, courseName, numOfAU);
         mainApp.addCourse(course);
         System.out.println("Course added!");
