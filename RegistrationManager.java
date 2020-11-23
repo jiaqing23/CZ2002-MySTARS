@@ -163,6 +163,11 @@ public class RegistrationManager implements Serializable{
      */
     public static void processSwap(Index sourceInd, Index desInd, Student sourceStudent, Student desStudent){
 
+        if(desInd.getCourse() != sourceInd.getCourse()){
+            System.out.println("Two index are not same course");
+            return;
+        }
+        
         //Unable to change if the students has not registered for the index or still in waitlist
         if(!isRegistered(sourceStudent, sourceInd)){
             System.out.println("You have not registered for this index or it is still in your waitlist!");
@@ -182,11 +187,6 @@ public class RegistrationManager implements Serializable{
 
         if(isClash(desStudent, desInd)){
             System.out.println("This index clash with other indexes your friend registered!");
-            return;
-        }
-
-        if(desInd.getCourse() != sourceInd.getCourse()){
-            System.out.println("Two index are not same course");
             return;
         }
         
