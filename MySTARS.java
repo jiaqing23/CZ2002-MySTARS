@@ -194,7 +194,7 @@ public class MySTARS implements Serializable{
             String password = new String(System.console().readPassword());
             if(AccountManager.validateAccount(username, password, this.mode == 1))return true;
             else{
-                System.out.printf("Wrong username or password! You can try for %d more time(s).%n",tries);
+                if(tries>=1)System.out.printf("Wrong username or password! You can try for %d more time(s).%n",tries);
                 tries-=1;
             }
         }
@@ -211,6 +211,9 @@ public class MySTARS implements Serializable{
             num = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
             //e.printStackTrace();
+            System.out.println("Please enter integer!");
+            System.out.print("Please key in again: ");
+            num = readInt();
         }
         return num;
     }
@@ -410,6 +413,15 @@ public class MySTARS implements Serializable{
                         String name = sc.nextLine();
                         System.out.print("Please enter student's username: ");
                         String username = sc.nextLine();
+                        exist = false;
+                        for(Student s: mainApp.students){
+                            if(s.getUsername().equals(username)){
+                                exist = true;
+                                System.out.println("Student with this username already exist!");
+                                break;
+                            }
+                        }
+                        if(exist) break;
                         System.out.print("Please enter student's password: ");
                         String password = sc.nextLine();
                         System.out.print("Please enter student's maximum AU: ");
@@ -424,8 +436,9 @@ public class MySTARS implements Serializable{
                         }
                         System.out.print("Please enter student's nationality: ");
                         String nationality = sc.nextLine();
-                        System.out.print("Please enter student's matriculation number: ");
+                        System.out.print("Please enter student's matricula1tion number: ");
                         String matricNumber = sc.nextLine();
+                        exist = false;
                         for(Student s: mainApp.students){
                             if(s.getMatricNumber().equals(matricNumber)){
                                 exist = true;
@@ -445,17 +458,24 @@ public class MySTARS implements Serializable{
                     // ADD COURSE //
                     case 4:
                         ArrayList<String> schoolList = new ArrayList<String>();
-                        Collections.addAll(schoolList,"NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
+                        Collections.addAll(schoolList,"NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SOH, SOSS, WKWSCI, SBS, SPMS, ASE, LKCSOM, NIE, RSIS".split(", "));
                         String school;
                         while(true){
-                            System.out.println("School List: NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
+                            System.out.print("School List: NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
                             school = sc.nextLine().toUpperCase();
-                            if(!schoolList.contains(school)){
+                            if(!schoolList.contains(school))
                                 System.out.println("Please choose school from the list shown!");
-                            }else break;
-                    }
+                            else break;
+                        }
                         System.out.print("Please enter the course code: ");
                         String courseCode = sc.nextLine();
+                        for(Course c: mainApp.courses){
+                            if(c.getCourseCode().equals(courseCode)){
+                                System.out.println("This course code already exist!");
+                                exist = true;
+                            }
+                        }
+                        if(exist) break;
                         System.out.print("Please enter the course name: ");
                         String courseName = sc.nextLine();
                         System.out.print("Please enter the number of AU: ");
@@ -589,7 +609,6 @@ public class MySTARS implements Serializable{
                     case 1:
                         System.out.print("Please enter the index number: ");
                         index = sc.nextLine();
-
                         for (Course c: mainApp.courses){
                             for(Index i : c.getIndexes()){
                                 if(index.equals(i.getIndexNo())){
@@ -810,4 +829,3 @@ public class MySTARS implements Serializable{
         sc.close();
     }
 }
-

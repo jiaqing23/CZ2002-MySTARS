@@ -47,14 +47,11 @@ public class Admin extends User{
      * @param email New Student's email account.
      */
     public void addStudent(String name, String username, String password, int maxAU, String gender, String nationality, String matricNumber, String email){
-        if(AccountManager.addAccount(username, password)){
-            Student newStudent = new Student(name, username, maxAU, gender, nationality, matricNumber, email);
-            mainApp.addStudent(newStudent);
-            System.out.println("Student added!");
-        }
-        else{
-            System.out.println("Username already exists!");
-        }
+        AccountManager.addAccount(username, password);
+        Student newStudent = new Student(name, username, maxAU, gender, nationality, matricNumber, email);
+        mainApp.addStudent(newStudent);
+        System.out.println("Student added!");
+        
     }
 
     /**
@@ -65,13 +62,6 @@ public class Admin extends User{
      * @param numOfAU The number of academic units of the new Course
      */
     public void addCourse(String school, String courseCode, String courseName, int numOfAU){
-        for(Course c: mainApp.getCourses()){
-            if(c.getCourseCode().equals(courseCode)){
-                System.out.println("This course code already exist!");
-                return;
-            }
-        }
-
         Course course = new Course(school, courseCode, courseName, numOfAU);
         mainApp.addCourse(course);
         System.out.println("Course added!");
@@ -203,7 +193,7 @@ public class Admin extends User{
             }
             
             // Saves the data immediately after an operation.
-            System.out.println("Saving data ...");
+            //System.out.println("Saving data ...");
             mainApp.saveData();
         }
     }
