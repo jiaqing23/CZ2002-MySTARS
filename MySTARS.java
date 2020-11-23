@@ -426,7 +426,7 @@ public class MySTARS implements Serializable{
                         }
                         System.out.print("Please enter student's nationality: ");
                         String nationality = sc.nextLine();
-                        System.out.print("Please enter student's matriculation number: ");
+                        System.out.print("Please enter student's matricula1tion number: ");
                         String matricNumber = sc.nextLine();
                         for(Student s: mainApp.students){
                             if(s.getMatricNumber().equals(matricNumber)){
