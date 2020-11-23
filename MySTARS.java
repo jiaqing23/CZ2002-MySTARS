@@ -165,12 +165,12 @@ public class MySTARS implements Serializable{
             ObjectInputStream o = new ObjectInputStream(f);
 
             MySTARS loadedData = (MySTARS) o.readObject();
-            System.out.println(loadedData.toString());
+            System.out.println("Previous data loaded!");
             o.close();
             f.close();
             return loadedData;
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("Previous data not found");
         } catch (IOException e) {
             System.out.println("Error initializing stream");
         } catch (ClassNotFoundException e) {
