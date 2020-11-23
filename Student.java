@@ -315,5 +315,8 @@ public class Student extends User{
 			
 		}
 		System.out.format("+-------------+--------------+-------------+-------------+------------+--------------+-----------+--------+%n");
+
+		System.out.println("%nRegistered Course:%n");
+		for(Index i: registered) System.out.println(i.getCourse().getCourseCode()+"\t"+i.getIndexNo());
 	}
 }
