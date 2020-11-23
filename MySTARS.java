@@ -64,7 +64,12 @@ public class MySTARS implements Serializable{
      * Creates a MySTARS application object with the given parameters.
      */
     public MySTARS() {
-        // TBD
+        //Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
+        Admin firstAdmin = new Admin("admin", "123456", this);
+        this.admins.add(firstAdmin);
+        System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
+        Populate.prepopulate(firstAdmin, this.courses);
+        System.out.println("Finished prepopulating!");
     }
 
     /**
@@ -160,12 +165,12 @@ public class MySTARS implements Serializable{
             ObjectInputStream o = new ObjectInputStream(f);
 
             MySTARS loadedData = (MySTARS) o.readObject();
-            System.out.println(loadedData.toString());
+            System.out.println("Previous data loaded!");
             o.close();
             f.close();
             return loadedData;
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("Previous data not found");
         } catch (IOException e) {
             System.out.println("Error initializing stream");
         } catch (ClassNotFoundException e) {
@@ -228,15 +233,15 @@ public class MySTARS implements Serializable{
             System.out.println("The course code doesn't exists!");
             return;
         }
-        String alignFormat = "| %-12s | %-10d | %-10d | %-10d |%n";
+        String alignFormat = "| %-12s | %-10d | %-9d | %-10d |%n";
         System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
-        System.out.format("+--------------+------------+------------+------------+%n");
-        System.out.format("|   Index No   | Class Size |  Vaccancy  |  Waitlist  |%n");
-        System.out.format("+--------------+------------+------------+------------+%n");
+        System.out.format("+--------------+------------+-----------+------------+%n");
+        System.out.format("|   Index No   | Class Size |  Vacancy  |  Waitlist  |%n");
+        System.out.format("+--------------+------------+-----------+------------+%n");
         for (Index i: course.getIndexes()){
             System.out.format(alignFormat, i.getIndexNo(), i.getClassSize(), i.getVacancy(), i.getWaitlistLength());
         }
-        System.out.format("+--------------+------------+------------+------------+%n");
+        System.out.format("+--------------+------------+-----------+------------+%n");
     }
 
     public void printAllCourses(){
@@ -244,11 +249,11 @@ public class MySTARS implements Serializable{
        // System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
         System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
         System.out.format("| Course Code |                 Course Name                 |   School   |   AU   |%n");
-        System.out.format("+-------------+---------------------------------------------+------------+--------|%n");
+        System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
         for (Course c: courses){
             System.out.format(alignFormat, c.getCourseCode(), c.getCourseName(), c.getSchool(), c.getNumOfAU());
         }
-        System.out.format("+-------------+---------------------------------------------+------------+--------|%n");
+        System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
     }
 
     public void printCourseTimetable(String courseCode){
@@ -261,11 +266,11 @@ public class MySTARS implements Serializable{
             System.out.println("The course code doesn't exists!");
             return;
         }
-        String alignFormat = "| %-12s | %-10s | %-10s | %-10s | %-30s | %-13s |%n";
+        String alignFormat = "| %-12s | %-14s | %-10s | %-10s | %-30s | %-13s |%n";
         System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
-        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
-        System.out.format("|   Index No   |  Class ID  |    Type    |  Group No  |              Time              |     Venue     |%n");
-        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("+--------------+----------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("|   Index No   |    Class ID    |    Type    |  Group No  |              Time              |     Venue     |%n");
+        System.out.format("+--------------+----------------+------------+------------+--------------------------------+---------------+%n");
         
         for (Index i: course.getIndexes()){
             boolean first = true;
@@ -277,7 +282,7 @@ public class MySTARS implements Serializable{
                 first = false;
             }
         }
-        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("+--------------+----------------+------------+------------+--------------------------------+---------------+%n");
     }
 
     public void printHeader(){
@@ -316,7 +321,6 @@ public class MySTARS implements Serializable{
 
         if (mainApp == null) {
             mainApp = new MySTARS();
-            mainApp.admins.add(new Admin("admin111", "admin", mainApp));
         }
         
         // Proceed with the login procedures.
@@ -357,12 +361,6 @@ public class MySTARS implements Serializable{
         // Note: Admin can have his/her full access to the system regardless of the course registration period.
         if(mainApp.mode == 1) {
             Admin admin = (Admin)temp;
-
-            // Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
-            // System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
-            // Populate.prepopulate(admin, mainApp.courses);
-            // System.out.println("Finished prepopulating!");
-            // mainApp.saveData();
 
             while(choice != 12){
                 
@@ -771,7 +769,7 @@ public class MySTARS implements Serializable{
                 // Limited access and operations that a Student can perform.
                 System.out.println();
                 System.out.println("// --------------- Welcome to MySTARS! --------------- //");
-                System.out.println("You are not allowed register course now, the registration period is:");
+                System.out.println("You are not allowed to register any courses now, the registration period is:");
                 System.out.println(mainApp.period.getTimePeriodString() + "\n");
 
                 System.out.println("(1) Check/print registered course");

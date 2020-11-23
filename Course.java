@@ -192,6 +192,7 @@ public class Course implements Serializable{
 								index.addWaitlist(newAdd);
 							}
 						}
+						System.out.println("Class size updated to "+ index.getClassSize());
 					}
 					break;
 				

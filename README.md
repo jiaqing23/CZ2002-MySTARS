@@ -4,7 +4,7 @@
 
 ## Queries ❓
 
-JiaWen: should password atleast contain 1 symbol, 1 capital, 1 number...?,regperiod,
+JiaWen: should password atleast contain 1 symbol, 1 capital, 1 number...?,regperiod, no feedback after adding classsize
 
 ## To do 🚌
 
