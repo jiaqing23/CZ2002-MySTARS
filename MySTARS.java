@@ -261,11 +261,11 @@ public class MySTARS implements Serializable{
             System.out.println("The course code doesn't exists!");
             return;
         }
-        String alignFormat = "| %-12s | %-10s | %-10s | %-10s | %-30s | %-13s |%n";
+        String alignFormat = "| %-12s | %-14s | %-10s | %-10s | %-30s | %-13s |%n";
         System.out.printf("%n%s: %s%n", course.getCourseCode(), course.getCourseName());
-        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
-        System.out.format("|   Index No   |  Class ID  |    Type    |  Group No  |              Time              |     Venue     |%n");
-        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("+--------------+----------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("|   Index No   |    Class ID    |    Type    |  Group No  |              Time              |     Venue     |%n");
+        System.out.format("+--------------+----------------+------------+------------+--------------------------------+---------------+%n");
         
         for (Index i: course.getIndexes()){
             boolean first = true;
@@ -277,7 +277,7 @@ public class MySTARS implements Serializable{
                 first = false;
             }
         }
-        System.out.format("+--------------+------------+------------+------------+--------------------------------+---------------+%n");
+        System.out.format("+--------------+----------------+------------+------------+--------------------------------+---------------+%n");
     }
 
     public void printHeader(){
