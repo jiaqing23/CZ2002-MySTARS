@@ -200,7 +200,7 @@ public class Admin extends User{
             }
             
             // Saves the data immediately after an operation.
-            System.out.println("Saving data ...");
+            //System.out.println("Saving data ...");
             mainApp.saveData();
         }
     }
