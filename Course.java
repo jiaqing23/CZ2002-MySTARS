@@ -291,7 +291,7 @@ public class Course implements Serializable{
 			}
 
 			// Saves the data immediately after an operation.
-			System.out.println("Saving data ...");
+			//System.out.println("Saving data ...");
 			mainApp.saveData();
 		}
 	}
