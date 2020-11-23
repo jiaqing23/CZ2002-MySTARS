@@ -456,6 +456,9 @@ End period: 31st December 2020, 12AM
 23. Admin print student list by Index
 24. Admin print student list by Course
 
+25. StudentA change Index 10126 > 10127
+26. StudentA swap Index 10126 with StudentB Index 10127
+
 
 
 
