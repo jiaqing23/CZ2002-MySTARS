@@ -316,7 +316,14 @@ public class Student extends User{
 		}
 		System.out.format("+-------------+--------------+-------------+-------------+------------+--------------+-----------+--------+%n");
 
-		System.out.println("%nRegistered Course:%n");
-		for(Index i: registered) System.out.println(i.getCourse().getCourseCode()+"\t"+i.getIndexNo());
+		System.out.println("%nRegistered Courses:%n");
+		alignFormat = "| %-11s | %-43s | %-9s |%n";
+        System.out.format("+-------------+---------------------------------------------+-----------+%n");
+        System.out.format("| Course Code |                 Course Name                 |   Index   ||%n");
+        System.out.format("+-------------+---------------------------------------------+-----------+%n");
+        for (Index i: registered){
+            System.out.format(alignFormat, i.getCourse().getCourseCode(), i.getCourse().getCourseName(), i.getIndexNo());
+        }
+        System.out.format("+-------------+---------------------------------------------+-----------+%n");
 	}
 }
