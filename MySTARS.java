@@ -479,6 +479,7 @@ public class MySTARS implements Serializable{
                                     break;
                             }
                         }
+                        
                         if(!exist){
                             System.out.println("The course code doesn't exists!");
                         }
