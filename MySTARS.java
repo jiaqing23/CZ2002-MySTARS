@@ -409,14 +409,6 @@ public class MySTARS implements Serializable{
                         String name = sc.nextLine();
                         System.out.print("Please enter student's username: ");
                         String username = sc.nextLine();
-                        for(Student s: mainApp.students){
-                            if(s.getUsername().equals(username)){
-                                exist = true;
-                                System.out.println("Student with this username already exist!");
-                                break;
-                            }
-                        }
-                        if(exist) break;
                         System.out.print("Please enter student's password: ");
                         String password = sc.nextLine();
                         System.out.print("Please enter student's maximum AU: ");
