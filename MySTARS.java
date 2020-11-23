@@ -194,7 +194,7 @@ public class MySTARS implements Serializable{
             String password = new String(System.console().readPassword());
             if(AccountManager.validateAccount(username, password, this.mode == 1))return true;
             else{
-                System.out.printf("Wrong username or password! You can try for %d more time(s).%n",tries);
+                if(tries>=1)System.out.printf("Wrong username or password! You can try for %d more time(s).%n",tries);
                 tries-=1;
             }
         }
@@ -356,7 +356,9 @@ public class MySTARS implements Serializable{
             Admin admin = (Admin)temp;
 
             // Demonstration prepopulation, comment it out after prepopulation before login into Admin Account again!!
-
+            // System.out.println("Prepopulating Students, Courses, Indexes, Classes ...");
+            // Populate.prepopulate(admin, mainApp.courses);
+            // System.out.println("Finished prepopulating!");
 
             while(choice != 12){
                 
@@ -442,10 +444,10 @@ public class MySTARS implements Serializable{
                     // ADD COURSE //
                     case 4:
                         ArrayList<String> schoolList = new ArrayList<String>();
-                        Collections.addAll(schoolList,"NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS".split(", "));
+                        Collections.addAll(schoolList,"NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SOH, SOSS, WKWSCI, SBS, SPMS, ASE, LKCSOM, NIE, RSIS".split(", "));
                         String school;
                         while(true){
-                            System.out.println("School List: NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
+                            System.out.print("School List: NBS, CBE, CEE, SCSE, EEE, MSE, MAE, ADM, SoH, SoSS, WKWSCI, SBS, SPMS, ASE, LKCSoM, NIE, RSIS\nPlease choose school of the course: ");
                             school = sc.nextLine().toUpperCase();
                             if(!schoolList.contains(school)){
                                 System.out.println("Please choose school from the list shown!");
