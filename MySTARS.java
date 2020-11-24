@@ -534,9 +534,9 @@ public class MySTARS implements Serializable{
                     // PRINT REGISTERED STUDENT LIST BY COURSE //
                     case 10:
                         System.out.print("Please enter the course code: ");
-                        courseName = sc.nextLine();
+                        courseCode = sc.nextLine();
                         for (Course c: mainApp.courses){
-                            if(courseName.equals(c.getCourseCode())){
+                            if(courseCode.equals(c.getCourseCode())){
                                     admin.printByCourse(c);
                                     exist = true;
                                     break;
