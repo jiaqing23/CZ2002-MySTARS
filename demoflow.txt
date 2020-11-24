@@ -464,9 +464,6 @@ End period: 31st December 2020, 12AM
 
 
 
-
-
-
 // --- Course to be added for demonstration --- //
 (5) Course code: CZ2005
 Name: Operating Systems
