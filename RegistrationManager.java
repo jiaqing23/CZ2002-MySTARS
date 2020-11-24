@@ -180,19 +180,21 @@ public class RegistrationManager implements Serializable{
         }
 
         //Checking whether there will be any clashes after swapping the indexes
+        sourceStudent.removeReg(sourceInd);
         if(isClash(sourceStudent, sourceInd)){
             System.out.println("This index clash with other indexes you registered!");
+            sourceStudent.addReg(sourceInd);
             return;
         }
 
+        desStudent.removeReg(desInd);
         if(isClash(desStudent, desInd)){
             System.out.println("This index clash with other indexes your friend registered!");
+            desStudent.addReg(desInd);
             return;
         }
         
-        sourceStudent.removeReg(sourceInd);
         sourceStudent.addReg(desInd);
-        desStudent.removeReg(desInd);
         desStudent.addReg(sourceInd);
         sourceInd.removeReg(sourceStudent);
         sourceInd.addReg(desStudent);
