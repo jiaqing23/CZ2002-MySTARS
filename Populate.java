@@ -2,8 +2,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+ * Represents a tool class that prepoulates the empty database.
+ */
 public class Populate {
 
+    /**
+     * Method that prepopulates the empty database.
+     * @param admin Admin that logins the system to add student informations.
+     * @param courses List of courses to prepopulate.
+     */
     public static void prepopulate(Admin admin, ArrayList<Course> courses) {
 
         // *************** Pre-populated Student & Course, Index, Class *************** //

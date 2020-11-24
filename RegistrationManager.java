@@ -53,7 +53,7 @@ public class RegistrationManager implements Serializable{
      * Static method that checks whether an Index is in a waitlist of a Student.
      * @param student Student object that is being checked.
      * @param index Index to be checked.
-     * @return
+     * @return True when Index object is in waitlist of Student, otherwise false.
      */
     public static boolean isInWaitlist(Student student, Index index){
         return student.getWaitlist().contains(index);
@@ -63,7 +63,7 @@ public class RegistrationManager implements Serializable{
      * Static method that checks whether an Index is registered by a Student.
      * @param student Student object that is being checked.
      * @param index Index to be checked.
-     * @return
+     * @return True when Index object is in registered list of Student, otherwise false.
      */
     public static boolean isRegistered(Student student, Index index){
         return student.getRegistered().contains(index);
