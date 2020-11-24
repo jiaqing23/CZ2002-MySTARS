@@ -1,12 +1,5 @@
 {
     "java.project.referencedLibraries": [
-<<<<<<< HEAD
-        "lib/**/*.jar",
-        "c:\\Users\\User\\Downloads\\javax.mail.jar",
-        "activation.jar",
-        "javax.mail.jar"
-=======
         "lib/**/*.jar"
->>>>>>> bc3d9304653c1dd502cec3166c85d43f2790d061
     ]
 }
