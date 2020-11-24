@@ -30,7 +30,6 @@ class SortbyDatetime implements Comparator<Class>
     } 
 } 
 
-
 /**
  * Represents an Class of an Index of a Course.
  * Every Class should have a unique classID.
@@ -168,6 +167,10 @@ public class Class implements Serializable, TimePeriod {
         return dayOfWeek;
     }
 
+    /**
+     * Method that gets time/period object and convert it to String object.
+     * @return Formatted String object
+     */
     public String getTimePeriodString(){
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String tem1 = sdf.format(startTime);

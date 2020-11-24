@@ -86,7 +86,8 @@ public class Period implements Serializable, TimePeriod {
     }
 
     /**
-     * Method that prints the Registration Time Period.
+     * Method that gets time/period object and convert it to String object.
+     * @return Formatted String object
      */
     public String getTimePeriodString(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy(EEE) HH:mm");
