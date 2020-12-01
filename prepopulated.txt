@@ -1,0 +1,401 @@
+// --- Admin account --- //
+Admin username: admin
+Admin password: 123456
+
+
+// --- Default registration period --- //
+Start period: 1st December 2020, 12AM
+End period: 31st December 2020, 12AM
+
+
+// --- 15 Pre-populated Students --- //
+(1) Name: Andy Lau
+Username: andy001
+Password: andy001
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920001A
+Email: andy001@mystars.com
+
+(2) Name: Bryson Teo
+Username: bryson002
+Password: bryson002
+maxAU: 21
+Gender: Male
+Nationality: Malaysian
+Matric Number: U1920002A
+Email: bryson002@mystars.com
+
+(3) Name: Cody Hong
+Username: cody003
+Password: cody003
+maxAU: 21
+Gender: Male
+Nationality: Malaysian
+Matric Number: U1920003A
+Email: cody003@mystars.com
+
+(4) Name: Daron Lim
+Username: daron004
+Password: daron004
+maxAU: 21
+Gender: Male
+Nationality: American
+Matric Number: U1920004A
+Email: daron004@mystars.com
+
+(5) Name: Emily Kim
+Username: emily005
+Password: emily005
+maxAU: 21
+Gender: Female
+Nationality: Korean
+Matric Number: U1920005A
+Email: emily005@mystars.com
+
+(6) Name: Fatima Tan
+Username: fatima006
+Password: fatima006
+maxAU: 21
+Gender: Female
+Nationality: Singaporean
+Matric Number: U1920006A
+Email: fatima006@mystars.com
+
+(7) Name: Gavin Chong
+Username: gavin007
+Password: gavin007
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920007A
+Email: gavin007@mystars.com
+
+(8) Name: Hayley Tan
+Username: hayley008
+Password: hayley008
+maxAU: 21
+Gender: Female
+Nationality: American
+Matric Number: U1920008A
+Email: hayley008@mystars.com
+
+(9) Name: Isaac Newton
+Username: isaac009
+Password: isaac009
+maxAU: 21
+Gender: Male
+Nationality: British
+Matric Number: U1920009A
+Email: isaac009@mystars.com
+
+(10) Name: Jay Chou
+Username: jay010
+Password: jay010
+maxAU: 21
+Gender: Male
+Nationality: Taiwanese
+Matric Number: U1920010A
+Email: jay010@mystars.com
+
+(11) Name: Kingston Wong
+Username: kingston011
+Password: kingston011
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920011A
+Email: kingston011@mystars.com
+
+(12) Name: Lucas Tan
+Username: lucas012
+Password: lucas012
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920012A
+Email: lucas012@mystars.com
+
+(13) Name: Mandy Wong
+Username: mandy013
+Password: mandy013
+maxAU: 21
+Gender: Female
+Nationality: Singaporean
+Matric Number: U1920013A
+Email: mandy013@mystars.com
+
+(14) Name: Nathan Lim
+Username: nathan014
+Password: nathan014
+maxAU: 21
+Gender: Male
+Nationality: Singaporean
+Matric Number: U1920014A
+Email: nathan014@mystars.com
+
+(15) Name: Ogei Chong
+Username: ogei015
+Password: ogei015
+maxAU: 21
+Gender: Female
+Nationality: Japanese
+Matric Number: U1920015A
+Email: ogei015@mystars.com
+
+
+
+
+// --- 4 Pre-populated Courses --- //
+(1) Course code: CZ2002
+Name: Object-oriented Design & Programming
+School: SCSE
+AU: 3
+Indexes:
+Index No.: 10126
+	Class ID: 10126_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT11 
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Thursday
+
+	Class ID: 10126_LEC2
+	Class type: LEC
+	Start Time: 2.30PM
+	End Time: 3.30PM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Tuesday
+
+	Class ID: 10126_TUT
+	Class type: TUT
+	Start Time: 9.30AM
+	End Time: 10.30AM
+	Venue: TR+17
+	Group Number: FEP1  
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 10126_LAB
+	Class type: LAB
+	Start Time: 2.30PM
+	End Time: 4.30PM
+	Venue: SPL
+	Group Number: FEP1  
+	Week: ODD
+	Day of Week: Monday
+
+Index No.: 10127
+	Class ID: 10127_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT11 
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Thursday
+
+	Class ID: 10127_LEC2
+	Class type: LEC
+	Start Time: 2.30PM
+	End Time: 3.30PM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Tuesday
+
+	Class ID: 10127_TUT
+	Class type: TUT
+	Start Time: 1.30PM
+	End Time: 2.30PM
+	Venue: TR+9
+	Group Number: FSP3
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 10127_LAB
+	Class type: LAB
+	Start Time: 2.30PM
+	End Time: 4.30PM
+	Venue: SPL
+	Group Number: FSP3
+	Week: EVEN
+	Day of Week: Monday
+
+(2) Course code: CZ2001
+Name: Algorithms
+School: SCSE
+AU: 3
+Indexes:
+Index No.: 10124
+	Class ID: 10124_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT10 
+	Group Number: CS2
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 10124_LEC2
+	Class type: LEC
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Monday
+
+	Class ID: 10124_TUT
+	Class type: TUT
+	Start Time: 4.30PM
+	End Time: 5.30PM
+	Venue: TR+9
+	Group Number: SSR1  
+	Week: BOTH
+	Day of Week: Thursday
+
+	Class ID: 10124_LAB
+	Class type: LAB
+	Start Time: 10.30AM
+	End Time: 12.30PM
+	Venue: HWLAB1
+	Group Number: SSR1  
+	Week: EVEN
+	Day of Week: Wednesday
+
+Index No.: 10125
+	Class ID: 10125_LEC1
+	Class type: LEC
+	Start Time: 8.30AM
+	End Time: 9.30AM
+	Venue: LT10 
+	Group Number: CS2
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 10125_LEC2
+	Class type: LEC
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: LT11
+	Group Number: CS2  
+	Week: BOTH
+	Day of Week: Monday
+
+	Class ID: 10125_TUT
+	Class type: TUT
+	Start Time: 1.30PM
+	End Time: 2.30PM
+	Venue: TR+15
+	Group Number: SSR5
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 10125_LAB
+	Class type: LAB
+	Start Time: 8.30AM
+	End Time: 10.30AM
+	Venue: HWLAB2
+	Group Number: SSR5
+	Week: ODD
+	Day of Week: Wednesday
+
+
+(3) Course code: HE9091
+Name: Principle of Economics
+School: SSS
+AU: 3
+Indexes:
+Index No.: 00551
+	Class ID: 00551_LEC
+	Class type: LEC
+	Start Time: 4.30PM
+	End Time: 6.30PM
+	Venue: ONLINE
+	Group Number: NBS
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 00551_TUT
+	Class type: TUT
+	Start Time: 9.30AM
+	End Time: 10.30AM
+	Venue: LHS-TR+48
+	Group Number: NBS1
+	Week: BOTH
+	Day of Week: Tuesday
+
+Index No.: 00552
+	Class ID: 00552_LEC
+	Class type: LEC
+	Start Time: 4.30PM
+	End Time: 6.30PM
+	Venue: ONLINE
+	Group Number: NBS
+	Week: BOTH
+	Day of Week: Friday
+
+	Class ID: 00552_TUT
+	Class type: TUT
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: LHS-TR+48
+	Group Number: NBS2
+	Week: BOTH
+	Day of Week: Tuesday
+
+(4) Course code: BU8201
+Name: Business Finance
+School: NBS
+AU: 3
+Indexes:
+Index No.: 00402
+	Class ID: 00402_LEC
+	Class type: LEC
+	Start Time: 6.30PM
+	End Time: 8.30PM
+	Venue: ONLINE
+	Group Number: 1
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 00402_SEM
+	Class type: SEM
+	Start Time: 10.30AM
+	End Time: 11.30AM
+	Venue: S4-SR10
+	Group Number: 1
+	Week: BOTH
+	Day of Week: Tuesday
+
+Index No.: 00403
+	Class ID: 00403_LEC
+	Class type: LEC
+	Start Time: 6.30PM
+	End Time: 8.30PM
+	Venue: ONLINE
+	Group Number: 1
+	Week: BOTH
+	Day of Week: Wednesday
+
+	Class ID: 00403_SEM
+	Class type: SEM
+	Start Time: 11.30AM
+	End Time: 12.30PM
+	Venue: S4-SR10
+	Group Number: 2
+	Week: BOTH
+	Day of Week: Tuesday
+
+
+
+
+
+
+
