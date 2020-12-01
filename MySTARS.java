@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.text.ParseException;
+import java.text.ParseException; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -224,6 +224,10 @@ public class MySTARS implements Serializable{
         return num;
     }
 
+    /**
+     * Method that prints the Course vacancies.
+     * @param courseCode Course code of vacancies to be printed.
+     */
     public void printCourseVacancies(String courseCode){
         Course course = null;
         for(Course c: courses){
@@ -256,6 +260,10 @@ public class MySTARS implements Serializable{
         System.out.format("+-------------+---------------------------------------------+------------+--------+%n");
     }
 
+    /**
+     * Method that prints a Course timetable.
+     * @param courseCode Course code of timetable to be printed.
+     */
     public void printCourseTimetable(String courseCode){
         Course course = null;
         for(Course c: courses){

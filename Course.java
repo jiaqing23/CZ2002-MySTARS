@@ -140,6 +140,7 @@ public class Course implements Serializable{
 	/**
 	 * Method that updates an existing Index of an existing Course.
 	 * @param index The existing Index object to be updated of an existing Course.
+	 * @param mainApp The existing MySTARS class mainApp object that loaded with our database.
 	 */
 	public void updateIndex(Index index, MySTARS mainApp) {
 		int choice = 0;
